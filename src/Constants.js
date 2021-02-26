@@ -1,0 +1,3 @@
+export const adjs = ['Silly', 'Smelly', 'Snarky', 'Snobbish', 'Sneaky', 'Slimy', 'Swift', 'Slim','Silent','Short','Shifty','Snazzy'];
+export const nouns = ['Snake', 'Snail', 'Stinker', 'Stool', 'Steve','Skunk','Shell','Seastar','Sea','Slapper','Star'];
+export const standardAdjs = ['Iron','Strong','Brave','Sneaky','Smart','Quick','Surreptitious','Gold','Plastic','Fast','Weak','Cruel','Nice','Evil','Loving','Kind','Clever','Talented','Goofy','Slippery'];
