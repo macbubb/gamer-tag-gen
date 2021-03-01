@@ -5,6 +5,8 @@ import { adjs, nouns } from './Constants';
 function App() {
   const [tagInventory, setTagInventory] = useState([]);
 
+  const latestTag = tagInventory[tagInventory.length -1] ? tagInventory[tagInventory.length -1]: null;
+
   const handleAdd = (tag) => {
     setTagInventory([...tagInventory, tag]);
   }
@@ -30,16 +32,19 @@ function App() {
   return (
     <main>
       <h1>Gamer Tag Brain Storm Factory</h1>
-      <div className="flexIt">
-      <div className="left">
-        <h2></h2>
-        <button onClick={() => makeTag()}>New Tag</button>
-      </div>
-      <div className="right">
-        <section className="tagInventory">
-          {tagInventory.map( (item) => <Tag key={item.timeStamp} tagItem={item}/>) }
-        </section>
-      </div>
+      <div className="main-display">
+        <div className="main-display-left">
+          <div className="main-display-left-controls">
+            {latestTag ? <Tag tagItem={latestTag} /> : ''}
+            <button onClick={() => makeTag()}>New Tag</button>
+          </div>
+        </div>
+
+        <div className="main-display-right">
+          <section className="tagInventory">
+            {tagInventory.map( (item) => <Tag key={item.timeStamp} tagItem={item}/>) }
+          </section>
+        </div>
       </div>
     </main>
   );

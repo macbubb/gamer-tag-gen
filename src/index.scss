@@ -26,31 +26,26 @@ button {
   font-weight: bold;
   padding: 2rem;
   border: .5rem;
-
 }
 
-ul {
-  padding-top: 2rem;
+.tagItem {
+  font-size: 1.25rem;
+  padding-bottom: 0.5rem;
 }
 
-li {
-  font-size: 1.5rem;
-  letter-spacing: 0.05rem;
-  line-height: 1.5;
-  }
-
-.flexIt {
+.main-display {
   display: flex;
   flex-direction: row;
-}
-
-.left {
-  width: 50vw;
-  h2 {
-    font-size: 2rem;
+  justify-content: space-evenly;
+  &-left {
+    width: 50vw;
+    h2 {
+      font-size: 2rem;
+    }
+  }
+  &-right {
+    text-align: left;
   }
 }
 
-.right {
-  text-align: left;
-}
+
