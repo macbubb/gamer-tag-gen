@@ -14,7 +14,7 @@ function App() {
   const makeTag = () => {
     const randomAdjIndex = Math.floor(Math.random()*adjs.length);
     const randomNounIndex = Math.floor(Math.random()*nouns.length);
-    var timeStamp = window.performance && window.performance.now && window.performance.timing && window.performance.timing.navigationStart ? window.performance.now() + window.performance.timing.navigationStart : Date.now();
+    var timeStamp = Date.now();
     const newTag = {
       timeStamp: timeStamp,
       tag : adjs[randomAdjIndex] + nouns[randomNounIndex],
@@ -25,25 +25,38 @@ function App() {
     console.log(newTag);
   }
 
- // need method to render tag inventory
+ // need component to render tags
 
   return (
     <main>
       <h1>Gamer Tag Brain Storm Factory</h1>
-      <div class="flexIt">
-      <div class="left">
+      <div className="flexIt">
+      <div className="left">
         <h2></h2>
         <button onClick={() => makeTag()}>New Tag</button>
       </div>
-      <div class="right">
-        <ol>
-          {tagInventory.map( (item) => <li key={item.timeStamp}>{item.tag} </li>) }
-        </ol>
+      <div className="right">
+        <section className="tagInventory">
+          {tagInventory.map( (item) => <Tag key={item.timeStamp} tagItem={item}/>) }
+        </section>
       </div>
       </div>
     </main>
   );
 
 };
+
+class Tag extends React.Component {
+  render() {
+    const item = this.props.tagItem;
+
+    return (
+      <div className="tagItem" >
+
+        <span className="tagItemName" >{item.tag}</span>
+      </div>
+    );
+  }
+}
 
 export default App;
