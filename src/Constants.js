@@ -43,5 +43,6 @@ export const adjs = ['Iron',
 'Tarnished',
 'The',
 'Honest',
+'Mad',
 'Transient','Friendly','Mean','Squishy','Hardened','Soft','Cuddly','Weird', 'Thee', 'Likeable'];
-export const nouns = ['Snake', 'Snail', 'Stinker', 'Stool', 'Steve','Skunk','Shell','Seastar','Sea','Slapper','Star','Knight', 'Paladin', 'Assassin', 'Barbarian', 'Mage', 'Snake','Dragon','Betrayer','Dog','Cat','Mouse','Penguin','Eagle','Hawk','Wolf','Coyote','Tiger','Panther','Jackal','Sailor','Captain','Sapper','General','Major', 'Star', 'Striker', 'Player', 'Flyer','Warrior', 'Wave', 'Cyclone', 'Storm', 'Thunder', 'Twister', 'Ninja', 'Clown', 'Samurai','Master', 'Legend','Termite','Ant','Spider','Giver','Taker','Passer','Rocketeer'];
+export const nouns = ['Snake', 'Snail', 'Stinker', 'Stool', 'Steve','Skunk','Shell','Seastar','Sea','Slapper','Star','Knight', 'Paladin', 'Assassin', 'Barbarian', 'Mage', 'Snake','Dragon','Betrayer','Dog','Cat','Mouse','Penguin','Eagle','Hawk','Wolf','Coyote','Tiger','Panther','Jackal','Sailor','Captain','Sapper','General','Major', 'Star', 'Striker', 'Player', 'Flyer','Warrior', 'Wave', 'Cyclone', 'Storm', 'Thunder', 'Twister', 'Ninja', 'Clown', 'Samurai','Master', 'Legend','Termite','Ant','Spider','Giver','Taker','Passer','Rocketeer','Dealer'];

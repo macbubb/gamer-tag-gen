@@ -54,14 +54,54 @@ function App() {
 class Tag extends React.Component {
   render() {
     const item = this.props.tagItem;
-
+    const stars = this.props.tagItem.stars;
     return (
       <div className="tagItem" >
 
         <span className="tagItemName" >{item.tag}</span>
+          <RenderStars stars={stars} />
       </div>
     );
   }
 }
+const RenderStars = (props) => {
+    const display = {display: "none"}; //style attribute in JSX needs to be loaded as a variable, can't use as a string
+
+  return (
+    <div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style={display}>
+        <symbol id="filled-star" viewBox="0 0 24 24">
+          <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/>
+        </symbol>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style={display}>
+        <symbol id="empty-star" viewBox="0 0 24 24">
+          <path d="M12 5.173l2.335 4.817 5.305.732-3.861 3.71.942 5.27-4.721-2.524-4.721 2.525.942-5.27-3.861-3.71 5.305-.733 2.335-4.817zm0-4.586l-3.668 7.568-8.332 1.151 6.064 5.828-1.48 8.279 7.416-3.967 7.416 3.966-1.48-8.279 6.064-5.827-8.332-1.15-3.668-7.569z"/>
+        </symbol>
+        </svg>
+         {/* zero stars */}
+      {props.stars == 0 &&
+        <div>
+          <svg className="empty-star">
+          <use xlinkHref="#empty-star" />
+        </svg>
+        <svg className="empty-star">
+          <use xlinkHref="#empty-star" />
+        </svg>
+        <svg className="empty-star">
+          <use xlinkHref="#empty-star" />
+        </svg>
+        <svg className="empty-star">
+          <use xlinkHref="#empty-star" />
+        </svg>
+        <svg className="empty-star">
+          <use xlinkHref="#empty-star" />
+        </svg>
+        </div>
+      }
+    </div>
+  );
+};
+
 
 export default App;
