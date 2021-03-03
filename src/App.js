@@ -27,7 +27,13 @@ function App() {
     console.log(newTag);
   }
 
- // need component to render tags
+  const changeStars = (stars, key) => {
+    console.log("1 star");
+/*     const newRatingInventory = { ...tagInventory};
+
+    newRatingInventory[key].stars = stars;
+    setTagInventory([...newRatingInventory]); */
+  };
 
   return (
     <main>
@@ -35,7 +41,12 @@ function App() {
       <div className="main-display">
         <div className="main-display-left">
           <div className="main-display-left-controls">
-            {latestTag ? <Tag tagItem={latestTag} /> : ''}
+            {latestTag ?
+              <Tag
+                tagItem={latestTag}
+                changeStars ={changeStars}
+              />
+                : ''}
             <button onClick={() => makeTag()}>New Tag</button>
           </div>
         </div>
@@ -55,11 +66,16 @@ class Tag extends React.Component {
   render() {
     const item = this.props.tagItem;
     const stars = this.props.tagItem.stars;
+    const key = this.props.tagItem.timeStamp;
     return (
       <div className="tagItem" >
 
         <span className="tagItemName" >{item.tag}</span>
-          <RenderStars stars={stars} />
+          <RenderStars
+            stars={stars}
+            key={key}
+            changeStars={this.props.changeStars}
+          />
       </div>
     );
   }
@@ -80,9 +96,9 @@ const RenderStars = (props) => {
         </symbol>
         </svg>
          {/* zero stars */}
-      {props.stars == 0 &&
+      {props.stars === 0 &&
         <div>
-          <svg className="empty-star">
+          <svg className="empty-star" onClick={() => props.changeStars(1, props.key)}>
           <use xlinkHref="#empty-star" />
         </svg>
         <svg className="empty-star">
