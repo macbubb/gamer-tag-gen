@@ -13,10 +13,17 @@ body {
   flex-direction: row;
   justify-content: space-evenly;
   &-left {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     margin-top: 3rem;
     width: 50vw;
     h2 {
       font-size: 2rem;
+    }
+    &-options {
+      font-size: 1.25rem;
+      line-height: 1.25;
     }
     &-controls {
       &-generate-tag button {
@@ -37,6 +44,9 @@ body {
   }
   &-right {
     text-align: left;
+    h2 {
+      text-align: center;
+    }
   }
 }
 
@@ -85,9 +95,7 @@ body {
 
   &.new-item {
     .tag-item-top {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
+      margin: auto;
       width: 20rem;
     }
     display: flex;
@@ -95,6 +103,9 @@ body {
     border: 0;
     font-size: 2rem;
     font-style: italic;
+    .stars {
+      margin: auto;
+    }
     .empty-star, .filled-star {
       width: 1.75rem;
       height: 1.75rem;

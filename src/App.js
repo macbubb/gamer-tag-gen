@@ -9,7 +9,7 @@ function App() {
   const latestTag = tagInventory[tagInventory.length - 1] ? tagInventory[tagInventory.length -1] : null;
 
   const handleAdd = (tag) => {
-    setTagInventory([...tagInventory, tag]);
+    setTagInventory([ tag, ...tagInventory]);
   }
 
   // function for picking color
@@ -49,6 +49,7 @@ function App() {
                 tagItem={latestTag}
                 changeStars={changeStars}
                 newTag={true}
+                key={latestTag.timeStamp}
               />
                 : ''}
             <div className="main-display-left-controls-generate-tag">
@@ -56,7 +57,7 @@ function App() {
             </div>
           </div>
           <div className="main-display-left-options">
-            <p>Options</p>
+            <h2>Options</h2>
             <div className="checkbox">
               <input className="" type="checkbox" id="add-number" name="add-number"></input>
               <label htmlFor="add-number">Add a number</label>
@@ -83,7 +84,12 @@ function App() {
         <div className="main-display-right">
           <h2>Inventory</h2>
           <section className="tagInventory">
-            {tagInventory.map( (item) => <Tag key={item.timeStamp} tagItem={item}/>) }
+            {tagInventory.map( (item) =>
+              <Tag
+                key={item.timeStamp}
+                tagItem={item}
+              />
+              ) }
           </section>
         </div>
       </div>
@@ -119,7 +125,7 @@ const RenderStars = (props) => {
     const display = {display: "none"}; //style attribute in JSX needs to be loaded as a variable, can't use as a string
   // ref for using symbol tag https://css-tricks.com/svg-symbol-good-choice-icons/
   return (
-    <div className="0-stars">
+    <div className="stars">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style={display}>
         <symbol id="filled-star" viewBox="0 0 24 24">
           <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/>
