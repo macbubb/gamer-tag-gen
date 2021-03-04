@@ -5,7 +5,8 @@ import { adjs, nouns } from './Constants';
 function App() {
   const [tagInventory, setTagInventory] = useState([]);
 
-  const latestTag = tagInventory[tagInventory.length -1] ? tagInventory[tagInventory.length -1]: null;
+  // keeps track of most recent tag, and is null if no tag has been generated, used to conditionally render the top tag, without testing it can't get called
+  const latestTag = tagInventory[tagInventory.length - 1] ? tagInventory[tagInventory.length -1] : null;
 
   const handleAdd = (tag) => {
     setTagInventory([...tagInventory, tag]);
@@ -27,31 +28,60 @@ function App() {
     console.log(newTag);
   }
 
-  const changeStars = (stars, key) => {
-    console.log("1 star");
-/*     const newRatingInventory = { ...tagInventory};
+  function changeStars(stars) {
+    console.log(stars);
+    const newRatingInventory = [ ...tagInventory];
 
-    newRatingInventory[key].stars = stars;
-    setTagInventory([...newRatingInventory]); */
-  };
+    //newRatingInventory[key].stars = stars;
+    setTagInventory([...newRatingInventory]);
+  }
 
   return (
     <main>
-      <h1>Gamer Tag Brain Storm Factory</h1>
+      <div className="main-heading">
+        <h1>Gamertag Brain Storm</h1>
+      </div>
       <div className="main-display">
         <div className="main-display-left">
           <div className="main-display-left-controls">
             {latestTag ?
               <Tag
                 tagItem={latestTag}
-                changeStars ={changeStars}
+                changeStars={changeStars}
+                newTag={true}
               />
                 : ''}
-            <button onClick={() => makeTag()}>New Tag</button>
+            <div className="main-display-left-controls-generate-tag">
+              <button onClick={() => makeTag()}>New Tag</button>
+            </div>
+          </div>
+          <div className="main-display-left-options">
+            <p>Options</p>
+            <div className="checkbox">
+              <input className="" type="checkbox" id="add-number" name="add-number"></input>
+              <label htmlFor="add-number">Add a number</label>
+            </div>
+            <div className="checkbox">
+              <input className="no-caps" type="checkbox" id="no-caps" name="no-caps"></input>
+              <label htmlFor="no-caps">No caps</label>
+            </div>
+            <div className="checkbox">
+              <input className="all-caps" type="checkbox" id="all-caps" name="all-caps"></input>
+              <label htmlFor="all-caps">All caps</label>
+            </div>
+            <div className="checkbox">
+              <input className="only-front-cap" type="checkbox" id="only-front-cap" name="only-front-cap"></input>
+              <label htmlFor="only-front-cap">Capitalize first letter only</label>
+            </div>
+ {/*            <div className="checkbox">
+              <input className="" type="checkbox" id="" name=""></input>
+              <label htmlFor=""></label>
+            </div> */}
           </div>
         </div>
 
         <div className="main-display-right">
+          <h2>Inventory</h2>
           <section className="tagInventory">
             {tagInventory.map( (item) => <Tag key={item.timeStamp} tagItem={item}/>) }
           </section>
@@ -67,14 +97,19 @@ class Tag extends React.Component {
     const item = this.props.tagItem;
     const stars = this.props.tagItem.stars;
     const key = this.props.tagItem.timeStamp;
-    return (
-      <div className="tagItem" >
+    const tagClass = this.props.newTag ? "tag-item new-item" : "tag-item";
+    // use extra class for the top tag so it can be styled differently than inventory tags
 
-        <span className="tagItemName" >{item.tag}</span>
+    return (
+      <div className={tagClass}>
+        <div className="tag-item-top">
+          <span className="tag-item-name" >{item.tag}</span>
+          <a href="#main"><span className="delete-tag">&#10006;</span></a>
+        </div>
           <RenderStars
             stars={stars}
-            key={key}
             changeStars={this.props.changeStars}
+            newTag={false}
           />
       </div>
     );
@@ -82,9 +117,9 @@ class Tag extends React.Component {
 }
 const RenderStars = (props) => {
     const display = {display: "none"}; //style attribute in JSX needs to be loaded as a variable, can't use as a string
-
+  // ref for using symbol tag https://css-tricks.com/svg-symbol-good-choice-icons/
   return (
-    <div>
+    <div className="0-stars">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style={display}>
         <symbol id="filled-star" viewBox="0 0 24 24">
           <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/>
@@ -98,7 +133,7 @@ const RenderStars = (props) => {
          {/* zero stars */}
       {props.stars === 0 &&
         <div>
-          <svg className="empty-star" onClick={() => props.changeStars(1, props.key)}>
+          <svg className="empty-star" onClick={() => props.changeStars(4)}>
           <use xlinkHref="#empty-star" />
         </svg>
         <svg className="empty-star">
