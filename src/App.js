@@ -28,11 +28,12 @@ function App() {
     console.log(newTag);
   }
 
-  function changeStars(stars) {
-    console.log(stars);
+  function changeStars(stars, key) {
+    console.log(stars, key);
     const newRatingInventory = [ ...tagInventory];
-
-    //newRatingInventory[key].stars = stars;
+    newRatingInventory.map(el => (el.timestamp === key ? Object.assign({}, el.stars, stars) : el));
+    //newRatingInventory.map(el => console.log(el.timeStamp));
+    console.log(newRatingInventory);
     setTagInventory([...newRatingInventory]);
   }
 
@@ -88,6 +89,7 @@ function App() {
               <Tag
                 key={item.timeStamp}
                 tagItem={item}
+                changeStars={changeStars}
               />
               ) }
           </section>
@@ -102,7 +104,7 @@ class Tag extends React.Component {
   render() {
     const item = this.props.tagItem;
     const stars = this.props.tagItem.stars;
-    const key = this.props.tagItem.timeStamp;
+    const changeStars = this.props.changeStars;
     const tagClass = this.props.newTag ? "tag-item new-item" : "tag-item";
     // use extra class for the top tag so it can be styled differently than inventory tags
 
@@ -114,16 +116,35 @@ class Tag extends React.Component {
         </div>
           <RenderStars
             stars={stars}
-            changeStars={this.props.changeStars}
+            changeStars={changeStars}
             newTag={false}
+            item={item}
+            key={item.key}
           />
       </div>
     );
   }
 }
+
+// ref for using symbol tag https://css-tricks.com/svg-symbol-good-choice-icons/
+
 const RenderStars = (props) => {
     const display = {display: "none"}; //style attribute in JSX needs to be loaded as a variable, can't use as a string
-  // ref for using symbol tag https://css-tricks.com/svg-symbol-good-choice-icons/
+    const whichStar = [1,2,3,4,5]; //this is used in for loop and ternary to pass star rating to changeStars
+    const starcode = []; // will contain JSX of star ratings
+
+    //spits out JSX for 5 stars filled or empty depending on rating
+    for (const [index] of whichStar.entries()) {
+    (index < props.stars) ? starcode.push(
+      <svg className="filled-star" onClick={() => props.changeStars(index + 1, props.item.timeStamp)}>
+        <use xlinkHref="#filled-star" />
+      </svg>
+    ) : starcode.push(
+        <svg className="empty-star" onClick={() => props.changeStars(index + 1, props.item.timeStamp)}>
+          <use xlinkHref="#empty-star" />
+        </svg>
+    )
+  }
   return (
     <div className="stars">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style={display}>
@@ -136,26 +157,7 @@ const RenderStars = (props) => {
           <path d="M12 5.173l2.335 4.817 5.305.732-3.861 3.71.942 5.27-4.721-2.524-4.721 2.525.942-5.27-3.861-3.71 5.305-.733 2.335-4.817zm0-4.586l-3.668 7.568-8.332 1.151 6.064 5.828-1.48 8.279 7.416-3.967 7.416 3.966-1.48-8.279 6.064-5.827-8.332-1.15-3.668-7.569z"/>
         </symbol>
         </svg>
-         {/* zero stars */}
-      {props.stars === 0 &&
-        <div>
-          <svg className="empty-star" onClick={() => props.changeStars(4)}>
-          <use xlinkHref="#empty-star" />
-        </svg>
-        <svg className="empty-star">
-          <use xlinkHref="#empty-star" />
-        </svg>
-        <svg className="empty-star">
-          <use xlinkHref="#empty-star" />
-        </svg>
-        <svg className="empty-star">
-          <use xlinkHref="#empty-star" />
-        </svg>
-        <svg className="empty-star">
-          <use xlinkHref="#empty-star" />
-        </svg>
-        </div>
-      }
+      {starcode}
     </div>
   );
 };

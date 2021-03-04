@@ -15,9 +15,9 @@ body {
   &-left {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     margin-top: 3rem;
-    width: 50vw;
+    width: 75vw;
     h2 {
       font-size: 2rem;
     }
