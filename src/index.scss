@@ -27,6 +27,7 @@ body {
     }
     &-controls {
       &-generate-tag button {
+        margin-top: 4rem;
         background-color: lightgrey;
         font-size: 5rem;
         font-weight: bold;
@@ -54,6 +55,8 @@ body {
   width: 1.2rem;
   height: 1.2rem;
   margin-right: 0.05rem;
+  fill: #FFD73B;
+
 }
 
 .tag-item {
@@ -94,15 +97,17 @@ body {
   }
 
   &.new-item {
+    display: flex;
+    flex-direction: column;
+    border: black 1rem dotted;
+    border-radius: 5rem;
+    padding: 1.5rem;
+    font-size: 2rem;
+    font-style: italic;
     .tag-item-top {
       margin: auto;
       width: 20rem;
     }
-    display: flex;
-    flex-direction: column;
-    border: 0;
-    font-size: 2rem;
-    font-style: italic;
     .stars {
       margin: auto;
     }

@@ -31,9 +31,17 @@ function App() {
   function changeStars(stars, key) {
     console.log(stars, key);
     const newRatingInventory = [ ...tagInventory];
-    newRatingInventory.map(el => (el.timestamp === key ? Object.assign({}, el.stars, stars) : el));
+
+    for (const [index] of newRatingInventory.entries()) {
+      if (newRatingInventory[index].timeStamp === key) {
+        newRatingInventory[index].stars = stars;
+      }
+    }
+
+    //newRatingInventory.map(el => (el.timestamp === key ? Object.assign({}, el, { stars }) : el));
     //newRatingInventory.map(el => console.log(el.timeStamp));
-    console.log(newRatingInventory);
+    //console.log(newRatingInventory);
+//    newRatingInventory[key].stars = stars;
     setTagInventory([...newRatingInventory]);
   }
 
