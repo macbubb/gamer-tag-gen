@@ -99,7 +99,7 @@ body {
   &.new-item {
     display: flex;
     flex-direction: column;
-    border: black 1rem dotted;
+    border: black .5rem solid;
     border-radius: 5rem;
     padding: 1.5rem;
     font-size: 2rem;
@@ -115,7 +115,14 @@ body {
       width: 1.75rem;
       height: 1.75rem;
     }
-
+    .delete-tag {
+      font-size: 2.0rem;
+    }
+  }
+  .delete-tag {
+    border: 0;
+    background-color: inherit;
+    font-size: 1.5rem;
   }
 }
 

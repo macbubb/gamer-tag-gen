@@ -9,7 +9,7 @@ function App() {
   const latestTag = tagInventory[tagInventory.length - 1] ? tagInventory[tagInventory.length -1] : null;
 
   const handleAdd = (tag) => {
-    setTagInventory([ tag, ...tagInventory]);
+    setTagInventory([ tag, ...tagInventory ]);
   }
 
   // function for picking color
@@ -25,24 +25,19 @@ function App() {
       color : '#ffffff',
     };
     handleAdd(newTag);
-    console.log(newTag);
   }
 
   function changeStars(stars, key) {
-    console.log(stars, key);
-    const newRatingInventory = [ ...tagInventory];
+    const newRatingInventory = tagInventory.map(obj => obj.timeStamp === key ? { ...obj, stars } : obj);
 
-    for (const [index] of newRatingInventory.entries()) {
-      if (newRatingInventory[index].timeStamp === key) {
-        newRatingInventory[index].stars = stars;
-      }
-    }
+    setTagInventory(newRatingInventory);
+  }
 
-    //newRatingInventory.map(el => (el.timestamp === key ? Object.assign({}, el, { stars }) : el));
-    //newRatingInventory.map(el => console.log(el.timeStamp));
-    //console.log(newRatingInventory);
-//    newRatingInventory[key].stars = stars;
-    setTagInventory([...newRatingInventory]);
+  function deleteTag(key) {
+    // use filter to make a copy without tag that's deleted
+    const newRatingInventory = tagInventory.filter(obj => obj.timeStamp !== key);
+    console.log(key, newRatingInventory);
+    setTagInventory(newRatingInventory);
   }
 
   return (
@@ -55,9 +50,10 @@ function App() {
           <div className="main-display-left-controls">
             {latestTag ?
               <Tag
-                tagItem={latestTag}
+                tagItem={tagInventory[0]}
                 changeStars={changeStars}
                 newTag={true}
+                deleteTag={deleteTag}
                 key={latestTag.timeStamp}
               />
                 : ''}
@@ -98,6 +94,7 @@ function App() {
                 key={item.timeStamp}
                 tagItem={item}
                 changeStars={changeStars}
+                deleteTag={deleteTag}
               />
               ) }
           </section>
@@ -113,6 +110,7 @@ class Tag extends React.Component {
     const item = this.props.tagItem;
     const stars = this.props.tagItem.stars;
     const changeStars = this.props.changeStars;
+    const deleteTag = this.props.deleteTag;
     const tagClass = this.props.newTag ? "tag-item new-item" : "tag-item";
     // use extra class for the top tag so it can be styled differently than inventory tags
 
@@ -120,7 +118,7 @@ class Tag extends React.Component {
       <div className={tagClass}>
         <div className="tag-item-top">
           <span className="tag-item-name" >{item.tag}</span>
-          <a href="#main"><span className="delete-tag">&#10006;</span></a>
+          <button className="delete-tag" onClick={() => deleteTag(item.timeStamp)}><span>&#10006;</span></button>
         </div>
           <RenderStars
             stars={stars}
