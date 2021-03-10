@@ -1,6 +1,8 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { adjs, nouns } from './Constants';
+import { Formik, Field, Form } from 'formik';
+
 
 function App() {
   const [tagInventory, setTagInventory] = useState([]);
@@ -12,7 +14,6 @@ function App() {
     setTagInventory([ tag, ...tagInventory ]);
   }
 
-  // function for picking color
 
   const makeTag = () => {
     const randomAdjIndex = Math.floor(Math.random()*adjs.length);
@@ -34,7 +35,7 @@ function App() {
   }
 
   function deleteTag(key) {
-    // use filter to make a copy without tag that's deleted
+    // use filter to make a copy without tag that's been deleted
     const newRatingInventory = tagInventory.filter(obj => obj.timeStamp !== key);
     console.log(key, newRatingInventory);
     setTagInventory(newRatingInventory);
@@ -58,34 +59,12 @@ function App() {
               />
                 : ''}
             <div className="main-display-left-controls-generate-tag">
-              <button onClick={() => makeTag()}>New Tag</button>
+              <input onClick={() => makeTag()} type="button" value="New Tag"/>
             </div>
           </div>
-          <div className="main-display-left-options">
+          <div  className="main-display-left-options">
             <h2>Options</h2>
-            <div className="checkbox">
-              <input className="" type="checkbox" id="add-number" name="add-number"></input>
-              <label htmlFor="add-number">Add a number</label>
-            </div>
-            <div className="checkbox">
-              <input className="no-caps" type="checkbox" id="no-caps" name="no-caps"></input>
-              <label htmlFor="no-caps">No caps</label>
-            </div>
-            <div className="checkbox">
-              <input className="all-caps" type="checkbox" id="all-caps" name="all-caps"></input>
-              <label htmlFor="all-caps">All caps</label>
-            </div>
-            <div className="checkbox">
-              <input className="only-front-cap" type="checkbox" id="only-front-cap" name="only-front-cap"></input>
-              <label htmlFor="only-front-cap">Capitalize first letter only</label>
-            </div>
- {/*            <div className="checkbox">
-              <input className="" type="checkbox" id="" name=""></input>
-              <label htmlFor=""></label>
-            </div> */}
-          </div>
         </div>
-
         <div className="main-display-right">
           <h2>Inventory</h2>
           <section className="tagInventory">
@@ -100,7 +79,8 @@ function App() {
           </section>
         </div>
       </div>
-    </main>
+      </div>
+     </main>
   );
 
 };
@@ -167,6 +147,5 @@ const RenderStars = (props) => {
     </div>
   );
 };
-
 
 export default App;
