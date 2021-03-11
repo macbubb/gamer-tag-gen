@@ -6,7 +6,7 @@ const UserForm = (props) => {
     <div>
       <Formik
         initialValues={{
-          opts: '',
+          opts: 'bothCaps',
         }}
         onSubmit={async (values) => {
           await new Promise((r) => setTimeout(r, 500));
@@ -31,12 +31,12 @@ const UserForm = (props) => {
                             </label>
                             <label htmlFor="numDigitCount">
                                 Number of Digits&nbsp;
-                                <select name="numDigitCount" id="">
-                                    <option value="1" label="one" checked/>
-                                    <option value="2" label="two" />
-                                    <option value="3" label="three"/>
-                                    <option value="4" label="four" />
-                                </select>
+                                <Field type="select" name="numDigitCount" value="numDigitCount" as="select">
+                                    <option key={1} value="1" label="one" >one</option>
+                                    <option key={2} value="2" label="two">two</option>
+                                    <option key={3} value="3" label="three">three</option>
+                                    <option key={4} value="4" label="four">four</option>
+                                </Field>
                             </label>
                         </p>
                         <div role="group" aria-labelledby="cap-options">

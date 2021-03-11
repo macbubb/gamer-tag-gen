@@ -47,7 +47,7 @@ function App() {
   }
 
   const onFormUpdate = values => {
-    const newOptions = {...options, opts: values };
+    const newOptions = {opts: values.opts, addNum: values.addNum, numDigitCount: values.numDigitCount};
     setOptions(newOptions);
     makeTag();
   };
