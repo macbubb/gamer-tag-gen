@@ -1,44 +1,81 @@
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+.main-heading {
+  h1 {
+    background-color: black;
+    line-height: 1;
+    margin: 0rem;
+    text-align: left;
+    font-style: italic;
+    font-size: 15vw;
+    color: white;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -.6rem;
+  }
+}
 
 .main-display {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-evenly;
+  @media (min-width: 700px) {
+    flex-direction: row;
+  }
   &-left {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     margin-top: 3rem;
-    width: 75vw;
-    h2 {
-      font-size: 2rem;
+    @media (min-width: 700px) {
+      width: 75vw;
     }
+    h2 {
+      font-size: 1.5rem;
+    }
+
     &-options {
       font-size: 1.25rem;
       line-height: 1.25;
     }
     &-controls {
+      line-height: 1.5;
       button {
-        margin-top: 4rem;
-        background-color: lightgrey;
-        font-size: 5rem;
-        font-weight: bold;
-        padding: 5rem;
+        margin-top: 2rem;
+        font-size: 2.5rem;
+        padding: 2.5rem;
         border: .5rem black solid;
+        font-weight: bold;
         border-top-left-radius: 5rem;
         border-bottom-right-radius: 5rem;
-        transition: background-color 1s ease-in-out ;
+        background-color: lightgrey;
+        transition: background-color 1s ease-in-out;
         &:hover {
           background-color: #F6F6F6;
         }
+        @media (min-width: 600px) {
+          margin-top: 4rem;
+          font-size: 5rem;
+          padding: 5rem;
+          border: .5rem black solid;
+        }
+      }
+      &-options {
+        text-align: center;
+        &-inner {
+          display: inline-block;
+          text-align: left;
+        }
+      }
+      &-button {
+        text-align: center;
       }
 
     }
@@ -57,6 +94,13 @@ body {
   margin-right: 0.05rem;
   fill: #FFD73B;
 
+}
+
+.tagInventory {
+  text-align: center;
+  margin-left:auto;
+  margin-right: auto;
+  width: 13.5rem;
 }
 
 .tag-item {
@@ -123,17 +167,5 @@ body {
     border: 0;
     background-color: inherit;
     font-size: 1.5rem;
-  }
-}
-
-.main-heading {
-  h1 {
-    background-color: black;
-    line-height: 1;
-    margin: 0rem;
-    text-align: left;
-    font-style: italic;
-    font-size: 15vw;
-    color: white;
   }
 }

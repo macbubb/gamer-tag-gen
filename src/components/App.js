@@ -6,7 +6,10 @@ import Tag from './Tag';
 import UserForm from './UserForm';
 
 function App() {
-  const [tagInventory, setTagInventory] = useState([]);
+  const [tagInventory, setTagInventory] = useState([{timeStamp: '',
+                                                      tag:'',
+                                                      stars:0,
+                                                      color:'#fffff'}]);
 
   // keeps track of most recent tag, and is null if no tag has been generated, used to conditionally render the top tag, without testing it can't get called
   const latestTag = tagInventory[tagInventory.length - 1] ? tagInventory[tagInventory.length -1] : null;
@@ -15,7 +18,7 @@ function App() {
     setTagInventory([ tag, ...tagInventory ]);
   }
 
-  const [options, setOptions] = useState({opts: '', allCaps: false});
+  const [options, setOptions] = useState({opts: 'bothCaps', addNum: false, numDigitCount:''});
 
   const makeTag = () => {
     const randomAdjIndex = Math.floor(Math.random()*adjs.length);
