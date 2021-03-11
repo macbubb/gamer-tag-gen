@@ -18,19 +18,40 @@ function App() {
     setTagInventory([ tag, ...tagInventory ]);
   }
 
-  const [options, setOptions] = useState({opts: 'bothCaps', addNum: false, numDigitCount:''});
+  const [options, setOptions] = useState({opts: 'bothCaps', addNum: false, numDigitCount:'', maxLength: 20});
 
   const makeTag = () => {
     const randomAdjIndex = Math.floor(Math.random()*adjs.length);
     const randomNounIndex = Math.floor(Math.random()*nouns.length);
+    const newTagOpts = options.opts;
     var timeStamp = Date.now();
-    const newTag = {
+    var roughDraftTag = 'abcdefghijklmnopqrstuvwxyzabcd';
+    var newAdj = adjs[randomAdjIndex];
+    var newNoun = nouns[randomNounIndex];
+    // bothCaps leave noun and adj alone
+    // frontCap make noun lower case
+    // allCaps make noun and adj uppercase
+    while(roughDraftTag.length > options.maxLength) {
+      switch(newTagOpts) {
+        case "frontCap":
+          roughDraftTag = newAdj + newNoun.toLowerCase();
+          break;
+        case "allCaps":
+          roughDraftTag = newAdj.toUpperCase() + newNoun.toUpperCase();
+          break;
+        default:
+          roughDraftTag = newAdj + newNoun;
+      }
+    }
+    console.log(roughDraftTag, newTagOpts,roughDraftTag.length, roughDraftTag.length < options.maxLength);
+
+    const finalNewTag = {
       timeStamp: timeStamp,
-      tag : adjs[randomAdjIndex] + nouns[randomNounIndex],
+      tag : roughDraftTag,
       stars : 0,
       color : '#ffffff',
     };
-    handleAdd(newTag);
+    handleAdd(finalNewTag);
   }
 
   function changeStars(stars, key) {
@@ -47,7 +68,7 @@ function App() {
   }
 
   const onFormUpdate = values => {
-    const newOptions = {opts: values.opts, addNum: values.addNum, numDigitCount: values.numDigitCount};
+    const newOptions = {opts: values.opts, addNum: values.addNum, numDigitCount: values.numDigitCount, maxLength: 20};
     setOptions(newOptions);
     makeTag();
   };
