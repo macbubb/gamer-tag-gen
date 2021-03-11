@@ -3,6 +3,7 @@ import { adjs, nouns } from '../Constants';
 import { Formik, Field, Form } from 'formik';
 import '../App.css';
 import Tag from './Tag';
+import UserForm from './UserForm';
 
 function App() {
   const [tagInventory, setTagInventory] = useState([]);
@@ -13,6 +14,8 @@ function App() {
   const handleAdd = (tag) => {
     setTagInventory([ tag, ...tagInventory ]);
   }
+
+  const [options, setOptions] = useState({opts: '', allCaps: false});
 
   const makeTag = () => {
     const randomAdjIndex = Math.floor(Math.random()*adjs.length);
@@ -40,6 +43,11 @@ function App() {
     setTagInventory(newRatingInventory);
   }
 
+  const onFormUpdate = values => {
+    const newOptions = {...options, opts: values };
+    setOptions(newOptions);
+    makeTag();
+  };
   return (
     <main>
       <div className="main-heading">
@@ -47,7 +55,7 @@ function App() {
       </div>
       <div className="main-display">
         <div className="main-display-left">
-          <div className="main-display-left-controls">
+          <div className="main-display-left-display">
             {latestTag ?
               <Tag
                 tagItem={tagInventory[0]}
@@ -57,12 +65,14 @@ function App() {
                 key={latestTag.timeStamp}
               />
                 : ''}
-            <div className="main-display-left-controls-generate-tag">
-              <input onClick={() => makeTag()} type="button" value="New Tag"/>
+            <div className="main-display-left-controls">
+              {/* <input onClick={() => makeTag()} type="button" value="New Tag"/> what is new tag for?*/}
+              <UserForm
+                onUpdate={onFormUpdate}
+              />
             </div>
           </div>
-          <div  className="main-display-left-options">
-            <h2>Options</h2>
+
         </div>
         <div className="main-display-right">
           <h2>Inventory</h2>
@@ -78,16 +88,9 @@ function App() {
           </section>
         </div>
       </div>
-      </div>
      </main>
   );
 
 };
-
-
-
-// ref for using symbol tag https://css-tricks.com/svg-symbol-good-choice-icons/
-
-
 
 export default App;

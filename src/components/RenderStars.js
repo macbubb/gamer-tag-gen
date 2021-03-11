@@ -1,5 +1,7 @@
 import React from 'react';
 
+// ref for using symbol tag https://css-tricks.com/svg-symbol-good-choice-icons/
+
 const RenderStars = (props) => {
     const display = {display: "none"}; //style attribute in JSX needs to be loaded as a variable, can't use as a string
     const whichStar = [1,2,3,4,5]; //this is used in for loop and ternary to pass star rating to changeStars
