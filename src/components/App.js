@@ -6,10 +6,12 @@ import Tag from './Tag';
 import UserForm from './UserForm';
 
 function App() {
-  const [tagInventory, setTagInventory] = useState([{timeStamp: '',
-                                                      tag:'',
-                                                      stars:0,
-                                                      color:'#fffff'}]);
+  const [tagInventory, setTagInventory] = useState([{
+    timeStamp: '',
+    tag:'',
+    stars:0,
+    color:'#fffff'
+  }]);
 
   // keeps track of most recent tag, and is null if no tag has been generated, used to conditionally render the top tag, without testing it can't get called
   const latestTag = tagInventory[tagInventory.length - 1] ? tagInventory[tagInventory.length -1] : null;
@@ -18,7 +20,7 @@ function App() {
     setTagInventory([ tag, ...tagInventory ]);
   }
 
-  const [options, setOptions] = useState({opts: 'bothCaps', addNum: false, numDigitCount:'', maxLength: 20});
+  const [options, setOptions] = useState({opts: 'bothCaps', addNum: false, numDigitCount:1 , maxLength: 20});
 
   const makeTag = () => {
     const randomAdjIndex = Math.floor(Math.random()*adjs.length);
@@ -68,7 +70,7 @@ function App() {
   }
 
   const onFormUpdate = values => {
-    const newOptions = {opts: values.opts, addNum: values.addNum, numDigitCount: values.numDigitCount, maxLength: 20};
+    const newOptions = {opts: values.opts, addNum: values.addNum, numDigitCount: values.numDigitCount, maxLength: values.maxLength};
     setOptions(newOptions);
     makeTag();
   };
@@ -92,6 +94,7 @@ function App() {
             <div className="main-display-left-controls">
               {/* <input onClick={() => makeTag()} type="button" value="New Tag"/> what is new tag for?*/}
               <UserForm
+                options={options}
                 onUpdate={onFormUpdate}
               />
             </div>
