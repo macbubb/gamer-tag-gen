@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { adjs, nouns } from '../Constants';
-import { Formik, Field, Form } from 'formik';
 import '../App.css';
 import Tag from './Tag';
 import UserForm from './UserForm';
+import SplatterBox from './SplatterBox';
 
 function App() {
   const [tagInventory, setTagInventory] = useState([{
@@ -20,7 +20,7 @@ function App() {
     setTagInventory([ tag, ...tagInventory ]);
   }
 
-  const [options, setOptions] = useState({opts: 'bothCaps', addNum: false, numDigitCount:1 , maxLength: 20});
+  const [options, setOptions] = useState({opts: 'bothCaps', addNum: false, numDigitCount:'', maxLength: 20});
 
   const makeTag = () => {
     const randomAdjIndex = Math.floor(Math.random()*adjs.length);
@@ -70,7 +70,7 @@ function App() {
   }
 
   const onFormUpdate = values => {
-    const newOptions = {opts: values.opts, addNum: values.addNum, numDigitCount: values.numDigitCount, maxLength: values.maxLength};
+    const newOptions = {opts: values.opts, addNum: values.addNum, numDigitCount: values.numDigitCount, maxLength: 20};
     setOptions(newOptions);
     makeTag();
   };
