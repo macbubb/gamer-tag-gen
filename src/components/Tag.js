@@ -1,6 +1,6 @@
 import React from 'react';
 import RenderStars from './RenderStars';
-
+//will change to Card will render splattes with separate function and overlay tags and interface
 class Tag extends React.Component {
     render() {
       const item = this.props.tagItem;
@@ -12,7 +12,7 @@ class Tag extends React.Component {
 
       return (
         <div className={tagClass}>
-          <div className="tag-item-top">
+          <div className="tag-item-top"> {/* look into CSS and making styles uniform and scalable with scale property */}
             <span className="tag-item-name" >{item.tag}</span>
             <button className="delete-tag" onClick={() => deleteTag(item.timeStamp)}><span>&#10006;</span></button>
           </div>

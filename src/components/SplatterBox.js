@@ -1,18 +1,15 @@
 import React, { useState } from "react";
 import SplatterOne from "./SplatterOne";
 
+    // move transforming attributes to separate function that will store splatters in state
+    // this function will render all of the splatters including scale
 function SplatterBox() {
-	//how big is our rectangle?
-	// rectangle width
-	// rectangle height
-	const rectW = 100; //px
+	//based on golden ratio, not sure where to include this yet
+    const rectW = 100; //px
 	const rectH = 61; //px
-	//how many splatters
-	const splatCount = getRandomIntInclusive(3, 6);
 
 	//for each splatter:
 	//      SVG
-	const splatterChoice = getRandomIntInclusive(1, 1); //will increase after testing
 	//      size .5 - 1.2
 	const scale = getRandomFloat(0.5, 1.2);
     const skewX = getRandomIntInclusive(-50, 50);
