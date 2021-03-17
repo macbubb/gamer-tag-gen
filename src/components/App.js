@@ -74,7 +74,8 @@ function App() {
     setOptions(newOptions);
     makeTag();
   };
-  return (
+
+   return (
     <main>
       <div className="main-heading">
         <h1>Gamertag Brain Storm</h1>
@@ -82,6 +83,7 @@ function App() {
       <div className="main-display">
         <div className="main-display-left">
           <div className="main-display-left-display">
+            <SplatterBox />
             {latestTag ?
               <Tag
                 tagItem={tagInventory[0]}
