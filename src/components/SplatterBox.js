@@ -15,31 +15,28 @@ function SplatterBox() {
 	const splatterChoice = getRandomIntInclusive(1, 1); //will increase after testing
 	//      size .5 - 1.2
 	const scale = getRandomFloat(0.5, 1.2);
-	//      rotation full 360
+    const skewX = getRandomIntInclusive(-50, 50);
+    const skewY = getRandomIntInclusive(-50, 50);
 	const rotation = getRandomIntInclusive(0, 360);
-	//      x transform
 	const xTrans = (Math.random() - 1) * rectW;
-	//      y transform
 	const yTrans = (Math.random() - 1) * rectH;
-	//      Droplet
+
+    /*
+	//      Droplet may implement a droplet animation
 	//          x transform
-	const dropXTrans = xTrans * 0.1;
+    const dropXTrans = xTrans * 0.1;
 	//          y transform
 	const dropYTrans = yTrans * 0.1;
 	//          inherit size
+    */
 
-	const x = 100;
-	const y = 100;
-
-    const matrixProps = "matrix(" + scale + ", 0, 0, " + scale +' ,' + xTrans +',' + yTrans + ')';
-
-    const dropStyles = {
-		transform: matrixProps
+	const dropStyles = {
+		transform: 'scale(' + scale + ') skew(' + skewX + 'deg, ' + skewY + 'deg) rotate(' + rotation + 'deg) translateX(' + xTrans + 'px) translateY(' + yTrans + 'px)'
 	};
-    console.log({xTrans},{dropStyles});
+    console.log(dropStyles);
 
     return (
-		<div >
+		<div>
             <SplatterOne stylez={dropStyles}/>
 
 		</div>
