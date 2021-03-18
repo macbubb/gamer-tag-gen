@@ -135,7 +135,6 @@ function App() {
       <div className="main-display">
         <div className="main-display-left">
           <div className="main-display-left-display">
-            <SplatterBox />
             {latestTag ?
               <Card /* need to switch to card */
                 cardScale={1.5}
@@ -170,8 +169,8 @@ function App() {
               ) }
           </section>
         </div>
-     </main>
-``      </div>
+      </div>
+    </main>
   );
 
 };

@@ -521,5 +521,5 @@ c18 15 49 26 95 34 38 5 70 11 72 12 6 7 -147 2 -163 -5z"/>
 </g>
 </svg>
     )
-
+    }
 export default SplatterFive;

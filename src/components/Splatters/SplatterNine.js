@@ -1,4 +1,4 @@
-<svg version="1.0" xmlns="http://www.w3.org/2000/svg"import React from 'react';
+import React from 'react';
 
 function SplatterNine(props) {
     return(
@@ -1051,5 +1051,5 @@ l-60 0 0 -38z"/>
 </g>
 </svg>
     )
-
+    }
 export default SplatterNine;

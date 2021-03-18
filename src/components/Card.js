@@ -16,12 +16,12 @@ class Card extends React.Component {
       return (
         <div className={tagClass}>
           <div className="splatters">
-            {splatters.map( (splatter) => {
+            {splatters ? splatters.map( (splatter) => {
               <RenderSplatters
                 splatter = {splatter}
                 cardScale = {cardScale}
               />
-            })}
+            }) : ''}
           </div>
           <div className="tag-item-top"> {/* look into CSS and making styles uniform and scalable with scale property */}
             <span className="tag-item-name" >{item.tag}</span>
