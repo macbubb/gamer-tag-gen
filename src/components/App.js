@@ -54,9 +54,9 @@ function App() {
     //small splats
     for (let i=0; i<5; i++) {
       newSplatters[i].splatterNum = getRandomIntInclusive(1, 7);
-      newSplatters[i].skewX = getRandomIntInclusive(-50, 50);
+      newSplatters[i].skewX = getRandomIntInclusive(-20, 20);
       newSplatters[i].scale = getRandomFloat(0.5, 1.2);
-      newSplatters[i].skewY = getRandomIntInclusive(-50, 50);
+      newSplatters[i].skewY = getRandomIntInclusive(-20, 20);
       newSplatters[i].rotation = getRandomIntInclusive(0, 360);
       newSplatters[i].xTrans = (Math.random() - 1) * rectW;
       newSplatters[i].yTrans = (Math.random() - 1) * rectH;
@@ -160,7 +160,7 @@ function App() {
           <section className="cardInventory"> {/* map over cards */}
             {cardInventory.map( (item) =>
               <Card
-                scale={.1}
+                cardScale={1}
                 key={item.timeStamp}
                 card={item}
                 changeStars={changeStars}

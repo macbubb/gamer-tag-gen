@@ -13,21 +13,21 @@ import SplatterEleven from "./Splatters/SplatterEleven";
 import SplatterTwelve from "./Splatters/SplatterTwelve";
 
 function RenderSplatters(props) {
-    let {splatterNum, skewX, skewY, scale, rotation, xTrans, yTrans} = props.splatter;
+    // {splatterNum, skewX, skewY, scale, rotation, xTrans, yTrans} = props.splatter;
     const cardScale = props.cardScale;
-    scale = scale * cardScale;
-    skewX = skewX * cardScale;
-    skewY = skewY * cardScale;
-    rotation = rotation * cardScale;
-    xTrans = xTrans * cardScale;
-    yTrans = yTrans * cardScale;
+    const splatterNum = props.splatter.splatterNum;
+    const scale = props.splatter.scale * cardScale;
+    const skewX = props.splatter.skewX;
+    const skewY = props.splatter.skewY;
+    const rotation = props.splatter.rotation;
+    const xTrans = props.splatter.xTrans * cardScale;
+    const yTrans = props.splatter.yTrans * cardScale;
 
     const splatStyles = {
         transform: 'scale(' + scale + ') skew(' + skewX  + 'deg, ' + skewY + 'deg) rotate(' + rotation + 'deg) translateX(' + xTrans + 'px) translateY(' + yTrans + 'px)'
       };
-
-    function PickSplatter(props) {
-        switch(props.splatterNum) {
+    function PickSplatter() {
+        switch(splatterNum) {
             case 1:
                 return <SplatterOne stylez={splatStyles} />
             case 2:
@@ -56,7 +56,7 @@ function RenderSplatters(props) {
                 return <SplatterOne stylez={splatStyles} />
         }
     }
-    return (<PickSplatter props={splatterNum} />);
+    return (<PickSplatter/>);
 }
 
 export default RenderSplatters;
