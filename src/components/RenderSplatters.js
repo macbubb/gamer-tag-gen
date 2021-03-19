@@ -13,15 +13,10 @@ import SplatterEleven from "./Splatters/SplatterEleven";
 import SplatterTwelve from "./Splatters/SplatterTwelve";
 
 function RenderSplatters(props) {
-    // {splatterNum, skewX, skewY, scale, rotation, xTrans, yTrans} = props.splatter;
-    const cardScale = props.cardScale;
-    const splatterNum = props.splatter.splatterNum;
-    const scale = props.splatter.scale * cardScale;
-    const skewX = props.splatter.skewX;
-    const skewY = props.splatter.skewY;
-    const rotation = props.splatter.rotation;
-    const xTrans = props.splatter.xTrans * cardScale;
-    const yTrans = props.splatter.yTrans * cardScale;
+    let {splatterNum, skewX, skewY, scale, rotation, xTrans, yTrans} = props.splatter;
+    scale = scale * props.cardScale;
+    xTrans = xTrans * props.cardScale;
+    yTrans = yTrans * props.cardScale;
 
     const splatStyles = {
         transform: 'scale(' + scale + ') skew(' + skewX  + 'deg, ' + skewY + 'deg) rotate(' + rotation + 'deg) translateX(' + xTrans + 'px) translateY(' + yTrans + 'px)'

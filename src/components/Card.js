@@ -7,7 +7,7 @@ class Card extends React.Component {
       const item = this.props.card;
       const stars = this.props.card.stars;
       const changeStars = this.props.changeStars;
-      const deleteTag = this.props.deleteTag;
+      const deleteCard = this.props.deleteCard;
       const tagClass = this.props.newTag ? "tag-item new-item" : "tag-item";
       const splatters = this.props.card.splatters;
       const cardScale = this.props.cardScale;
@@ -24,7 +24,7 @@ class Card extends React.Component {
           </div>
           <div className="tag-item-top"> {/* look into CSS and making styles uniform and scalable with scale property */}
             <span className="tag-item-name" >{item.tag}</span>
-            <button className="delete-tag" onClick={() => deleteTag(item.timeStamp)}><span>&#10006;</span></button>
+            <button className="delete-tag" onClick={() => deleteCard(item.timeStamp)}><span>&#10006;</span></button>
           </div>
             <RenderStars
               stars={stars}
