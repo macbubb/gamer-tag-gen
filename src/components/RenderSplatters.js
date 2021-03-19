@@ -13,39 +13,50 @@ import SplatterEleven from "./Splatters/SplatterEleven";
 import SplatterTwelve from "./Splatters/SplatterTwelve";
 
 function RenderSplatters(props) {
-    const {splatterNum, skewX, skewY, scale, rotation, xTrans, yTrans} = props.splatter;
+    let {splatterNum, skewX, skewY, scale, rotation, xTrans, yTrans} = props.splatter;
     const cardScale = props.cardScale;
+    scale = scale * cardScale;
+    skewX = skewX * cardScale;
+    skewY = skewY * cardScale;
+    rotation = rotation * cardScale;
+    xTrans = xTrans * cardScale;
+    yTrans = yTrans * cardScale;
 
-    const dropStyles = {
-        transform: 'scale(' + scale * cardScale + ') skew(' + skewX * cardScale + 'deg, ' + skewY * cardScale + 'deg) rotate(' + rotation * cardScale + 'deg) translateX(' + xTrans * cardScale + 'px) translateY(' + yTrans * cardScale + 'px)'
+    const splatStyles = {
+        transform: 'scale(' + scale + ') skew(' + skewX  + 'deg, ' + skewY + 'deg) rotate(' + rotation + 'deg) translateX(' + xTrans + 'px) translateY(' + yTrans + 'px)'
       };
-    console.log(dropStyles);
-    switch(splatterNum) {
-        case 1:
-            return <SplatterOne stylez={dropStyles} />
-        case 2:
-            return <SplatterTwo stylez={dropStyles} />
-        case 3:
-            return <SplatterThree stylez={dropStyles} />
-        case 4:
-            return <SplatterFour stylez={dropStyles} />
-        case 5:
-            return <SplatterFive stylez={dropStyles} />
-        case 6:
-            return <SplatterSix stylez={dropStyles} />
-        case 7:
-            return <SplatterSeven stylez={dropStyles} />
-        case 8:
-            return <SplatterEight stylez={dropStyles} />
-        case 9:
-            return <SplatterNine stylez={dropStyles} />
-        case 10:
-            return <SplatterTen stylez={dropStyles} />
-        case 11:
-            return <SplatterEleven stylez={dropStyles} />
-        case 12:
-            return <SplatterTwelve stylez={dropStyles} />
+
+    function PickSplatter(props) {
+        switch(props.splatterNum) {
+            case 1:
+                return <SplatterOne stylez={splatStyles} />
+            case 2:
+                return <SplatterTwo stylez={splatStyles} />
+            case 3:
+                return <SplatterThree stylez={splatStyles} />
+            case 4:
+                return <SplatterFour stylez={splatStyles} />
+            case 5:
+                return <SplatterFive stylez={splatStyles} />
+            case 6:
+                return <SplatterSix stylez={splatStyles} />
+            case 7:
+                return <SplatterSeven stylez={splatStyles} />
+            case 8:
+                return <SplatterEight stylez={splatStyles} />
+            case 9:
+                return <SplatterNine stylez={splatStyles} />
+            case 10:
+                return <SplatterTen stylez={splatStyles} />
+            case 11:
+                return <SplatterEleven stylez={splatStyles} />
+            case 12:
+                return <SplatterTwelve stylez={splatStyles} />
+            default:
+                return <SplatterOne stylez={splatStyles} />
+        }
     }
+    return (<PickSplatter props={splatterNum} />);
 }
 
 export default RenderSplatters;

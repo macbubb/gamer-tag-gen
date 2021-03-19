@@ -3,7 +3,6 @@ import { Formik, Field, Form } from 'formik';
 
 const UserForm = (props) => {
     useEffect(() => {
-        console.log('update!')
     }, [props.options]);
     return (
     <div>
@@ -16,12 +15,11 @@ const UserForm = (props) => {
         }}
         onSubmit={async (values) => {
           await new Promise((r) => setTimeout(r, 500));
-          console.log(values)
           props.onUpdate(values);
         }}
       >
         {({ values }) => (
-            <Form>
+            <Form >
                 <div className="main-display-left-controls-button">
                     <button type="submit">Submit</button>
                 </div>

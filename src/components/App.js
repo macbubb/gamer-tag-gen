@@ -42,14 +42,15 @@ function App() {
 
   const makeCard = () => {
     //make Tag
-    const newCard = [...makeTag(), ...makeSplatters()];
-
+    const cardTag = makeTag();
+    const cardSplatters = makeSplatters()
+    const newCard = {... cardTag, splatters: cardSplatters}
     //add card to state
     handleAdd(newCard);
   }
 
   const makeSplatters = () => {
-    const newSplatters = [];
+    const newSplatters = [{},{},{},{},{},{},{},{}];
     //small splats
     for (let i=0; i<5; i++) {
       newSplatters[i].splatterNum = getRandomIntInclusive(1, 7);
@@ -117,14 +118,13 @@ function App() {
   function deleteCard(key) {
     // use filter to make a copy without tag that's been deleted
     const newRatingInventory = cardInventory.filter(obj => obj.timeStamp !== key);
-    console.log(key, newRatingInventory);
     setCardInventory(newRatingInventory);
   }
 
   const onFormUpdate = values => {
     const newOptions = {opts: values.opts, addNum: values.addNum, numDigitCount: values.numDigitCount, maxLength: 20};
     setOptions(newOptions);
-    makeTag();
+    makeCard();
   };
 
    return (
@@ -138,7 +138,7 @@ function App() {
             {latestTag ?
               <Card /* need to switch to card */
                 cardScale={1.5}
-                tagItem={cardInventory[0]}
+                card={cardInventory[0]}
                 changeStars={changeStars}
                 newTag={true}
                 deleteCard={deleteCard}
@@ -160,9 +160,9 @@ function App() {
           <section className="cardInventory"> {/* map over cards */}
             {cardInventory.map( (item) =>
               <Card
-                scale={1}
+                scale={.1}
                 key={item.timeStamp}
-                tagItem={item}
+                card={item}
                 changeStars={changeStars}
                 deleteCard={deleteCard}
               />

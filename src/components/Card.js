@@ -4,20 +4,19 @@ import RenderStars from './RenderStars';
 //will change to Card will render splattes with separate function and overlay tags and interface
 class Card extends React.Component {
     render() {
-      const item = this.props.tagItem;
-      const stars = this.props.tagItem.stars;
+      const item = this.props.card;
+      const stars = this.props.card.stars;
       const changeStars = this.props.changeStars;
       const deleteTag = this.props.deleteTag;
       const tagClass = this.props.newTag ? "tag-item new-item" : "tag-item";
-      const splatters = this.props.splatters;
+      const splatters = this.props.card.splatters;
       const cardScale = this.props.cardScale;
       // use extra class for the top tag so it can be styled differently than inventory tags
-
       return (
         <div className={tagClass}>
           <div className="splatters">
             {splatters ? splatters.map( (splatter) => {
-              <RenderSplatters
+              return <RenderSplatters
                 splatter = {splatter}
                 cardScale = {cardScale}
               />
