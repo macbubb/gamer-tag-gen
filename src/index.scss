@@ -95,7 +95,10 @@ body {
   fill: #FFD73B;
 
 }
-
+svg {
+  position: absolute;
+  z-index: -1;
+}
 .tagInventory {
   text-align: center;
   margin-left:auto;
@@ -154,6 +157,9 @@ body {
     }
     .stars {
       margin: auto;
+      svg {
+        position: static;
+      }
     }
     .empty-star, .filled-star {
       width: 1.75rem;

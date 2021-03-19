@@ -19,6 +19,7 @@ function RenderSplatters(props) {
     yTrans = yTrans * props.cardScale;
 
     const splatStyles = {
+        //postion: 'absolute',
         transform: 'scale(' + scale + ') skew(' + skewX  + 'deg, ' + skewY + 'deg) rotate(' + rotation + 'deg) translateX(' + xTrans + 'px) translateY(' + yTrans + 'px)'
       };
     function PickSplatter() {
