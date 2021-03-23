@@ -106,6 +106,14 @@ svg {
   width: 13.5rem;
 }
 
+.stars {
+  margin: auto;
+  svg {
+    position: static;
+  }
+}
+
+/*
 .tag-item {
   display: flex;
   flex-direction: column;
@@ -174,4 +182,4 @@ svg {
     background-color: inherit;
     font-size: 1.5rem;
   }
-}
+} */

@@ -4,19 +4,22 @@ import '../App.css';
 import Card from './Card';
 import UserForm from './UserForm';
 
+
 function App() {
-  //this will be cardInventory
   const [cardInventory, setCardInventory] = useState([{
     timeStamp: '',
     tag:'',
     stars:0,
     color:'#fffff',
     splatters: [],
+    frameOffset: []
   }]);
 
-  //Card size
-  const rectW = 100;
-  const rectH = 61;
+  const cardDimensions = {
+    rectH : 248,
+    rectW : 400,
+    framePadding : 100
+  }
 
   //add these to a helper file
   function getRandomIntInclusive(min, max) {
@@ -33,7 +36,6 @@ function App() {
   // consider starting the program with a loaded tag need to change to card
   const latestTag = cardInventory[cardInventory.length - 1] ? cardInventory[cardInventory.length -1] : null;
 
-  //will use card instead
   const handleAdd = (card) => {
     setCardInventory([ card, ...cardInventory ]);
   }
@@ -41,10 +43,12 @@ function App() {
   const [options, setOptions] = useState({opts: 'bothCaps', addNum: false, numDigitCount:'', maxLength: 20});
 
   const makeCard = () => {
-    //make Tag
     const cardTag = makeTag();
-    const cardSplatters = makeSplatters()
-    const newCard = {... cardTag, splatters: cardSplatters}
+    const cardSplatters = makeSplatters();
+    const cardFrameOffset = makeFrame();
+    const newCard = {... cardTag,
+                    splatters: cardSplatters,
+                    frameOffset: cardFrameOffset}
     //add card to state
     handleAdd(newCard);
   }
@@ -58,8 +62,8 @@ function App() {
       newSplatters[i].scale = getRandomFloat(0.5, 1.2);
       newSplatters[i].skewY = getRandomIntInclusive(-20, 20);
       newSplatters[i].rotation = getRandomIntInclusive(0, 360);
-      newSplatters[i].xTrans = (Math.random() - 1) * rectW;
-      newSplatters[i].yTrans = (Math.random() - 1) * rectH;
+      newSplatters[i].xTrans = (Math.random() - 1) * cardDimensions.rectW;
+      newSplatters[i].yTrans = (Math.random() - 1) * cardDimensions.rectH;
     }
     //big splats
     for (let i=5; i<7; i++) {
@@ -68,8 +72,8 @@ function App() {
       newSplatters[i].scale = getRandomFloat(0.5, 1.2);
       newSplatters[i].skewY = getRandomIntInclusive(-50, 50);
       newSplatters[i].rotation = getRandomIntInclusive(0, 360);
-      newSplatters[i].xTrans = (Math.random() - 1) * rectW;
-      newSplatters[i].yTrans = (Math.random() - 1) * rectH;
+      newSplatters[i].xTrans = (Math.random() - 1) * cardDimensions.rectW;
+      newSplatters[i].yTrans = (Math.random() - 1) * cardDimensions.rectH;
     }
     return newSplatters;
   }
@@ -97,7 +101,6 @@ function App() {
           roughDraftTag = newAdj + newNoun;
       }
     }
-    //console.log(roughDraftTag, newTagOpts,roughDraftTag.length, roughDraftTag.length < options.maxLength);
 
     const finalNewTag = {
       timeStamp: timeStamp,
@@ -108,6 +111,16 @@ function App() {
     //just return the finalNewTag
     return finalNewTag;
   }
+
+  const makeFrame = () => {
+    const variability = 10; //how many px box corners can shift
+    return ([
+            [(2*(Math.random()-.5))*variability, (2*(Math.random()-.5))*variability],
+            [(2*(Math.random()-.5))*variability, (2*(Math.random()-.5))*variability,],
+            [(2*(Math.random()-.5))*variability, (2*(Math.random()-.5))*variability,],
+            [(2*(Math.random()-.5))*variability, (2*(Math.random()-.5))*variability,]
+          ]);
+  };
 
   function changeStars(stars, key) {
     const newRatingInventory = cardInventory.map(obj => obj.timeStamp === key ? { ...obj, stars } : obj);
@@ -138,6 +151,7 @@ function App() {
             {latestTag ?
               <Card /* need to switch to card */
                 cardScale={1.5}
+                cardDimensions={cardDimensions}
                 card={cardInventory[0]}
                 changeStars={changeStars}
                 newTag={true}
@@ -161,6 +175,7 @@ function App() {
             {cardInventory.map( (item) =>
               <Card
                 cardScale={1}
+                cardDimensions={cardDimensions}
                 key={item.timeStamp}
                 card={item}
                 changeStars={changeStars}
