@@ -65,12 +65,15 @@ class Card extends React.Component {
           {frameOffset[0] ?
             <RenderCardFrame
               frameCorners = {frameCorners()}
+              cardScale = {cardScale}
             />
             : ''
           }
-          <div className="card-item-top"> {/* look into CSS and making styles uniform and scalable with scale property */}
-            <span className="card-item-name" >{item.tag}</span>
-            <button aria-label="Delete Card" className="delete-card" onClick={() => deleteCard(item.timeStamp)}><span>&#10005;</span></button>
+          <div className="card-info"> {/* look into CSS and making styles uniform and scalable with scale property */}
+            <span className="card-info-name" >{item.tag}</span>
+            <div className="delete-card">
+              <button aria-label="Delete Card" onClick={() => deleteCard(item.timeStamp)}><span>&#10005;</span></button>
+            </div>
             <RenderStars
               stars={stars}
               changeStars={changeStars}

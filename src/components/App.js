@@ -163,7 +163,7 @@ function App() {
         </div>
         <div className="main-display-right">
           <h2>Inventory</h2>
-          <section className="cardInventory"> {/* map over cards */}
+          <section className="card-inventory"> {/* map over cards */}
             {cardInventory.map( (item) =>
               <Card
                 cardScale={1}

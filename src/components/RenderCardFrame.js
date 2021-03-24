@@ -13,10 +13,16 @@ function RenderCardFrame(props) {
         position: 'relative'
         //stroke-width: '1'
     };
+    const svgW = 350 * props.cardScale;
+    const svgH = 225 * props.cardScale;
 
+    const svgSize = {
+        width: svgW + 'px',
+        height: svgH + 'px'
+    };
 
     return(
-    <svg height="500" width="750">
+    <svg style={svgSize}>
         <polygon fill-opacity=".7" points={frameCorners} style={frameStyle} />
         Sorry, your browser does not support inline SVG.
     </svg>
