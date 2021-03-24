@@ -38,10 +38,10 @@ class Card extends React.Component {
       }
 
       let cardSplattersStyle = {
-        transform: 'translateX(' + (cardScale * rectW) / 3.5 + 'px ) translateY(' + (cardScale * rectH) /5 + 'px )'
+        transform: ''//'translateX(' + (cardScale * rectW) / 3.5 + 'px ) translateY(' + (cardScale * rectH) /5 + 'px )'
       }
       if (cardScale !== 1 ) {cardSplattersStyle = {
-        transform: 'translateX(' + (cardScale * rectW) / 2.5 + 'px ) translateY(' + (cardScale * rectH) / 3 + 'px )'
+        transform: ''//'translateX(' + (cardScale * rectW) / 2.5 + 'px ) translateY(' + (cardScale * rectH) / 3 + 'px )'
         }
       }
       //card element order, first rendered to last
@@ -54,21 +54,23 @@ class Card extends React.Component {
       // use extra class for the top card so it can be styled differently than inventory cards
       return (
         <div className={cardClass} style={cardSizeStyle}>
-          <div className="card-splatters" style={cardSplattersStyle}>
-            {splatters ? splatters.map( (splatter) => {
-              return <RenderSplatters
-                splatter = {splatter}
-                cardScale = {cardScale}
-              />
-            }) : ''}
-          </div>
-          {frameOffset[0] ?
-            <RenderCardFrame
-              frameCorners = {frameCorners()}
-              cardScale = {cardScale}
-            />
-            : ''
-          }
+          <div className="card-graphics">
+            <div className="card-splatters" style={cardSplattersStyle}>
+                {splatters ? splatters.map( (splatter) => {
+                  return <RenderSplatters
+                    splatter = {splatter}
+                    cardScale = {cardScale}
+                  />
+                }) : ''}
+              </div>
+              {frameOffset[0] ?
+                <RenderCardFrame
+                  frameCorners = {frameCorners()}
+                  cardScale = {cardScale}
+                />
+                : ''
+              }
+            </div>
           <div className="card-info"> {/* look into CSS and making styles uniform and scalable with scale property */}
             <span className="card-info-name" >{item.tag}</span>
             <div className="delete-card">

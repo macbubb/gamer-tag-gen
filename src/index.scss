@@ -88,28 +88,46 @@ body {
   }
 }
 
-.filled-star, .empty-star {
-  width: 1.2rem;
-  height: 1.2rem;
-  margin-right: 0.05rem;
-  fill: #FFD73B;
-
-}
 svg {
   position: absolute;
   z-index: -1;
 }
 
-.stars {
-  margin: auto;
-  svg {
-    position: static;
+.card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  .card-graphics {
+    text-align: center;
+    svg polygon {
+      stroke-width: 6px;
+    }
+  }
+  .card-info {
+    text-align: center;
+    &-name {
+    }
+    .filled-star, .empty-star {
+      width: 1.2rem;
+      height: 1.2rem;
+      margin-right: 0.05rem;
+      fill: #FFD73B;
+    }
+    .stars {
+      margin: auto;
+      svg {
+        position: static;
+      }
+    }
   }
 }
 
-svg polygon {
-  stroke-width: 6px;
+.card-info, .card-graphics {
+  position: relative;
 }
+
 .new-card {
   .delete-card {
     padding-right: 12rem;
@@ -125,7 +143,8 @@ svg polygon {
     border: 0;
     background-color: inherit;
     font-size: 1.5rem;
-  }}
+  }
+}
 
 
 /*
