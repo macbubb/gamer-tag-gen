@@ -21,7 +21,7 @@ const UserForm = (props) => {
         {({ values }) => (
             <Form >
                 <div className="main-display-left-controls-button">
-                    <button type="submit">Submit</button>
+                    <button aria-label="Generate New Gamertag" type="submit">Submit</button>
                 </div>
                 <div className="main-display-left-controls-options">
                     <div className="main-display-left-controls-options-inner">

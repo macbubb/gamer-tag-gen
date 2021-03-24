@@ -70,7 +70,7 @@ class Card extends React.Component {
           }
           <div className="card-item-top"> {/* look into CSS and making styles uniform and scalable with scale property */}
             <span className="card-item-name" >{item.tag}</span>
-            <button className="delete-card" onClick={() => deleteCard(item.timeStamp)}><span>&#12006;</span></button>
+            <button aria-label="Delete Card" className="delete-card" onClick={() => deleteCard(item.timeStamp)}><span>&#10005;</span></button>
             <RenderStars
               stars={stars}
               changeStars={changeStars}
