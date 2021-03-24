@@ -3,7 +3,7 @@ import { adjs, nouns } from '../Constants';
 import '../App.css';
 import Card from './Card';
 import UserForm from './UserForm';
-
+import {getRandomFloat, getRandomIntInclusive} from './Helpers.js';
 
 function App() {
   const [cardInventory, setCardInventory] = useState([{
@@ -22,15 +22,7 @@ function App() {
   }
 
   //add these to a helper file
-  function getRandomIntInclusive(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
-  }
 
-  function getRandomFloat(min, max) {
-    return Math.random() * (max - min) + min;
-  }
 
   // keeps track of most recent tag, and is null if no tag has been generated, used to conditionally render the top tag, without testing it can't get called
   // consider starting the program with a loaded tag need to change to card
