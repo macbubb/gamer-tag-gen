@@ -8,15 +8,16 @@ function RenderCardFrame(props) {
         bottomRight[0] + "," + bottomRight[1] + " " +
         bottomLeft[0] + "," + bottomLeft[1];
     const frameStyle = {
-        fill: 'white',
-        stroke: 'black'
+        fill: 'grey',
+        stroke: 'black',
+        position: 'relative'
         //stroke-width: '1'
     };
 
 
     return(
-    <svg height="250" width="500">
-        <polygon points={frameCorners} style={frameStyle} />
+    <svg height="500" width="750">
+        <polygon fill-opacity=".7" points={frameCorners} style={frameStyle} />
         Sorry, your browser does not support inline SVG.
     </svg>
   );

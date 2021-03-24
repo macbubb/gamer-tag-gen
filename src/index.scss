@@ -95,7 +95,7 @@ body {
   fill: #FFD73B;
 
 }
-svg {
+svg, .card-item-top {
   position: absolute;
   z-index: -1;
 }
@@ -111,6 +111,10 @@ svg {
   svg {
     position: static;
   }
+}
+
+svg polygon {
+  stroke-width: 6px;
 }
 
 /*

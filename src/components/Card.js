@@ -37,6 +37,13 @@ class Card extends React.Component {
         height: cardScale * rectH + 'px'
       }
 
+      let cardSplattersStyle = {
+        transform: 'translateX(' + (cardScale * rectW) / 3.5 + 'px ) translateY(' + (cardScale * rectH) /5 + 'px )'
+      }
+      if (cardScale !== 1 ) {cardSplattersStyle = {
+        transform: 'translateX(' + (cardScale * rectW) / 2.5 + 'px ) translateY(' + (cardScale * rectH) / 3 + 'px )'
+        }
+      }
       //card element order, first rendered to last
       //1. splatters (small then big?)
       //2. polygon frame
@@ -47,7 +54,7 @@ class Card extends React.Component {
       // use extra class for the top card so it can be styled differently than inventory cards
       return (
         <div className={cardClass} style={cardSizeStyle}>
-          <div className="card-splatters">
+          <div className="card-splatters" style={cardSplattersStyle}>
             {splatters ? splatters.map( (splatter) => {
               return <RenderSplatters
                 splatter = {splatter}
@@ -64,14 +71,14 @@ class Card extends React.Component {
           <div className="card-item-top"> {/* look into CSS and making styles uniform and scalable with scale property */}
             <span className="card-item-name" >{item.tag}</span>
             <button className="delete-card" onClick={() => deleteCard(item.timeStamp)}><span>&#12006;</span></button>
-          </div>
             <RenderStars
               stars={stars}
               changeStars={changeStars}
               newTag={false}
               item={item}
               key={item.key}
-            />
+              />
+            </div>
         </div>
       );
     }

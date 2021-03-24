@@ -15,8 +15,10 @@ import SplatterTwelve from "./Splatters/SplatterTwelve";
 function RenderSplatters(props) {
     let {splatterNum, skewX, skewY, scale, rotation, xTrans, yTrans} = props.splatter;
     scale = scale * props.cardScale;
-    xTrans = xTrans * props.cardScale;
-    yTrans = yTrans * props.cardScale;
+    let warpFix = 1; //solution to fix weird warping of transforms when SVG is scaled
+    if (props.cardScale != 1) warpFix = 0.35;
+    xTrans = xTrans * props.cardScale * warpFix;
+    yTrans = yTrans * props.cardScale * warpFix;
 
     const splatStyles = {
         //postion: 'absolute',

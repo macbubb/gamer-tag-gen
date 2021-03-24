@@ -16,7 +16,7 @@ function App() {
   }]);
 
   const cardDimensions = {
-    rectH : 248,
+    rectH : 300, //248
     rectW : 400,
     framePadding : 100
   }
@@ -62,18 +62,18 @@ function App() {
       newSplatters[i].scale = getRandomFloat(0.5, 1.2);
       newSplatters[i].skewY = getRandomIntInclusive(-20, 20);
       newSplatters[i].rotation = getRandomIntInclusive(0, 360);
-      newSplatters[i].xTrans = (Math.random() - 1) * cardDimensions.rectW;
-      newSplatters[i].yTrans = (Math.random() - 1) * cardDimensions.rectH;
+      newSplatters[i].xTrans = .3 * (Math.random() - 1) * cardDimensions.rectW;
+      newSplatters[i].yTrans = .2 * (Math.random() - 1) * cardDimensions.rectH;
     }
     //big splats
     for (let i=5; i<7; i++) {
       newSplatters[i].splatterNum = getRandomIntInclusive(8, 12);
       newSplatters[i].skewX = getRandomIntInclusive(-50, 50);
       newSplatters[i].scale = getRandomFloat(0.5, 1.2);
-      newSplatters[i].skewY = getRandomIntInclusive(-50, 50);
+      newSplatters[i].skewY = getRandomIntInclusive(-20, 20);
       newSplatters[i].rotation = getRandomIntInclusive(0, 360);
-      newSplatters[i].xTrans = (Math.random() - 1) * cardDimensions.rectW;
-      newSplatters[i].yTrans = (Math.random() - 1) * cardDimensions.rectH;
+      newSplatters[i].xTrans = .3 * (Math.random() - 1) * cardDimensions.rectW;
+      newSplatters[i].yTrans = .2 * (Math.random() - 1) * cardDimensions.rectH;
     }
     return newSplatters;
   }
@@ -150,7 +150,7 @@ function App() {
           <div className="main-display-left-display">
             {latestTag ?
               <Card /* need to switch to card */
-                cardScale={1.5}
+                cardScale={2}
                 cardDimensions={cardDimensions}
                 card={cardInventory[0]}
                 changeStars={changeStars}
