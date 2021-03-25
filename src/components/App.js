@@ -4,6 +4,7 @@ import '../App.css';
 import Card from './Card';
 import UserForm from './UserForm';
 import {getRandomFloat, getRandomIntInclusive, getRandomSign} from './Helpers.js';
+import RenderCardFrame from './RenderCardFrame';
 
 function App() {
   const [cardInventory, setCardInventory] = useState([{
@@ -26,7 +27,6 @@ function App() {
 
   // keeps track of most recent tag, and is null if no tag has been generated, used to conditionally render the top tag, without testing it can't get called
   // consider starting the program with a loaded tag need to change to card
-  const latestTag = cardInventory[cardInventory.length - 1] ? cardInventory[cardInventory.length -1] : null;
 
   const handleAdd = (card) => {
     setCardInventory([ card, ...cardInventory ]);
@@ -135,7 +135,7 @@ function App() {
     makeCard();
   };
 
-   return (
+  return (
     <main>
       <div className="main-heading">
         <h1>Gamertag Brain Storm</h1>
@@ -143,7 +143,7 @@ function App() {
       <div className="main-display">
         <div className="main-display-left">
           <div className="main-display-left-display">
-            {latestTag ?
+            {cardInventory[0].timeStamp != '' ?
               <Card /* need to switch to card */
                 cardScale={2}
                 cardDimensions={cardDimensions}
@@ -151,11 +151,17 @@ function App() {
                 changeStars={changeStars}
                 newTag={true}
                 deleteCard={deleteCard}
-                key={latestTag.timeStamp}
+                key={cardInventory[0].timeStamp}
               />
-                : ''}
+                :
+                <div className="card new-card">
+                  <div className="card-graphics">
+                    <div className="card-splatters"></div>
+                    <div className="card-frame"></div>
+                  </div>
+                  <div className="card-info"></div>
+                </div>}
             <div className="main-display-left-controls">
-              {/* <input onClick={() => makeTag()} type="button" value="New Tag"/> what is new tag for?*/}
               <UserForm
                 options={options}
                 onUpdate={onFormUpdate}
@@ -166,8 +172,9 @@ function App() {
         </div>
         <div className="main-display-right">
           <h2>Inventory</h2>
-          <section className="card-inventory"> {/* map over cards */}
-            {cardInventory.map( (item) =>
+          <section className="card-inventory">
+            {cardInventory[0].timeStamp != '' ? cardInventory.map( (item) =>
+             item.timeStamp != '' ?
               <Card
                 cardScale={1}
                 cardDimensions={cardDimensions}
@@ -175,8 +182,8 @@ function App() {
                 card={item}
                 changeStars={changeStars}
                 deleteCard={deleteCard}
-              />
-              ) }
+              /> : ''
+              ) : ''}
           </section>
         </div>
       </div>
