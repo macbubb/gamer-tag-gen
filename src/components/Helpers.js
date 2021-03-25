@@ -7,3 +7,7 @@ export function getRandomIntInclusive(min, max) {
 export function getRandomFloat(min, max) {
     return Math.random() * (max - min) + min;
 }
+
+export function getRandomSign() {
+	return Math.random() < .5 ? -1 : 1;
+}

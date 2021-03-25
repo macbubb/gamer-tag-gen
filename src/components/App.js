@@ -3,7 +3,7 @@ import { adjs, nouns } from '../Constants';
 import '../App.css';
 import Card from './Card';
 import UserForm from './UserForm';
-import {getRandomFloat, getRandomIntInclusive} from './Helpers.js';
+import {getRandomFloat, getRandomIntInclusive, getRandomSign} from './Helpers.js';
 
 function App() {
   const [cardInventory, setCardInventory] = useState([{
@@ -47,6 +47,9 @@ function App() {
 
   const makeSplatters = () => {
     const newSplatters = [{},{},{},{},{},{},{},{}];
+    const {rectH, rectW, originOffset} = cardDimensions;
+    //const rectH = cardDimensions.rectH;
+    //const rectW = cardDimensions.rectW;
     //small splats
     for (let i=0; i<5; i++) {
       newSplatters[i].splatterNum = getRandomIntInclusive(1, 7);
@@ -54,18 +57,18 @@ function App() {
       newSplatters[i].scale = getRandomFloat(0.5, 1.2);
       newSplatters[i].skewY = getRandomIntInclusive(-20, 20);
       newSplatters[i].rotation = getRandomIntInclusive(0, 360);
-      newSplatters[i].xTrans = .3 * (Math.random() - 1) * cardDimensions.rectW;
-      newSplatters[i].yTrans = .2 * (Math.random() - 1) * cardDimensions.rectH;
+      newSplatters[i].xTrans = (rectW / 3) * getRandomSign();//  + 20 * (Math.random() - 1/2);
+      newSplatters[i].yTrans = (rectH / 3) * getRandomSign();//  + 5 * (Math.random() - 1/2);
     }
     //big splats
-    for (let i=5; i<7; i++) {
+    for (let i=5; i<8; i++) {
       newSplatters[i].splatterNum = getRandomIntInclusive(8, 12);
       newSplatters[i].skewX = getRandomIntInclusive(-50, 50);
-      newSplatters[i].scale = getRandomFloat(0.5, 1.2);
+      newSplatters[i].scale = getRandomFloat(1, 1.5);
       newSplatters[i].skewY = getRandomIntInclusive(-20, 20);
       newSplatters[i].rotation = getRandomIntInclusive(0, 360);
-      newSplatters[i].xTrans = .3 * (Math.random() - 1) * cardDimensions.rectW;
-      newSplatters[i].yTrans = .2 * (Math.random() - 1) * cardDimensions.rectH;
+      newSplatters[i].xTrans = .3 * (Math.random() - 1) * rectW;
+      newSplatters[i].yTrans = .2 * (Math.random() - 1) * rectH;
     }
     return newSplatters;
   }
