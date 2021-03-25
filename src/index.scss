@@ -12,7 +12,7 @@ $text: $black;
 $light-grey: #D9D9D9;
 $grey: #BFBFBF;
 $dark-grey: #8C8C8C;
-$grey-border: #6E6E6E;
+$grey-border: $black;
 $grey-shadow: #919191;
 .main-heading {
   h1 {
@@ -88,7 +88,8 @@ $grey-shadow: #919191;
           padding: 1.25em 2em;
           background: &light-grey;
           border: 5px solid $grey-border;
-          border-radius: 0.75em;
+          border-top-left-radius: 1em;
+          border-bottom-right-radius: 1em;
           transform-style: preserve-3d;
           transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), background 150ms cubic-bezier(0, 0, 0.58, 1);
           &::before {
