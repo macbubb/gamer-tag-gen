@@ -29,6 +29,12 @@ body {
   @media (min-width: 700px) {
     flex-direction: row;
   }
+  &-right {
+    margin-right: 10rem;
+    @media (max-width: 700px) {
+      margin: auto;
+    }
+  }
   &-left {
     display: flex;
     flex-direction: row;
@@ -93,12 +99,29 @@ svg {
   z-index: -1;
 }
 
+.card.new-card {
+  .card-info {
+    padding-top: 1.5rem;
+  }
+  span {
+  font-size: 3rem;
+  }
+  .filled-star, .empty-star {
+    width: 2rem !important;
+    height: 2rem !important;
+  }
+}
+
 .card {
+  margin-bottom: 5rem;
   position: relative;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
+  .card-frame {
+    text-align: left;
+  }
   .card-graphics {
     text-align: center;
     svg polygon {
@@ -106,8 +129,16 @@ svg {
     }
   }
   .card-info {
-    text-align: center;
+    display: flex;
+    padding-top: 1rem;
+    flex-direction: column;
     &-name {
+      font-family: Rowdy, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+      padding-left: 1rem;
+      font-size: 1.75rem;
+      text-align: center;
     }
     .filled-star, .empty-star {
       width: 1.2rem;
@@ -116,7 +147,8 @@ svg {
       fill: #FFD73B;
     }
     .stars {
-      margin: auto;
+      text-align: center;
+      //margin: auto;
       svg {
         position: static;
       }
@@ -130,7 +162,6 @@ svg {
 
 .new-card {
   .delete-card {
-    padding-right: 12rem;
     button {
       font-size: 2rem;
     }
@@ -138,7 +169,6 @@ svg {
 }
 .delete-card {
   text-align: right;
-  padding-right: 6rem;
   button {
     border: 0;
     background-color: inherit;

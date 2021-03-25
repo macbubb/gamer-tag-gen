@@ -16,9 +16,9 @@ function App() {
   }]);
 
   const cardDimensions = {
-    rectH : 300, //248
-    rectW : 400,
-    framePadding : 100
+    rectH : 100, //248
+    rectW : 200,
+    originOffset: [10,10]
   }
 
   //add these to a helper file

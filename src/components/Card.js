@@ -13,23 +13,17 @@ class Card extends React.Component {
       const splatters = this.props.card.splatters;
       const cardScale = this.props.cardScale;
       const frameOffset = this.props.card.frameOffset;
-      const {rectW, rectH, framePadding} = this.props.cardDimensions;
+      const {rectW, rectH, originOffset} = this.props.cardDimensions;
       const frameCorners = () => {
-        const topLeft = [cardScale*(framePadding + frameOffset[0][0]),
-                          cardScale*(framePadding + frameOffset[0][1])];
-        const topRight = [cardScale*(rectW - framePadding + frameOffset[1][0]),
-                          cardScale*(framePadding + frameOffset[1][1])];
-        const bottomRight = [cardScale*(rectW - framePadding + frameOffset[2][0]),
-                            cardScale*(rectH - framePadding + frameOffset[2][1])];
-        const bottomLeft = [cardScale*(framePadding + frameOffset[3][0]),
-                            cardScale*(rectH - framePadding + frameOffset[3][1])];
-        const allFourCorners = {
-            topLeft: topLeft,
-            topRight: topRight,
-            bottomRight: bottomRight,
-            bottomLeft: bottomLeft
-          }
-        return allFourCorners;
+        const topLeft = [cardScale*(originOffset[0] + frameOffset[0][0]),
+                          cardScale*(originOffset[1] + frameOffset[0][1])];
+        const topRight = [cardScale*(originOffset[0] + rectW + frameOffset[1][0]),
+                          cardScale*(originOffset[1] + frameOffset[1][1])];
+        const bottomRight = [cardScale*(originOffset[0] + rectW + frameOffset[2][0]),
+                            cardScale*(originOffset[1] + rectH + frameOffset[2][1])];
+        const bottomLeft = [cardScale*(originOffset[0] + frameOffset[3][0]),
+                            cardScale*(originOffset[1] + rectH + frameOffset[3][1])];
+        return { topLeft, topRight, bottomRight, bottomLeft }
       }
 
       const cardSizeStyle = {
@@ -37,13 +31,15 @@ class Card extends React.Component {
         height: cardScale * rectH + 'px'
       }
 
-      let cardSplattersStyle = {
-        transform: ''//'translateX(' + (cardScale * rectW) / 3.5 + 'px ) translateY(' + (cardScale * rectH) /5 + 'px )'
-      }
-      if (cardScale !== 1 ) {cardSplattersStyle = {
-        transform: ''//'translateX(' + (cardScale * rectW) / 2.5 + 'px ) translateY(' + (cardScale * rectH) / 3 + 'px )'
+      let cardSplattersStyle = cardScale !== 1 ? {
+        margin: '2rem 0 0 4.5rem',
+        position: 'absolute'
+      } :
+      {
+        margin: '-1rem 0 0 1rem',
+        position: 'absolute'
         }
-      }
+
       //card element order, first rendered to last
       //1. splatters (small then big?)
       //2. polygon frame
@@ -63,18 +59,22 @@ class Card extends React.Component {
                   />
                 }) : ''}
               </div>
-              {frameOffset[0] ?
-                <RenderCardFrame
-                  frameCorners = {frameCorners()}
-                  cardScale = {cardScale}
-                />
-                : ''
-              }
+              <div className="card-frame">
+                {frameOffset[0] ?
+                    <RenderCardFrame
+                      frameCorners = {frameCorners()}
+                      cardScale = {cardScale}
+                    />
+                    : ''
+                  }
+              </div>
             </div>
           <div className="card-info"> {/* look into CSS and making styles uniform and scalable with scale property */}
-            <span className="card-info-name" >{item.tag}</span>
             <div className="delete-card">
               <button aria-label="Delete Card" onClick={() => deleteCard(item.timeStamp)}><span>&#10005;</span></button>
+            </div>
+            <div className="card-info-name" >
+              <span>{item.tag}</span>
             </div>
             <RenderStars
               stars={stars}

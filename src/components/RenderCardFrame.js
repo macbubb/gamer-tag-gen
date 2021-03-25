@@ -8,13 +8,13 @@ function RenderCardFrame(props) {
         bottomRight[0] + "," + bottomRight[1] + " " +
         bottomLeft[0] + "," + bottomLeft[1];
     const frameStyle = {
-        fill: 'grey',
+        fill: 'white',
         stroke: 'black',
         position: 'relative'
         //stroke-width: '1'
     };
-    const svgW = 350 * props.cardScale;
-    const svgH = 225 * props.cardScale;
+    const svgW = 220 * props.cardScale;
+    const svgH = 125 * props.cardScale;
 
     const svgSize = {
         width: svgW + 'px',
