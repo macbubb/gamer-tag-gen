@@ -197,8 +197,9 @@ svg {
     .filled-star, .empty-star {
       width: 1.2rem;
       height: 1.2rem;
+      stroke-width: 5px;
       margin-right: 0.05rem;
-      fill: #FFD73B;
+      fill: #BF1120;
     }
     .stars {
       text-align: center;
