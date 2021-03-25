@@ -138,7 +138,7 @@ function App() {
   return (
     <main>
       <div className="main-heading">
-        <h1>Gamertag Brain Storm</h1>
+        <h1>Gamertag Brain Tsunami</h1>
       </div>
       <div className="main-display">
         <div className="main-display-left">
@@ -174,7 +174,7 @@ function App() {
           <h2>Inventory</h2>
           <section className="card-inventory">
             {cardInventory[0].timeStamp != '' ? cardInventory.map( (item) =>
-             item.timeStamp != '' ?
+             item.timeStamp != '' ? //don't display initial empty card after 1st card is generated
               <Card
                 cardScale={1}
                 cardDimensions={cardDimensions}
