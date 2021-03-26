@@ -9,7 +9,7 @@ function SplatterThree(props) {
 Created by potrace 1.15, written by Peter Selinger 2001-2017
 </metadata>
 <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)"
-fill="#000000" stroke="none">
+  stroke="none">
 <path d="M5181 10764 c-25 -32 -28 -93 -6 -154 8 -23 13 -45 11 -49 -3 -4 -1
 -13 5 -21 7 -13 9 -13 9 -1 0 10 9 6 28 -11 27 -26 81 -53 89 -44 2 2 -8 24
 -24 48 -24 38 -28 53 -28 123 0 60 -5 87 -19 108 -23 34 -39 34 -65 1z"/>

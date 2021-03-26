@@ -8,7 +8,7 @@ function SplatterNine(props) {
 Created by potrace 1.15, written by Peter Selinger 2001-2017
 </metadata>
 <g transform="translate(0.000000,928.000000) scale(0.100000,-0.100000)"
-fill="#000000" stroke="none">
+ stroke="none">
 <path d="M7163 9239 c10 -73 72 -119 161 -119 47 0 57 3 68 23 7 12 11 27 10
 33 -1 6 2 31 7 57 l8 47 -130 0 -130 0 6 -41z"/>
 <path d="M10423 9221 c3 -33 8 -64 12 -70 8 -14 85 -14 119 -1 24 9 26 14 26

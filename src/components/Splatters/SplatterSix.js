@@ -9,7 +9,7 @@ function SplatterSix(props) {
 Created by potrace 1.15, written by Peter Selinger 2001-2017
 </metadata>
 <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)"
-fill="#000000" stroke="none">
+ stroke="none">
 <path d="M3393 10802 c-15 -11 -24 -33 -28 -64 -6 -41 -3 -52 18 -80 14 -17
 56 -48 94 -67 43 -23 69 -43 72 -56 2 -11 17 -40 34 -65 76 -113 130 -226 138
 -290 19 -145 22 -201 10 -224 -7 -12 -11 -38 -9 -57 3 -30 7 -34 35 -37 27 -3

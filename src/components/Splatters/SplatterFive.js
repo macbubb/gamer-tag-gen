@@ -9,7 +9,7 @@ function SplatterFive(props) {
 Created by potrace 1.15, written by Peter Selinger 2001-2017
 </metadata>
 <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)"
-fill="#000000" stroke="none">
+ stroke="none">
 <path d="M5860 11625 c-12 -19 -25 -61 -30 -92 -5 -32 -15 -76 -23 -99 -8 -23
 -16 -83 -17 -135 -3 -127 -3 -135 5 -176 11 -62 34 -20 44 83 7 73 16 107 55
 193 45 101 55 153 37 189 -5 9 -14 29 -20 45 -14 36 -25 34 -51 -8z"/>

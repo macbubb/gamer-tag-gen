@@ -9,7 +9,7 @@ function SplatterFour(props) {
 Created by potrace 1.15, written by Peter Selinger 2001-2017
 </metadata>
 <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)"
-fill="#000000" stroke="none">
+stroke="none">
 <path d="M9701 11083 c-46 -56 -38 -76 9 -26 22 23 40 47 40 53 0 20 -19 10
 -49 -27z"/>
 <path d="M7700 11099 c0 -5 5 -7 10 -4 6 3 10 8 10 11 0 2 -4 4 -10 4 -5 0

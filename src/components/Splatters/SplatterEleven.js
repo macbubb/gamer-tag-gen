@@ -9,7 +9,7 @@ function SplatterEleven(props) {
 Created by potrace 1.15, written by Peter Selinger 2001-2017
 </metadata>
 <g transform="translate(0.000000,958.000000) scale(0.100000,-0.100000)"
-fill="#000000" stroke="none">
+ stroke="none">
 <path d="M1793 9569 c14 -8 22 -8 30 0 8 8 3 11 -18 11 -26 -1 -28 -2 -12 -11z"/>
 <path d="M6967 9534 c-8 -8 1 -24 14 -24 5 0 9 7 9 15 0 15 -12 20 -23 9z"/>
 <path d="M44 9515 c-7 -17 12 -45 31 -45 19 0 36 25 29 44 -8 20 -53 21 -60 1z"/>

@@ -68,8 +68,8 @@ $grey-shadow: #919191;
     }
     &-controls {
            line-height: 1.5;
-           //https://codepen.io/kathykato/pen/gOOjgmP
-      button {
+    // Button 3D function adapted from Kathy Kato, so, so rad https://codepen.io/kathykato/pen/gOOjgmP
+           button {
         position: relative;
         display: inline-block;
         cursor: pointer;

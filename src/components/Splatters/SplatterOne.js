@@ -8,8 +8,7 @@ function SplatterOne(props) {
     <metadata>
     Created by potrace 1.15, written by Peter Selinger 2001-2017
     </metadata>
-    <g  transform="translate(0.000000,1280.000000) scale(0.100000,-0.10000)"
-    fill="#000000">
+    <g  transform="translate(0.000000,1280.000000) scale(0.100000,-0.10000)">
     <path d="M8420 11580 c0 -5 5 -10 10 -10 6 0 10 5 10 10 0 6 -4 10 -10 10 -5
     0 -10 -4 -10 -10z"/>
     <path d="M3648 11312 c-9 -2 -19 -10 -22 -18 -6 -16 10 -19 19 -3 4 6 13 8 19

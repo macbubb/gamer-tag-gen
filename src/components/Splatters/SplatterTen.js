@@ -9,7 +9,7 @@ function SplatterTen(props) {
 Created by potrace 1.15, written by Peter Selinger 2001-2017
 </metadata>
 <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)"
-fill="#000000" stroke="none">
+ stroke="none">
 <path d="M5760 12785 c-15 -18 -11 -56 20 -200 19 -87 21 -122 17 -270 -4
 -130 -10 -189 -26 -250 -49 -183 -139 -284 -187 -210 -18 27 -51 33 -76 13 -9
 -7 -37 -46 -63 -87 -89 -141 -208 -225 -352 -251 -101 -18 -139 -5 -204 70

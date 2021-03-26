@@ -9,7 +9,7 @@ function SplatterSeven(props) {
 Created by potrace 1.15, written by Peter Selinger 2001-2017
 </metadata>
 <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)"
-fill="#000000" stroke="none">
+ stroke="none">
 <path d="M7732 10713 c-67 -51 -88 -80 -94 -128 -6 -49 23 -117 62 -145 59
 -42 162 -38 211 10 27 25 28 29 14 43 -11 11 -12 18 -4 23 8 5 6 10 -5 16 -13
 7 -15 13 -6 23 9 11 4 30 -24 87 -45 93 -46 95 -77 103 -20 5 -37 -2 -77 -32z"/>

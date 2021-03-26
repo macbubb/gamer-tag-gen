@@ -22,7 +22,8 @@ function RenderSplatters(props) {
 
     const splatStyles = {
         //postion: 'absolute',
-        transform: 'scale(' + scale + ') skew(' + skewX  + 'deg, ' + skewY + 'deg) rotate(' + rotation + 'deg) translateX(' + xTrans + 'px) translateY(' + yTrans + 'px)'
+        transform: 'scale(' + scale + ') skew(' + skewX  + 'deg, ' + skewY + 'deg) rotate(' + rotation + 'deg) translateX(' + xTrans + 'px) translateY(' + yTrans + 'px)',
+        fill: '#BF1120'
       };
     function PickSplatter() {
         switch(splatterNum) {
