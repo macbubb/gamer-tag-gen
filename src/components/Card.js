@@ -56,7 +56,7 @@ class Card extends React.Component {
                   return <RenderSplatters
                     splatter = {splatter}
                     cardScale = {cardScale}
-                  />
+                    />
                 }) : ''}
               </div>
               <div className="card-frame">

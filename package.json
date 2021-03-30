@@ -9,8 +9,9 @@
     "formik": "^2.2.6",
     "node-sass": "^5.0.0",
     "prop-types": "^15.7.2",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-inline-transition-group": "^2.2.1",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.0.1"
   },

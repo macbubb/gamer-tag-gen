@@ -159,7 +159,6 @@ svg {
   }
   span {
   font-size: 3rem;
-  visibility: hidden;
   }
   .filled-star, .empty-star {
     width: 2rem !important;
@@ -239,24 +238,8 @@ svg {
       }
 }
 
-.new-card .card-splatters svg {
+/* .new-card .card-splatters svg {
   animation-name: go-splatter;
   animation-duration: .25s;
   animation-iteration-count: 1;
-}
-
-@keyframes big-name {
-  from {
-    font-size: 100vw;
-    visibility: hidden;
-  }
-  to {
-    font-size: 3rem;
-    visibility: visible;
-  }
-}
-.new-card .card-info-name span {
-  animation-name: big-name;
-  animation-duration: .5s;
-  animation-delay: 1s;
-}
+} */
