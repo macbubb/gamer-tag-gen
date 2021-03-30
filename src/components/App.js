@@ -139,6 +139,25 @@ function App() {
     setOptions(newOptions);
   };
 
+  function reviewAdjs() {
+    for (let j = 0; j < adjs.length; j++){
+      for (let i = j+1; i < adjs.length; i++) {
+        if (adjs[j] === adjs[i]) {console.log(adjs[j] + ' is repeated');}
+      }
+    }
+  }
+  function reviewNouns() {
+    for (let j = 0; j < nouns.length; j++){
+      for (let i = j+1; i < nouns.length; i++) {
+        if (nouns[j] === nouns[i]) {console.log(nouns[j] + ' is repeated');}
+      }
+    }
+  }
+  useEffect(() => {
+    reviewAdjs();
+    reviewNouns();
+  }, []); //passing empty array as dependency triggers effect on first load only, as it does not have a dependency
+
   return (
     <main>
       <div className="main-heading">
