@@ -11,7 +11,7 @@ function App() {
     timeStamp: '',
     tag:'',
     stars:0,
-    color:'#fffff',
+    color:'146fffff',
     splatters: [],
     frameOffset: []
   }]);
@@ -129,10 +129,14 @@ function App() {
     setCardInventory(newRatingInventory);
   }
 
+  useEffect( () => {
+      makeCard();
+    },
+      [options]);
+
   const onFormUpdate = values => {
     const newOptions = {opts: values.opts, addNum: values.addNum, numDigitCount: values.numDigitCount, maxLength: 20};
     setOptions(newOptions);
-    makeCard();
   };
 
   return (
@@ -143,7 +147,7 @@ function App() {
       <div className="main-display">
         <div className="main-display-left">
           <div className="main-display-left-display">
-            {cardInventory[0].timeStamp != '' ?
+            {cardInventory[0].timeStamp !== '' ?
               <Card /* need to switch to card */
                 cardScale={2}
                 cardDimensions={cardDimensions}
