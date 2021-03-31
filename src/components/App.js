@@ -142,6 +142,7 @@ function App() {
       [...sortedInventory, ...cardInventory.filter(card => card.stars === i)] :
       [...sortedInventory];
     }
+    sortedInventory = [...sortedInventory.filter(card => card.tag === 'firstCard'), ...sortedInventory.filter(card => card.tag !== 'firstCard')]; //move empty card to front
     setCardInventory(sortedInventory);
   }
 
@@ -188,8 +189,8 @@ function App() {
             onClick={() => sortCards()}/>
 
           <section className="card-inventory">
-            {cardInventory[0].timeStamp !== '' ? cardInventory.map( (item) =>
-             item.timeStamp !== '' ? //don't display initial empty card after 1st card is generated
+            {/* Need inventory to not display empty firstCard, which is used to initialize state and provide a blank space in the left/large display. Procedure 1) check if a second card exists 2) filter out the firstCard 3) map and display the remaining cards */}
+            {cardInventory[1] ? cardInventory.filter( card => card.tag !== 'firstCard').map( (item) =>
               <Card
                 cardScale={1}
                 cardDimensions={cardDimensions}
@@ -197,7 +198,7 @@ function App() {
                 card={item}
                 changeStars={changeStars}
                 deleteCard={deleteCard}
-              /> : ''
+              />
               ) : ''}
           </section>
         </div>
