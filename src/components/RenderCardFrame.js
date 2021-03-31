@@ -23,7 +23,7 @@ function RenderCardFrame(props) {
 
     return(
     <svg style={svgSize}>
-        <polygon fill-opacity=".7" points={frameCorners} style={frameStyle} />
+        <polygon fillOpacity=".7" points={frameCorners} style={frameStyle} />
         Sorry, your browser does not support inline SVG.
     </svg>
   );

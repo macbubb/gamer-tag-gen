@@ -1,15 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { adjs, nouns } from '../Constants';
+import React, { useState, useEffect} from 'react';
+import { adjs, nouns, reviewAdjs, reviewNouns} from '../Constants';
 import '../App.css';
 import Card from './Card';
 import UserForm from './UserForm';
 import {getRandomFloat, getRandomIntInclusive, getRandomSign} from './Helpers.js';
-import RenderCardFrame from './RenderCardFrame';
 
 function App() {
   const [cardInventory, setCardInventory] = useState([{
     timeStamp: '',
-    tag:'',
+    tag:'firstCard',
     stars:0,
     color:'146fffff',
     splatters: [],
@@ -22,12 +21,6 @@ function App() {
     originOffset: [10,10]
   }
 
-  //add these to a helper file
-
-
-  // keeps track of most recent tag, and is null if no tag has been generated, used to conditionally render the top tag, without testing it can't get called
-  // consider starting the program with a loaded tag need to change to card
-
   const handleAdd = (card) => {
     setCardInventory([ card, ...cardInventory ]);
   }
@@ -38,7 +31,7 @@ function App() {
     const cardTag = makeTag();
     const cardSplatters = makeSplatters();
     const cardFrameOffset = makeFrame();
-    const newCard = {... cardTag,
+    const newCard = {...cardTag,
                     splatters: cardSplatters,
                     frameOffset: cardFrameOffset}
     //add card to state
@@ -47,9 +40,7 @@ function App() {
 
   const makeSplatters = () => {
     const newSplatters = [{},{},{},{},{},{},{},{}];
-    const {rectH, rectW, originOffset} = cardDimensions;
-    //const rectH = cardDimensions.rectH;
-    //const rectW = cardDimensions.rectW;
+    const {rectH, rectW} = cardDimensions;
     //small splats
     for (let i=0; i<5; i++) {
       newSplatters[i].splatterNum = getRandomIntInclusive(1, 7);
@@ -139,24 +130,20 @@ function App() {
     setOptions(newOptions);
   };
 
-  function reviewAdjs() {
-    for (let j = 0; j < adjs.length; j++){
-      for (let i = j+1; i < adjs.length; i++) {
-        if (adjs[j] === adjs[i]) {console.log(adjs[j] + ' is repeated');}
-      }
-    }
-  }
-  function reviewNouns() {
-    for (let j = 0; j < nouns.length; j++){
-      for (let i = j+1; i < nouns.length; i++) {
-        if (nouns[j] === nouns[i]) {console.log(nouns[j] + ' is repeated');}
-      }
-    }
-  }
   useEffect(() => {
     reviewAdjs();
     reviewNouns();
   }, []); //passing empty array as dependency triggers effect on first load only, as it does not have a dependency
+
+  const sortCards = () => {
+    let sortedInventory = [];
+    for (let i = 5; i >= 0; i--) {
+      sortedInventory = cardInventory.filter(card => card.stars === i).length !==0 ?
+      [...sortedInventory, ...cardInventory.filter(card => card.stars === i)] :
+      [...sortedInventory];
+    }
+    setCardInventory(sortedInventory);
+  }
 
   return (
     <main>
@@ -166,7 +153,7 @@ function App() {
       <div className="main-display">
         <div className="main-display-left">
           <div className="main-display-left-display">
-            {cardInventory[0].timeStamp !== '' ?
+            {cardInventory[0].tag !== 'firstCard' ?
               <Card /* need to switch to card */
                 cardScale={2}
                 cardDimensions={cardDimensions}
@@ -195,9 +182,14 @@ function App() {
         </div>
         <div className="main-display-right">
           <h2>Inventory</h2>
+          <input
+            type="button"
+            value="Sort Cards"
+            onClick={() => sortCards()}/>
+
           <section className="card-inventory">
-            {cardInventory[0].timeStamp != '' ? cardInventory.map( (item) =>
-             item.timeStamp != '' ? //don't display initial empty card after 1st card is generated
+            {cardInventory[0].timeStamp !== '' ? cardInventory.map( (item) =>
+             item.timeStamp !== '' ? //don't display initial empty card after 1st card is generated
               <Card
                 cardScale={1}
                 cardDimensions={cardDimensions}

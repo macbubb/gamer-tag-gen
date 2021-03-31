@@ -66,7 +66,10 @@ export const adjs = ['Iron',
 'Cloud',
 'Impeccable',
 'Lovely',
-'Electric'];
+'Electric',
+'Masked', 'lonely', 'Fuzzy', 'Feathered', 'Emotional', 'Musical', 'Glistening', 'Dank', 'Night', 'Lurid', 'Dark', 'Mortal', 'Smooth',
+ 'Sleeping', 'Unfound', 'Sugar', 'Salty'
+];
 
 export const nouns = ['Snake',
 'Chef',
@@ -136,4 +139,20 @@ export const nouns = ['Snake',
 'Passer',
 'Rocketeer',
 'Dealer',
+'Avenger', 'Ent', 'Archer', 'Agent', 'Yeti', 'Savior', 'Reaper', 'Weather', 'Jester', 'Spear', 'Flex', 'Tripper', 'Judge', 'Cash',  'Smoke', 'Operator', 'Sleeper'
 ];
+
+export function reviewAdjs() {
+    for (let j = 0; j < adjs.length; j++){
+      for (let i = j+1; i < adjs.length; i++) {
+        if (adjs[j] === adjs[i]) {console.log(adjs[j] + ' is repeated');}
+      }
+    }
+  }
+export  function reviewNouns() {
+    for (let j = 0; j < nouns.length; j++){
+      for (let i = j+1; i < nouns.length; i++) {
+        if (nouns[j] === nouns[i]) {console.log(nouns[j] + ' is repeated');}
+      }
+    }
+  }

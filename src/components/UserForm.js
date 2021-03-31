@@ -14,7 +14,7 @@ const UserForm = (props) => {
           maxLength: props.options.maxLength
         }}
         onSubmit={async (values) => {
-          await new Promise((r) => setTimeout(r, 500));
+          await new Promise((r) => setTimeout(r, 100));
           props.onUpdate(values);
         }}
       >
