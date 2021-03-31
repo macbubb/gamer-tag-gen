@@ -183,11 +183,13 @@ function App() {
         </div>
         <div className="main-display-right">
           <h2>Inventory</h2>
-          <input
-            type="button"
-            value="Sort Cards"
-            onClick={() => sortCards()}/>
-
+          <div className="main-display-right-controls">
+            <input
+              className="sort-cards"
+              type="button"
+              value="Sort Cards"
+              onClick={() => sortCards()}/>
+          </div>
           <section className="card-inventory">
             {/* Need inventory to not display empty firstCard, which is used to initialize state and provide a blank space in the left/large display. Procedure 1) check if a second card exists 2) filter out the firstCard 3) map and display the remaining cards */}
             {cardInventory[1] ? cardInventory.filter( card => card.tag !== 'firstCard').map( (item) =>
