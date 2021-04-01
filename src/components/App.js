@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import { adjs, nouns, reviewAdjs, reviewNouns} from '../Constants';
+import { adjs, nouns, reviewConstants} from '../Constants';
 import '../App.css';
 import Card from './Card';
 import UserForm from './UserForm';
@@ -131,8 +131,7 @@ function App() {
   };
 
   useEffect(() => {
-    reviewAdjs();
-    reviewNouns();
+    reviewConstants();
   }, []); //passing empty array as dependency triggers effect on first load only, as it does not have a dependency
 
   const sortCards = () => {

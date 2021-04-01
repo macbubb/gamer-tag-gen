@@ -16,8 +16,8 @@ export const adjs = ['Iron',
 'Nice',
 'Evil',
 'Loving',
-'Kind',
 'Clever',
+'Kind',
 'Talented',
 'Goofy',
 'Slippery',
@@ -139,20 +139,54 @@ export const nouns = ['Snake',
 'Passer',
 'Rocketeer',
 'Dealer',
-'Avenger', 'Ent', 'Archer', 'Agent', 'Yeti', 'Savior', 'Reaper', 'Weather', 'Jester', 'Spear', 'Flex', 'Tripper', 'Judge', 'Cash',  'Smoke', 'Operator', 'Sleeper'
+'Avenger',
+'Ent',
+'Archer',
+'Agent',
+'Yeti',
+'Savior',
+'Reaper',
+'Weather',
+'Jester',
+'Spear',
+'Flex',
+'Tripper',
+'Judge',
+'Cash',
+'Smoke',
+'Operator',
+'Sleeper'
 ];
 
-export function reviewAdjs() {
+export function reviewConstants() {
+    let repeatAdjs = [];
     for (let j = 0; j < adjs.length; j++){
       for (let i = j+1; i < adjs.length; i++) {
-        if (adjs[j] === adjs[i]) {console.log(adjs[j] + ' is repeated');}
+        if (adjs[j] === adjs[i]) {(repeatAdjs.length !== 0) ? repeatAdjs.push(" " + adjs[j]) : repeatAdjs.push(adjs[j])}
       }
     }
-  }
-export  function reviewNouns() {
+
+    const lastAdjIndex = repeatAdjs.length - 1;
+    repeatAdjs[lastAdjIndex] = (repeatAdjs.length > 1) ? " and" + repeatAdjs[lastAdjIndex] : repeatAdjs[lastAdjIndex];
+    let adjsReport = 'There are ' + adjs.length + ' adjectives. ';
+    const adjsSingularOrPlural = (repeatAdjs.length === 1) ? ' is' : ' are';
+
+    adjsReport += (repeatAdjs.length !== 0) ? repeatAdjs + adjsSingularOrPlural +' repeated.' : 'No adjectives are repeated.';
+
+    let repeatNouns = [];
     for (let j = 0; j < nouns.length; j++){
       for (let i = j+1; i < nouns.length; i++) {
-        if (nouns[j] === nouns[i]) {console.log(nouns[j] + ' is repeated');}
+        if (nouns[j] === nouns[i]) {(repeatNouns.length !== 0) ? repeatNouns.push(" " + nouns[j]) : repeatNouns.push(nouns[j])}
       }
     }
-  }
+
+    const lastNounIndex = repeatNouns.length - 1;
+    repeatNouns[lastNounIndex] = (repeatNouns.length > 1) ? " and" + repeatNouns[lastNounIndex] : repeatNouns[lastNounIndex];
+    let nounsReport = 'There are ' + nouns.length + ' nouns. ';
+    const nounsSingularOrPlural = (repeatNouns.length === 1) ? ' is' : ' are';
+
+    nounsReport += (repeatNouns.length !== 0) ? repeatNouns + nounsSingularOrPlural +' repeated.' : 'No nouns are repeated.';
+
+    const uniqueTags = (adjs.length - repeatAdjs.length) * (nouns.length - repeatNouns.length);
+    console.log(" " + adjsReport, "\n", nounsReport, "\n", "There are " + uniqueTags + " unique tags available.");
+}
