@@ -9,7 +9,6 @@ function ColorSwitch(props){
                           cy="42.5"
                           r="35"
                 />
-                        break;
                   case 2:
                         return <circle stroke="black"
                         stroke-width="5"
@@ -18,7 +17,6 @@ function ColorSwitch(props){
                           cy="42.5"
                           r="35"
                 />
-                        break;
                   case 3:
                         return <circle stroke="black"
                         stroke-width="5"
@@ -27,7 +25,6 @@ function ColorSwitch(props){
                           cy="42.5"
                           r="35"
                           />
-                        break;
                   default:
                         return <circle stroke="black"
                         stroke-width="5"
