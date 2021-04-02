@@ -50,7 +50,7 @@ function App() {
       newSplatters[i].rainbowColorChoice = rainbowColors[Math.floor(Math.random()*rainbowColors.length)];
       newSplatters[i].splatterNum = getRandomIntInclusive(1, 7);
       newSplatters[i].skewX = getRandomIntInclusive(-20, 20);
-      newSplatters[i].scale = getRandomFloat(0.5, 1.2);
+      newSplatters[i].scale = getRandomFloat(1.2, 1.5);
       newSplatters[i].skewY = getRandomIntInclusive(-20, 20);
       newSplatters[i].rotation = getRandomIntInclusive(0, 360);
       newSplatters[i].xTrans = (rectW / 3) * getRandomSign();//  + 20 * (Math.random() - 1/2);
