@@ -14,6 +14,7 @@ class Card extends React.Component {
       const cardScale = this.props.cardScale;
       const frameOffset = this.props.card.frameOffset;
       const {rectW, rectH, originOffset} = this.props.cardDimensions;
+      const palette = this.props.palette;
       const frameCorners = () => {
         const topLeft = [cardScale*(originOffset[0] + frameOffset[0][0]),
                           cardScale*(originOffset[1] + frameOffset[0][1])];
@@ -56,6 +57,7 @@ class Card extends React.Component {
                   return <RenderSplatters
                     splatter = {splatter}
                     cardScale = {cardScale}
+                    palette = {palette}
                     />
                 }) : ''}
               </div>

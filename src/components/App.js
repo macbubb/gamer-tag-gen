@@ -4,6 +4,7 @@ import '../App.css';
 import Card from './Card';
 import UserForm from './UserForm';
 import {getRandomFloat, getRandomIntInclusive, getRandomSign} from './Helpers.js';
+import ColorSwitch from './ColorSwitch';
 
 function App() {
   const [cardInventory, setCardInventory] = useState([{
@@ -14,6 +15,8 @@ function App() {
     splatters: [],
     frameOffset: []
   }]);
+
+  const [colorPalette, setColorPalette] = useState(1); //1 for black 2 for red 3 for rainbow
 
   const cardDimensions = {
     rectH : 100, //248
@@ -40,9 +43,11 @@ function App() {
 
   const makeSplatters = () => {
     const newSplatters = [{},{},{},{},{},{},{},{}];
+    const rainbowColors = [ '#BF3064','#A545BF','#025373','#F29D35','#F2784B',]
     const {rectH, rectW} = cardDimensions;
     //small splats
     for (let i=0; i<5; i++) {
+      newSplatters[i].rainbowColorChoice = rainbowColors[Math.floor(Math.random()*rainbowColors.length)];
       newSplatters[i].splatterNum = getRandomIntInclusive(1, 7);
       newSplatters[i].skewX = getRandomIntInclusive(-20, 20);
       newSplatters[i].scale = getRandomFloat(0.5, 1.2);
@@ -53,6 +58,7 @@ function App() {
     }
     //big splats
     for (let i=5; i<8; i++) {
+      newSplatters[i].rainbowColorChoice = rainbowColors[Math.floor(Math.random()*rainbowColors.length)];
       newSplatters[i].splatterNum = getRandomIntInclusive(8, 12);
       newSplatters[i].skewX = getRandomIntInclusive(-50, 50);
       newSplatters[i].scale = getRandomFloat(1, 1.5);
@@ -145,6 +151,26 @@ function App() {
     setCardInventory(sortedInventory);
   }
 
+  const handleSwitchChange = () => {
+    const newColor = (oldColor) => {
+      switch(oldColor) {
+        case 1:
+          return 2;
+          break;
+        case 2:
+          return 3;
+          break;
+        case 3:
+          return 1;
+          break;
+        default:
+          console.log("Something has gone wrong in handleSwitchChange.");
+      }
+    }
+    const newPalette = newColor(colorPalette);
+    setColorPalette(newPalette);
+  }
+
   return (
     <main>
       <div className="main-heading">
@@ -156,6 +182,7 @@ function App() {
             {cardInventory[0].tag !== 'firstCard' ?
               <Card /* need to switch to card */
                 cardScale={2}
+                palette={colorPalette}
                 cardDimensions={cardDimensions}
                 card={cardInventory[0]}
                 changeStars={changeStars}
@@ -176,6 +203,12 @@ function App() {
                 options={options}
                 onUpdate={onFormUpdate}
               />
+              <div className="color-switch"
+                onClick={() => handleSwitchChange()}>
+                <ColorSwitch
+                  palette={colorPalette}
+                />
+              </div>
             </div>
           </div>
 
@@ -194,6 +227,7 @@ function App() {
             {cardInventory[1] ? cardInventory.filter( card => card.tag !== 'firstCard').map( (item) =>
               <Card
                 cardScale={1}
+                palette={colorPalette}
                 cardDimensions={cardDimensions}
                 key={item.timeStamp}
                 card={item}

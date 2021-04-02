@@ -14,6 +14,14 @@ $grey: #BFBFBF;
 $dark-grey: #8C8C8C;
 $grey-border: $black;
 $grey-shadow: #919191;
+/* Color Theme Swatches in Hex */
+$paint-splatter-idea-1: #BF3064;
+$paint-splatter-idea-2: #A545BF;
+$paint-splatter-idea-3: #025373;
+$paint-splatter-idea-4: #F29D35;
+$paint-splatter-idea-5: #F2784B;
+
+
 .main-heading {
   h1 {
     background-color: black;
@@ -292,6 +300,12 @@ button.generate-card{
     font-size: 1.5rem;
     font-weight: 900;
   }
+}
+
+.color-switch{
+  margin: 3rem 3rem;
+  padding-bottom: 8rem;
+  transition: all 1s;
 }
 
 @keyframes go-splatter {

@@ -13,7 +13,18 @@ import SplatterEleven from "./Splatters/SplatterEleven";
 import SplatterTwelve from "./Splatters/SplatterTwelve";
 
 function RenderSplatters(props) {
-    let {splatterNum, skewX, skewY, scale, rotation, xTrans, yTrans} = props.splatter;
+    let {rainbowColorChoice, splatterNum, skewX, skewY, scale, rotation, xTrans, yTrans} = props.splatter;
+
+    const pickColor = (palette) => {
+        if (palette === 1) {
+            return "#000000"
+        } else if (palette === 2) {
+            return "#BF1120"
+        } else return rainbowColorChoice
+
+    };
+    const splatColor = pickColor(props.palette)
+
     scale = scale * props.cardScale;
     let warpFix = 1; //solution to fix weird warping of transforms when SVG is scaled
     if (props.cardScale != 1) warpFix = 0.35;
@@ -23,7 +34,7 @@ function RenderSplatters(props) {
     const splatStyles = {
         //postion: 'absolute',
         transform: 'scale(' + scale + ') skew(' + skewX  + 'deg, ' + skewY + 'deg) rotate(' + rotation + 'deg) translateX(' + xTrans + 'px) translateY(' + yTrans + 'px)',
-        fill: '#BF1120'
+        fill: splatColor,
       };
     function PickSplatter() {
         switch(splatterNum) {
