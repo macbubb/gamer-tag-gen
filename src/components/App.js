@@ -55,6 +55,7 @@ function App() {
       newSplatters[i].rotation = getRandomIntInclusive(0, 360);
       newSplatters[i].xTrans = (rectW / 3) * getRandomSign();//  + 20 * (Math.random() - 1/2);
       newSplatters[i].yTrans = (rectH / 3) * getRandomSign();//  + 5 * (Math.random() - 1/2);
+      newSplatters[i].key = i; //safe to use index as key as each list are static, have no ids, and will never be reordered
     }
     //big splats
     for (let i=5; i<8; i++) {
@@ -66,6 +67,7 @@ function App() {
       newSplatters[i].rotation = getRandomIntInclusive(0, 360);
       newSplatters[i].xTrans = .3 * (Math.random() - 1) * rectW;
       newSplatters[i].yTrans = .2 * (Math.random() - 1) * rectH;
+      newSplatters[i].key = i;
     }
     return newSplatters;
   }
@@ -156,13 +158,10 @@ function App() {
       switch(oldColor) {
         case 1:
           return 2;
-          break;
         case 2:
           return 3;
-          break;
         case 3:
           return 1;
-          break;
         default:
           console.log("Something has gone wrong in handleSwitchChange.");
       }
@@ -188,7 +187,6 @@ function App() {
                 changeStars={changeStars}
                 newTag={true}
                 deleteCard={deleteCard}
-                key={cardInventory[0].timeStamp}
               />
                 :
                 <div className="card new-card">

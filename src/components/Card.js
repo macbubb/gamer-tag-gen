@@ -55,6 +55,7 @@ class Card extends React.Component {
             <div className="card-splatters" style={cardSplattersStyle}>
                 {splatters ? splatters.map( (splatter) => {
                   return <RenderSplatters
+                    key= {splatter.key}
                     splatter = {splatter}
                     cardScale = {cardScale}
                     palette = {palette}
@@ -83,7 +84,6 @@ class Card extends React.Component {
               changeStars={changeStars}
               newTag={false}
               item={item}
-              key={item.key}
               />
             </div>
         </div>

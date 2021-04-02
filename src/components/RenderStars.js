@@ -10,11 +10,11 @@ const RenderStars = (props) => {
     //spits out JSX for 5 stars filled or empty depending on rating
     for (const [index] of whichStar.entries()) {
     (index < props.stars) ? starcode.push(
-      <svg className="filled-star" onClick={() => props.changeStars(index + 1, props.item.timeStamp)}>
+      <svg className="filled-star" key={index} onClick={() => props.changeStars(index + 1, props.item.timeStamp)}>
         <use xlinkHref="#filled-star" />
       </svg>
     ) : starcode.push(
-        <svg className="empty-star" onClick={() => props.changeStars(index + 1, props.item.timeStamp)}>
+        <svg className="empty-star" key={index} onClick={() => props.changeStars(index + 1, props.item.timeStamp)}>
           <use xlinkHref="#empty-star" />
         </svg>
     )
