@@ -302,10 +302,12 @@ button.generate-card{
   }
 }
 
-.color-switch{
+.color-switch {
   margin: 3rem 3rem;
   padding-bottom: 8rem;
-  transition: cx 1s;
+  circle{
+    transition: transform 150ms cubic-bezier(0, 0, 0.58, 1);
+  }
 }
 
 @keyframes go-splatter {

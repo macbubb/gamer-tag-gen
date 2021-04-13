@@ -1,45 +1,19 @@
 function ColorSwitch(props){
-      const drawSwitchPosition = (choice) => {
+      const writeSwitchPositionStyle = (choice) => {
             switch(choice) {
                   case 1:
-                        return <circle stroke="black"
-                        stroke-width="5"
-                        fill='#8C8C8C'
-                          cx='42.5'
-                          cy="42.5"
-                          r="35"
-                />
+                        return {transform: "translateX(0px)"}
                   case 2:
-                        return <circle stroke="black"
-                        stroke-width="5"
-                        fill='#8C8C8C'
-                          cx='147'
-                          cy="42.5"
-                          r="35"
-                />
+                        return {transform: "translateX(105px)"}
                   case 3:
-                        return <circle stroke="black"
-                        stroke-width="5"
-                        fill='#8C8C8C'
-                          cx='243'
-                          cy="42.5"
-                          r="35"
-                          />
+                        return {transform: "translateX(200px)"}
                   default:
-                        return <circle stroke="black"
-                        stroke-width="5"
-                        fill='#8C8C8C'
-                          cx='42.5'
-                          cy="42.5"
-                          r="35"
-                />;
+                        return ;
             }
       }
-      const switchStyles = {
-            //transform: "scale(.7)",
-      }
+      const switchPosition = writeSwitchPositionStyle(props.palette);
     return (
-        <svg style={switchStyles}  width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+        <svg  width="300" height="200" xmlns="http://www.w3.org/2000/svg">
             <g fill="none">
             <path stroke="black"
                   stroke-width="5"
@@ -50,7 +24,14 @@ function ColorSwitch(props){
                   a40,40 0 1,1 0,80
                   h-200
                   a40,40 0 1,1 0,-80"/>
-            {drawSwitchPosition(props.palette)}
+            <circle style={switchPosition}
+                  stroke="black"
+                  stroke-width="5"
+                  fill='#8C8C8C'
+                  cx='42.5'
+                  cy="42.5"
+                  r="35"
+            />
             <path stroke="black"
                   fill="black"
                   stroke-width="5"
