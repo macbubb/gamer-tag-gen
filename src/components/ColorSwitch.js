@@ -1,87 +1,104 @@
 function ColorSwitch(props){
+
       const writeSwitchPositionStyle = (choice) => {
             switch(choice) {
                   case 1:
                         return {transform: "translateX(0px)"}
                   case 2:
-                        return {transform: "translateX(105px)"}
+                        return {transform: "translateX(50px)"}
                   case 3:
-                        return {transform: "translateX(200px)"}
+                        return {transform: "translateX(95px)"}
                   default:
                         return ;
             }
       }
       const switchPosition = writeSwitchPositionStyle(props.palette);
     return (
-        <svg  width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+        <svg width="168" height="90" xmlns="http://www.w3.org/2000/svg">
+{/*             <linearGradient id="rainbow" x1="0" x2="1" y1="0" y2="0">
+                  <stop  style="stop-color: #BF3064" offset="0%"/>
+                  <stop style="stop-color: #A545BF; stop-opacity: 0.9;" offset="20%"/>
+                  <stop style="stop-color: #025373; stop-opacity: 0.9;" offset="36%"/>
+                  <stop style="stop-color: #F29D35; stop-opacity: 0.9;" offset="50%"/>
+                  <stop style="stop-color: #F2784B; stop-opacity: 0.9;" offset="66%"/>
+            </linearGradient> */}
             <g fill="none">
+            {/*  rounded rectangle  */}
+
             <path stroke="black"
                   stroke-width="5"
                   fill='#BFBFBF'
                   d="
                   M42.5,2.5
-                  h200
-                  a40,40 0 1,1 0,80
-                  h-200
-                  a40,40 0 1,1 0,-80"/>
+                  h100
+                  a20,20 0 1,1 0,40
+                  h-100
+                  a20,20 0 1,1 0,-40"
+            />
+              {/*  circle switch
+                  black position:style="transform: translateX(0px)"
+                  red position:style="transform: translateX(50px)"
+                  rainbow position:style="transform: translateX(95px)"
+             */}
             <circle style={switchPosition}
                   stroke="black"
                   stroke-width="5"
                   fill='#8C8C8C'
-                  cx='42.5'
-                  cy="42.5"
-                  r="35"
+                  cx="45"
+                  cy="22.5"
+                  r="18"
             />
+            {/*  black square     */}
             <path stroke="black"
                   fill="black"
                   stroke-width="5"
                   d="
-                  M20,100
-                  h45
-                  v45
-                  h-45
+                  M32.5,60
+                  h22.5
+                  v22.5
+                  h-22.5
                   z"
             />
+            {/*  red square     */}
             <path stroke="#BF1120"
                   fill="#BF1120"
                   stroke-width="5"
                   d="
-                  M125,100
-                  h45
-                  v45
-                  h-45
+                  M85,60
+                  h22.5
+                  v22.5
+                  h-22.5
                   z"
             />
-            <path stroke="#BF3064"
-                  stroke-width="9"
-                  d="
-                  M265,97.5
-                  v50"
-            />
-            <path stroke="#A545BF"
-                  stroke-width="9"
-                  d="
-                  m256,97.5
-                  v50"
-            />
-            <path stroke="#025373"
-                  stroke-width="9"
-                  d="m247,97.5
-                  v50"
-            />
-            <path stroke="#F29D35"
-                  stroke-width="9"
-                  d="M238,97.5
-                  v50"
-            />
-            <path stroke="#F2784B"
-                  stroke-width="9"
-                  d="M229,97.5
-                  v50"
-            />
-
-
-            </g>
+            {/*  rainbow square     */}
+            <svg>
+                  <path stroke="#BF3064"
+                        stroke-width="4.5"
+                        d="M135,57.5
+                        v27.5"
+                  />
+                  <path stroke="#A545BF"
+                        stroke-width="4.5"
+                        d="M139.5,57.5
+                        v27.5"
+                  />
+                  <path stroke="#025373"
+                        stroke-width="4.5"
+                        d="M144,57.5
+                        v27.5"
+                  />
+                  <path stroke="#F29D35"
+                        stroke-width="4.5"
+                        d="M148.5,57.5
+                        v27.5"
+                  />
+                  <path stroke="#F2784B"
+                        stroke-width="4.5"
+                        d="M153,57.5
+                        v27.5"
+                  />
+            </svg>
+      </g>
       </svg>
     )
 }
