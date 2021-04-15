@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/macbubb/gamer-tag-gen/static/css/main.7ec60a16.chunk.css",
-    "main.js": "/macbubb/gamer-tag-gen/static/js/main.d142dde2.chunk.js",
-    "main.js.map": "/macbubb/gamer-tag-gen/static/js/main.d142dde2.chunk.js.map",
-    "runtime-main.js": "/macbubb/gamer-tag-gen/static/js/runtime-main.0547d253.js",
-    "runtime-main.js.map": "/macbubb/gamer-tag-gen/static/js/runtime-main.0547d253.js.map",
-    "static/js/2.e36e85ab.chunk.js": "/macbubb/gamer-tag-gen/static/js/2.e36e85ab.chunk.js",
-    "static/js/2.e36e85ab.chunk.js.map": "/macbubb/gamer-tag-gen/static/js/2.e36e85ab.chunk.js.map",
-    "static/js/3.d6bdcf6f.chunk.js": "/macbubb/gamer-tag-gen/static/js/3.d6bdcf6f.chunk.js",
-    "static/js/3.d6bdcf6f.chunk.js.map": "/macbubb/gamer-tag-gen/static/js/3.d6bdcf6f.chunk.js.map",
-    "index.html": "/macbubb/gamer-tag-gen/index.html",
-    "static/css/main.7ec60a16.chunk.css.map": "/macbubb/gamer-tag-gen/static/css/main.7ec60a16.chunk.css.map",
-    "static/js/2.e36e85ab.chunk.js.LICENSE.txt": "/macbubb/gamer-tag-gen/static/js/2.e36e85ab.chunk.js.LICENSE.txt"
+    "main.css": "/gamer-tag-gen/static/css/main.7ec60a16.chunk.css",
+    "main.js": "/gamer-tag-gen/static/js/main.d142dde2.chunk.js",
+    "main.js.map": "/gamer-tag-gen/static/js/main.d142dde2.chunk.js.map",
+    "runtime-main.js": "/gamer-tag-gen/static/js/runtime-main.efb57e53.js",
+    "runtime-main.js.map": "/gamer-tag-gen/static/js/runtime-main.efb57e53.js.map",
+    "static/js/2.e36e85ab.chunk.js": "/gamer-tag-gen/static/js/2.e36e85ab.chunk.js",
+    "static/js/2.e36e85ab.chunk.js.map": "/gamer-tag-gen/static/js/2.e36e85ab.chunk.js.map",
+    "static/js/3.d6bdcf6f.chunk.js": "/gamer-tag-gen/static/js/3.d6bdcf6f.chunk.js",
+    "static/js/3.d6bdcf6f.chunk.js.map": "/gamer-tag-gen/static/js/3.d6bdcf6f.chunk.js.map",
+    "index.html": "/gamer-tag-gen/index.html",
+    "static/css/main.7ec60a16.chunk.css.map": "/gamer-tag-gen/static/css/main.7ec60a16.chunk.css.map",
+    "static/js/2.e36e85ab.chunk.js.LICENSE.txt": "/gamer-tag-gen/static/js/2.e36e85ab.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.0547d253.js",
+    "static/js/runtime-main.efb57e53.js",
     "static/js/2.e36e85ab.chunk.js",
     "static/css/main.7ec60a16.chunk.css",
     "static/js/main.d142dde2.chunk.js"
