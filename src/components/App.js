@@ -7,16 +7,21 @@ import {getRandomFloat, getRandomIntInclusive, getRandomSign} from './Helpers.js
 import ColorSwitch from './ColorSwitch';
 
 function App() {
+/*
+splatters contains the svg splatter number and random transforms
+frameOffset contains how each corner is transformed (X,Y) which is used to calculate the corners depending on the scale by Card and drawn by RenderCardFrame
+*/
+
   const [cardInventory, setCardInventory] = useState([{
     timeStamp: '',
     tag:'firstCard',
     stars:0,
-    color:'146fffff',
     splatters: [],
     frameOffset: []
   }]);
 
-  const [colorPalette, setColorPalette] = useState(1); //1 for black 2 for red 3 for rainbow
+  //1 for black 2 for red 3 for rainbow
+  const [colorPalette, setColorPalette] = useState(1);
 
   const cardDimensions = {
     rectH : 100, //248
@@ -28,12 +33,15 @@ function App() {
     setCardInventory([ card, ...cardInventory ]);
   }
 
+  //maxLength is the maximum number of characters allowed in a tag
   const [options, setOptions] = useState({opts: 'bothCaps', addNum: false, numDigitCount:'', maxLength: 20});
 
   const makeCard = () => {
+    //create tag, splatters, frame corner offset for each card
     const cardTag = makeTag();
     const cardSplatters = makeSplatters();
-    const cardFrameOffset = makeFrame();
+    const cardFrameOffset = makeFrameOffset();
+    //spread operator for cardTag as it is not an object within the card, splatters and frameOffset are stored as nested objects in a property
     const newCard = {...cardTag,
                     splatters: cardSplatters,
                     frameOffset: cardFrameOffset}
@@ -100,13 +108,12 @@ function App() {
       timeStamp: timeStamp,
       tag : roughDraftTag,
       stars : 0,
-      color : '#ffffff',
     };
     //just return the finalNewTag
     return finalNewTag;
   }
 
-  const makeFrame = () => {
+  const makeFrameOffset = () => {
     const variability = 10; //how many px box corners can shift
     return ([
             [(2*(Math.random()-.5))*variability, (2*(Math.random()-.5))*variability],
