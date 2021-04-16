@@ -329,6 +329,11 @@ button.generate-card{
   circle{
     transition: transform 150ms cubic-bezier(0, 0, 0.58, 1);
   }
+  @media all and (max-width: 600px) {
+    position: fixed;
+    top: 80vh;
+    right: 30vw;
+  }
 }
 
 
