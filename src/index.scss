@@ -33,7 +33,10 @@ $paint-splatter-idea-5: #F2784B;
     color: white;
     font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: -.6rem;
+    letter-spacing: -.3rem;
+    @media all and (min-width: 800px) {
+      letter-spacing: -.6rem;
+    }
   }
 }
 
