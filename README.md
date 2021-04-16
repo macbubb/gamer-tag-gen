@@ -36,4 +36,4 @@ Add data collection of ranking of each tag
 Launch to domain
 Evaluate efficency of app in particular the svgs
 
-![Combination of Paint Splatters](https://github.com/macbubb/gamer-tag-gen/blob/main/src/img/combinedsplats.png)
+![Combination of Paint Splatters](https://github.com/macbubb/gamer-tag-gen/blob/main/src/img/combinedsplatsmedium.png)
