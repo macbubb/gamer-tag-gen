@@ -120,9 +120,11 @@ svg {
     height: 2rem !important;
   }
   .card-frame svg {
-    transform: scale(75%);
-    @media all and (min-width: 500px) {
-      transform: scale(100%);
+    margin: 0rem;
+    @media all and (max-width: 500px) {
+      margin: 1.5rem 0 0 3rem;
+      width: 330px !important;
+      height: 185px !important;
     }
   }
   .delete-card {
