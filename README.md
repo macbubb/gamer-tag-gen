@@ -31,12 +31,12 @@ options for gamertag cases, title case, pascal case, and upper case
 **14490 Tags Available**
 
 ## Future
-Update display formatting on mobile devices
-Increase formatting options
-Increase constants
-Add evaluation of generated tags so new tags are less likely to use the same noun or adjective
-Add data collection of ranking of each tag
-Launch to domain
-Evaluate efficency of app in particular the svgs
+- Update display formatting on mobile devices
+- Increase formatting options
+- Increase constants
+- Add evaluation of generated tags so new tags are less likely to use the same noun or adjective
+- Add data collection of ranking of each tag
+- Launch to domain
+- Evaluate efficency of app in particular the svgs
 
 ![Combination of Paint Splatters](https://github.com/macbubb/gamer-tag-gen/blob/main/src/img/combinedsplatsmedium.png)
