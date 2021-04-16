@@ -21,8 +21,19 @@ function RenderCardFrame(props) {
         height: svgH + 'px'
     };
 
+    const svgViewBox = "0 0 " + svgW + " " + svgH;
+    const svgHeight = svgH + "px";
+    const svgWidth = svgW + "px";
+
     return(
-    <svg style={svgSize}>
+    <svg
+        version="1.0"
+        xmlns="http://www.w3.org/2000/svg"
+        style={svgSize}
+        height={svgHeight}
+        width={svgWidth}
+        viewBox={svgViewBox}
+        >
         <polygon fillOpacity=".7" points={frameCorners} style={frameStyle} />
         Sorry, your browser does not support inline SVG.
     </svg>

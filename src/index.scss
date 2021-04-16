@@ -41,7 +41,7 @@ $paint-splatter-idea-5: #F2784B;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  @media (min-width: 700px) {
+  @media all and(min-width: 700px) {
     flex-direction: row;
   }
   h2 {
@@ -54,7 +54,7 @@ $paint-splatter-idea-5: #F2784B;
   }
   &-right {
     margin-right: 10rem;
-    @media (max-width: 700px) {
+    @media all and(max-width: 700px) {
       margin: auto;
     }
   }
@@ -63,13 +63,12 @@ $paint-splatter-idea-5: #F2784B;
     flex-direction: row;
     justify-content: space-evenly;
     margin-top: 3rem;
-    @media (min-width: 700px) {
+    @media all and(min-width: 700px) {
       width: 75vw;
     }
     h2 {
       font-size: 1.5rem;
     }
-
     &-options {
       font-size: 1.25rem;
       line-height: 1.25;
@@ -77,8 +76,6 @@ $paint-splatter-idea-5: #F2784B;
     &-controls {
         line-height: 1.5;
     // Button 3D function adapted from Kathy Kato, so, so rad https://codepen.io/kathykato/pen/gOOjgmP
-
-
       &-options {
         text-align: center;
         &-inner {
@@ -89,7 +86,6 @@ $paint-splatter-idea-5: #F2784B;
       &-button {
         text-align: center;
       }
-
     }
   }
   &-right {
@@ -108,14 +104,35 @@ svg {
 .card.new-card {
   height: 200px;
   .card-info {
-    padding-top: 1.5rem;
+    padding-top: 2.5rem;
+    @media all and (min-width: 500px) {
+      padding-top: 1.5rem;
+    }
   }
   span {
-  font-size: 3rem;
+    font-size: 2rem;
+    @media all and (min-width: 500px) {
+      font-size: 3rem;
+    }
   }
   .filled-star, .empty-star {
     width: 2rem !important;
     height: 2rem !important;
+  }
+  .card-frame svg {
+    transform: scale(75%);
+    @media all and (min-width: 500px) {
+      transform: scale(100%);
+    }
+  }
+  .delete-card {
+    button {
+      font-size: 2rem;
+      padding: 1rem 3rem 0 0;
+      @media all and (min-width: 500px) {
+        padding: 0;
+      }
+    }
   }
 }
 
@@ -130,18 +147,24 @@ button.generate-card{
   font-size: inherit;
   font-family: inherit;
   margin-bottom: 5rem;
-  font-size: 3rem;
+  font-size: 2.5rem;
+  @media all and(min-width: 500px) {
+    font-size: 3rem;
+  }
   &.generate-card {
     font-weight: 900;
     color: $text;
     text-transform: uppercase;
-    padding: 1.25em 2em;
+    padding: 1em 1.5em;
     background: &light-grey;
     border: 5px solid $grey-border;
     border-top-left-radius: 1em;
     border-bottom-right-radius: 1em;
     transform-style: preserve-3d;
     transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), background 150ms cubic-bezier(0, 0, 0.58, 1);
+    @media all and(min-width: 500px) {
+      padding: 1.25em 2em;
+    }
     &::before {
       position: absolute;
       content: '';
@@ -285,13 +308,7 @@ button.generate-card{
   position: relative;
 }
 
-.new-card {
-  .delete-card {
-    button {
-      font-size: 2rem;
-    }
-  }
-}
+
 .delete-card {
   text-align: right;
   button {
@@ -310,14 +327,4 @@ button.generate-card{
   }
 }
 
-@keyframes go-splatter {
-  from {
-    transform: translateX(0);
-      }
-}
 
-/* .new-card .card-splatters svg {
-  animation-name: go-splatter;
-  animation-duration: .25s;
-  animation-iteration-count: 1;
-} */
