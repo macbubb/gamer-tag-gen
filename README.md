@@ -4,7 +4,7 @@ To learn react.js and avoid tutorial purgatory I've developed this rad gamer tag
 [DEMO](https://macbubb.github.io/gamer-tag-gen/)
 
 ## Features
-### Unique Cards
+![paint splatter](https://github.com/macbubb/gamer-tag-gen/blob/main/src/img/splat1quartersized.png) Unique Cards
 - each gamer tag has a unique card with custom frame geometry decorated by 9 random splatters
 ### Rating
 - every tag can be rated or deleted and the whole list can be sorted
