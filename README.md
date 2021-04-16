@@ -1,5 +1,8 @@
 ![Gamertag Brain Tsunami](https://github.com/macbubb/gamer-tag-gen/blob/main/src/img/title.png)
+
+
 To learn react.js and avoid tutorial purgatory I've developed this rad gamer tag generator. Now, there are many tag and handle generators already out there, what makes this one different? **It looks cool**. It's fun to use and play with, closer to an actual game environment, rather than a stuffy vanilla website.
+
 
 [DEMO](https://macbubb.github.io/gamer-tag-gen/)
 
