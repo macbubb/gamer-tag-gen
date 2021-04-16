@@ -5,14 +5,14 @@ To learn react.js and avoid tutorial purgatory I've developed this rad gamer tag
 
 ## Features
 ![paint splatter](https://github.com/macbubb/gamer-tag-gen/blob/main/src/img/splat1quartersized.png) **Unique Cards**
-- each gamer tag has a unique card with custom frame geometry decorated by 9 random splatters
+each gamer tag has a unique card with custom frame geometry decorated by 9 random splatters
 ![paint splatter](https://github.com/macbubb/gamer-tag-gen/blob/main/src/img/splat2quartersized.png) **Rating**
-- every tag can be rated or deleted and the whole list can be sorted
-### Paint Color
-- splatters can be rendered in red, black, or a multi-colored palette
-### Formatting Options
-- options for gamertag cases, title case, pascal case, and upper case
-### 14490 Tags Available
+every tag can be rated or deleted and the whole list can be sorted
+![paint splatter](https://github.com/macbubb/gamer-tag-gen/blob/main/src/img/splat3quartersized.png) **Paint Color**
+splatters can be rendered in red, black, or a multi-colored palette
+![paint splatter](https://github.com/macbubb/gamer-tag-gen/blob/main/src/img/splat4quartersized.png) **Formatting Options**
+options for gamertag cases, title case, pascal case, and upper case
+![paint splatter](https://github.com/macbubb/gamer-tag-gen/blob/main/src/img/splat5quartersized.png) **14490 Tags Available**
 
 ## Future
 Update display formatting on mobile devices
