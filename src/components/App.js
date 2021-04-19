@@ -3,7 +3,7 @@ import { adjs, nouns, reviewConstants} from '../Constants';
 import '../App.css';
 import Card from './Card';
 import UserForm from './UserForm';
-import {getRandomFloat, getRandomIntInclusive, getRandomSign} from './Helpers.js';
+import {getRandomFloat, getRandomIntInclusive, getRandomSign, chopDecimal} from './Helpers.js';
 import ColorSwitch from './ColorSwitch';
 
 function App() {
@@ -61,8 +61,8 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
       newSplatters[i].scale = getRandomFloat(1.2, 1.5);
       newSplatters[i].skewY = getRandomIntInclusive(-20, 20);
       newSplatters[i].rotation = getRandomIntInclusive(0, 360);
-      newSplatters[i].xTrans = (rectW / 3) * getRandomSign();//  + 20 * (Math.random() - 1/2);
-      newSplatters[i].yTrans = (rectH / 3) * getRandomSign();//  + 5 * (Math.random() - 1/2);
+      newSplatters[i].xTrans = chopDecimal(((rectW / 3) * getRandomSign()),2);
+      newSplatters[i].yTrans = chopDecimal(((rectH / 3) * getRandomSign()),2);
       newSplatters[i].key = i; //safe to use index as key as each list are static, have no ids, and will never be reordered
     }
     //big splats
@@ -70,11 +70,11 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
       newSplatters[i].rainbowColorChoice = rainbowColors[Math.floor(Math.random()*rainbowColors.length)];
       newSplatters[i].splatterNum = getRandomIntInclusive(8, 12);
       newSplatters[i].skewX = getRandomIntInclusive(-50, 50);
-      newSplatters[i].scale = getRandomFloat(1, 1.5);
+      newSplatters[i].scale = chopDecimal((getRandomFloat(1, 1.5)),2);
       newSplatters[i].skewY = getRandomIntInclusive(-20, 20);
       newSplatters[i].rotation = getRandomIntInclusive(0, 360);
-      newSplatters[i].xTrans = .3 * (Math.random() - 1) * rectW;
-      newSplatters[i].yTrans = .2 * (Math.random() - 1) * rectH;
+      newSplatters[i].xTrans = chopDecimal((.3 * (Math.random() - 1) * rectW),2);
+      newSplatters[i].yTrans = chopDecimal((.2 * (Math.random() - 1) * rectH),2);
       newSplatters[i].key = i;
     }
     return newSplatters;
