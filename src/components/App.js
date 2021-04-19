@@ -34,7 +34,7 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
   }
 
   //maxLength is the maximum number of characters allowed in a tag
-  const [options, setOptions] = useState({opts: 'bothCaps', addNum: false, numDigitCount:'', maxLength: 20});
+  const [options, setOptions] = useState({opts: 'bothCaps', addNum: false, numDigitCount:'', maxLength: 15});
 
   const makeCard = () => {
     //create tag, splatters, frame corner offset for each card
@@ -141,7 +141,7 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
       [options]);
 
   const onFormUpdate = values => {
-    const newOptions = {opts: values.opts, addNum: values.addNum, numDigitCount: values.numDigitCount, maxLength: 20};
+    const newOptions = {opts: values.opts, addNum: values.addNum, numDigitCount: values.numDigitCount, maxLength: 15};
     setOptions(newOptions);
   };
 
