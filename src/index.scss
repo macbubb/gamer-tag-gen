@@ -346,10 +346,23 @@ button.generate-card{
   circle{
     transition: transform 150ms cubic-bezier(0, 0, 0.58, 1);
   }
+  //floats and shrinks the paint color controls
   @media all and (max-width: 600px) {
     position: fixed;
     top: 80vh;
     right: 30vw;
+    svg {
+      transform: scale(.7);
+      opacity: .7;
+      padding-top: 1rem;
+      background: #fff;
+      border: 3px solid #fff;
+      border-radius: 10px;
+      z-index: 1;
+    }
+    .rainbow-square {
+      transform: scale(1);
+    }
   }
 }
 
