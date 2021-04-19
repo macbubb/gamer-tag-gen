@@ -88,6 +88,7 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
     var roughDraftTag = 'abcdefghijklmnopqrstuvwxyzabcd';
     var newAdj = adjs[randomAdjIndex];
     var newNoun = nouns[randomNounIndex];
+    const numberPostFix = options.addNum ? Math.floor(Math.random()*10**options.numDigitCount) : null;
     // bothCaps leave noun and adj alone
     // frontCap make noun lower case
     // allCaps make noun and adj uppercase
@@ -103,7 +104,7 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
           roughDraftTag = newAdj + newNoun;
       }
     }
-
+    roughDraftTag = numberPostFix ? roughDraftTag + numberPostFix : roughDraftTag;
     const finalNewTag = {
       timeStamp: timeStamp,
       tag : roughDraftTag,
@@ -186,7 +187,7 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
         <div className="main-display-left">
           <div className="main-display-left-display">
             {cardInventory[0].tag !== 'firstCard' ?
-              <Card /* need to switch to card */
+              <Card
                 cardScale={2}
                 palette={colorPalette}
                 cardDimensions={cardDimensions}
@@ -228,7 +229,6 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
                 Sort Cards </button>
           </div>
           <section className="card-inventory">
-            {/* Need inventory to not display empty firstCard, which is used to initialize state and provide a blank space in the left/large display. Procedure 1) check if a second card exists 2) filter out the firstCard 3) map and display the remaining cards */}
             {cardInventory[1] ? cardInventory.filter( card => card.tag !== 'firstCard').map( (item) =>
               <Card
                 cardScale={1}

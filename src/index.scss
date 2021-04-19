@@ -193,7 +193,7 @@ button.generate-card{
     }
   }
   //this fixes problem with hover on mobile devices, by apply hover style constantly
-  @media all and(min-width: 320px) {
+  @media all and(max-width: 415px) {
     background: $grey;
     transform: translate(0, 0.25em);
     &::before {
@@ -262,7 +262,7 @@ button.generate-card{
       }
     }
   //this fixes problem with hover on mobile devices, by apply hover style constantly
-    @media all and(min-width: 320px){
+    @media all and(max-width: 415px){
       background: $grey;
       transform: translate(0, 0.25em);
       &::before {
