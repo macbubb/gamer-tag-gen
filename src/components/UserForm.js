@@ -23,7 +23,7 @@ const UserForm = (props) => {
                 <div className="main-display-left-controls-button">
                     <button className="generate-card" aria-label="Generate New Gamertag" type="submit">Submit</button>
                 </div>
-                <div className="main-display-left-controls-options">
+               {/*  <div className="main-display-left-controls-options">
                     <div className="main-display-left-controls-options-inner">
                         <h2>Gamertag Options</h2>
                        <p className="checkboxes">
@@ -68,7 +68,7 @@ const UserForm = (props) => {
                             </label>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </Form>
         )}
       </Formik>

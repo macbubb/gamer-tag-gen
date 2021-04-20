@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
-  "homepage": "https://github.com/macbubb/gamer-tag-gen",
-=======
   "homepage": "https://macbubb.github.io/gamer-tag-gen/",
->>>>>>> 77260b1631915ffda9598dca7d40023aa7bdc765
   "name": "gamer-tag-gen",
   "version": "0.1.0",
   "private": true,
