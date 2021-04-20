@@ -79,13 +79,16 @@ class Card extends React.Component {
             <div className="card-info-name" >
               <span>{item.tag}</span>
             </div>
-            <RenderStars
-              stars={stars}
-              changeStars={changeStars}
-              newTag={false}
-              item={item}
+            <div className="stars">
+              <RenderStars
+                stars={stars}
+                changeStars={changeStars}
+                newTag={false}
+                item={item}
+                deadStars={false}
               />
             </div>
+          </div>
         </div>
       );
     }

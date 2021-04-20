@@ -5,6 +5,7 @@ import Card from './Card';
 import UserForm from './UserForm';
 import {getRandomFloat, getRandomIntInclusive, getRandomSign, chopDecimal} from './Helpers.js';
 import ColorSwitch from './ColorSwitch';
+import Welcome from './Welcome';
 
 function App() {
 /*
@@ -22,6 +23,8 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
 
   //1 for black 2 for red 3 for rainbow
   const [colorPalette, setColorPalette] = useState(1);
+
+  const [welcomeState, setWelcomeState] = useState({showPopup:true});
 
   const cardDimensions = {
     rectH : 100, //248
@@ -178,8 +181,17 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
     setColorPalette(newPalette);
   }
 
+  const togglePopup = () => {
+    const newWelcomeState = { showPopup: !welcomeState.showPopup};
+    setWelcomeState(newWelcomeState);
+  };
+
   return (
     <main>
+      <Welcome
+        welcomeState={welcomeState.showPopup}
+        togglePopup={togglePopup}
+      />
       <div className="main-heading">
         <h1>Gamertag Brain Tsunami</h1>
       </div>
@@ -241,6 +253,7 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
               />
               ) : ''}
           </section>
+        <button type="button" onClick={() => togglePopup()}>help</button>
         </div>
       </div>
     </main>

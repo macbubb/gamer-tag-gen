@@ -366,4 +366,74 @@ button.generate-card{
   }
 }
 
-
+.welcome {
+  display: block;
+  opacity: .9;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -40vh;
+  margin-left: -40vw;
+  height: 80vh;
+  width: 80vw;
+  background: #fff;
+  border: 3px solid #fff;
+  border-radius: 10px;
+  z-index: 1;
+  padding: 1rem;
+  font-size: 1rem;
+  h1 {
+    margin-top: 0;
+    margin-bottom: 0rem;
+    padding-bottom: 0rem;
+    font-size: 2rem;
+  }
+  h2 {
+    margin-bottom: 0;
+    font-size: 1.5rem;
+  }
+  p {
+    margin-top: 0.5rem;
+  }
+  .empty-star {
+    width: .9rem;
+    height: .9rem;
+    stroke-width: 5px;
+    margin-right: 0.05rem;
+    fill: #BF1120;
+  }
+  @media all and (min-width: 550px) {
+    font-size: 1.5rem;
+    h1 {
+      margin-top: 0;
+      font-size: 3rem;
+    }
+    h2 {
+      font-size: 2rem;
+    }
+    .empty-star {
+      width: 1.2rem;
+      height: 1.2rem;
+      stroke-width: 5px;
+      margin-right: 0.05rem;
+      fill: #BF1120;
+    }
+  }
+  .stars {
+    display: inline;
+    text-align: center;
+    //margin: auto;
+    svg {
+      position: static;
+    }
+  }
+  .close {
+    text-align: right;
+    button {
+      border: 0;
+      background-color: inherit;
+      font-size: 1.5rem;
+      font-weight: 900;
+    }
+  }
+}
