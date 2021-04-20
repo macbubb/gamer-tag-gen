@@ -5,7 +5,12 @@ export function getRandomIntInclusive(min, max) {
   }
 
 export function getRandomFloat(min, max) {
-    return Math.random() * (max - min) + min;
+    return chopDecimal((Math.random() * (max - min) + min),2);
+}
+
+//chops off decimal to places argument, doesn't round because not necessary with randomly generated numbers
+export function chopDecimal(num,places) {
+  return Math.round(num * 10**places)/10**places;
 }
 
 export function getRandomSign() {

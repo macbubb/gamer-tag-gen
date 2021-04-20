@@ -3,7 +3,7 @@ import { adjs, nouns, reviewConstants} from '../Constants';
 import '../App.css';
 import Card from './Card';
 import UserForm from './UserForm';
-import {getRandomFloat, getRandomIntInclusive, getRandomSign} from './Helpers.js';
+import {getRandomFloat, getRandomIntInclusive, getRandomSign, chopDecimal} from './Helpers.js';
 import ColorSwitch from './ColorSwitch';
 
 function App() {
@@ -34,7 +34,7 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
   }
 
   //maxLength is the maximum number of characters allowed in a tag
-  const [options, setOptions] = useState({opts: 'bothCaps', addNum: false, numDigitCount:'', maxLength: 20});
+  const [options, setOptions] = useState({opts: 'bothCaps', addNum: false, numDigitCount:'', maxLength: 15});
 
   const makeCard = () => {
     //create tag, splatters, frame corner offset for each card
@@ -61,8 +61,8 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
       newSplatters[i].scale = getRandomFloat(1.2, 1.5);
       newSplatters[i].skewY = getRandomIntInclusive(-20, 20);
       newSplatters[i].rotation = getRandomIntInclusive(0, 360);
-      newSplatters[i].xTrans = (rectW / 3) * getRandomSign();//  + 20 * (Math.random() - 1/2);
-      newSplatters[i].yTrans = (rectH / 3) * getRandomSign();//  + 5 * (Math.random() - 1/2);
+      newSplatters[i].xTrans = chopDecimal(((rectW / 3) * getRandomSign()),2);
+      newSplatters[i].yTrans = chopDecimal(((rectH / 3) * getRandomSign()),2);
       newSplatters[i].key = i; //safe to use index as key as each list are static, have no ids, and will never be reordered
     }
     //big splats
@@ -70,11 +70,11 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
       newSplatters[i].rainbowColorChoice = rainbowColors[Math.floor(Math.random()*rainbowColors.length)];
       newSplatters[i].splatterNum = getRandomIntInclusive(8, 12);
       newSplatters[i].skewX = getRandomIntInclusive(-50, 50);
-      newSplatters[i].scale = getRandomFloat(1, 1.5);
+      newSplatters[i].scale = chopDecimal((getRandomFloat(1, 1.5)),2);
       newSplatters[i].skewY = getRandomIntInclusive(-20, 20);
       newSplatters[i].rotation = getRandomIntInclusive(0, 360);
-      newSplatters[i].xTrans = .3 * (Math.random() - 1) * rectW;
-      newSplatters[i].yTrans = .2 * (Math.random() - 1) * rectH;
+      newSplatters[i].xTrans = chopDecimal((.3 * (Math.random() - 1) * rectW),2);
+      newSplatters[i].yTrans = chopDecimal((.2 * (Math.random() - 1) * rectH),2);
       newSplatters[i].key = i;
     }
     return newSplatters;
@@ -88,6 +88,7 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
     var roughDraftTag = 'abcdefghijklmnopqrstuvwxyzabcd';
     var newAdj = adjs[randomAdjIndex];
     var newNoun = nouns[randomNounIndex];
+    const numberPostFix = options.addNum ? Math.floor(Math.random()*10**options.numDigitCount) : null;
     // bothCaps leave noun and adj alone
     // frontCap make noun lower case
     // allCaps make noun and adj uppercase
@@ -103,7 +104,7 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
           roughDraftTag = newAdj + newNoun;
       }
     }
-
+    roughDraftTag = numberPostFix ? roughDraftTag + numberPostFix : roughDraftTag;
     const finalNewTag = {
       timeStamp: timeStamp,
       tag : roughDraftTag,
@@ -141,7 +142,7 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
       [options]);
 
   const onFormUpdate = values => {
-    const newOptions = {opts: values.opts, addNum: values.addNum, numDigitCount: values.numDigitCount, maxLength: 20};
+    const newOptions = {opts: values.opts, addNum: values.addNum, numDigitCount: values.numDigitCount, maxLength: 15};
     setOptions(newOptions);
   };
 
@@ -186,7 +187,7 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
         <div className="main-display-left">
           <div className="main-display-left-display">
             {cardInventory[0].tag !== 'firstCard' ?
-              <Card /* need to switch to card */
+              <Card
                 cardScale={2}
                 palette={colorPalette}
                 cardDimensions={cardDimensions}
@@ -228,7 +229,6 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
                 Sort Cards </button>
           </div>
           <section className="card-inventory">
-            {/* Need inventory to not display empty firstCard, which is used to initialize state and provide a blank space in the left/large display. Procedure 1) check if a second card exists 2) filter out the firstCard 3) map and display the remaining cards */}
             {cardInventory[1] ? cardInventory.filter( card => card.tag !== 'firstCard').map( (item) =>
               <Card
                 cardScale={1}

@@ -71,7 +71,7 @@ function ColorSwitch(props){
                   z"
             />
             {/*  rainbow square     */}
-            <svg>
+            <svg className="rainbow-square">
                   <path stroke="#BF3064"
                         stroke-width="4.5"
                         d="M135,57.5

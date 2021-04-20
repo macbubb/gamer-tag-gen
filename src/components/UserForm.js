@@ -26,7 +26,7 @@ const UserForm = (props) => {
                 <div className="main-display-left-controls-options">
                     <div className="main-display-left-controls-options-inner">
                         <h2>Gamertag Options</h2>
-                       {/*  <p className="checkboxes">
+                       <p className="checkboxes">
                             <label htmlFor="Add number">
                                 <span>Include number</span>
                                 <br/>
@@ -37,13 +37,13 @@ const UserForm = (props) => {
                             <label htmlFor="numDigitCount">
                                 Number of Digits&nbsp;
                                 <Field type="select" name="numDigitCount" value="numDigitCount" as="select">
-                                    <option value="1" label="one" >one</option>
-                                    <option value="2" label="two">two</option>
-                                    <option value="3" label="three">three</option>
-                                    <option value="4" label="four">four</option>
+                                    <option value="1" label="one" />
+                                    <option value="2" label="two"/>
+                                    <option value="3" label="three"/>
+                                    <option value="4" label="four"/>
                                 </Field>
                             </label>
-                        </p> */}
+                        </p>
                         <div role="group" aria-labelledby="cap-options">
                             <label>
                                 <Field

@@ -33,7 +33,10 @@ $paint-splatter-idea-5: #F2784B;
     color: white;
     font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: -.6rem;
+    letter-spacing: -.3rem;
+    @media all and (min-width: 800px) {
+      letter-spacing: -.6rem;
+    }
   }
 }
 
@@ -41,7 +44,7 @@ $paint-splatter-idea-5: #F2784B;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  @media (min-width: 700px) {
+  @media all and(min-width: 700px) {
     flex-direction: row;
   }
   h2 {
@@ -53,8 +56,7 @@ $paint-splatter-idea-5: #F2784B;
     text-transform: uppercase;
   }
   &-right {
-    margin-right: 10rem;
-    @media (max-width: 700px) {
+    @media all and(max-width: 700px) {
       margin: auto;
     }
   }
@@ -63,13 +65,12 @@ $paint-splatter-idea-5: #F2784B;
     flex-direction: row;
     justify-content: space-evenly;
     margin-top: 3rem;
-    @media (min-width: 700px) {
-      width: 75vw;
+    @media all and(min-width: 700px) {
+      //width: 75vw;
     }
     h2 {
       font-size: 1.5rem;
     }
-
     &-options {
       font-size: 1.25rem;
       line-height: 1.25;
@@ -77,8 +78,6 @@ $paint-splatter-idea-5: #F2784B;
     &-controls {
         line-height: 1.5;
     // Button 3D function adapted from Kathy Kato, so, so rad https://codepen.io/kathykato/pen/gOOjgmP
-
-
       &-options {
         text-align: center;
         &-inner {
@@ -89,7 +88,6 @@ $paint-splatter-idea-5: #F2784B;
       &-button {
         text-align: center;
       }
-
     }
   }
   &-right {
@@ -108,14 +106,37 @@ svg {
 .card.new-card {
   height: 200px;
   .card-info {
-    padding-top: 1.5rem;
+    padding-top: 2.5rem;
+    @media all and (min-width: 500px) {
+      padding-top: 1.5rem;
+    }
   }
   span {
-  font-size: 3rem;
+    font-size: 2rem;
+    @media all and (min-width: 500px) {
+      font-size: 3rem;
+    }
   }
   .filled-star, .empty-star {
     width: 2rem !important;
     height: 2rem !important;
+  }
+  .card-frame svg {
+    margin: 0rem;
+    @media all and (max-width: 500px) {
+      margin: 1.5rem 0 0 3rem;
+      width: 330px !important;
+      height: 185px !important;
+    }
+  }
+  .delete-card {
+    button {
+      font-size: 2rem;
+      padding: 1rem 3rem 0 0;
+      @media all and (min-width: 500px) {
+        padding: 0;
+      }
+    }
   }
 }
 
@@ -125,53 +146,67 @@ button.generate-card{
   cursor: pointer;
   outline: none;
   border: 0;
+  background: &light-grey;
   vertical-align: middle;
   text-decoration: none;
   font-size: inherit;
   font-family: inherit;
   margin-bottom: 5rem;
-  font-size: 3rem;
-  &.generate-card {
-    font-weight: 900;
-    color: $text;
-    text-transform: uppercase;
+  font-size: 2.5rem;
+  @media all and(min-width: 500px) {
+    font-size: 3rem;
+  }
+  font-weight: 900;
+  color: $text;
+  text-transform: uppercase;
+  padding: 1em 1.5em;
+  background: &light-grey;
+  border: 5px solid $grey-border;
+  border-top-left-radius: 1em;
+  border-bottom-right-radius: 1em;
+  transform-style: preserve-3d;
+  transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), background 150ms cubic-bezier(0, 0, 0.58, 1);
+  @media all and(min-width: 500px) {
     padding: 1.25em 2em;
-    background: &light-grey;
-    border: 5px solid $grey-border;
-    border-top-left-radius: 1em;
-    border-bottom-right-radius: 1em;
-    transform-style: preserve-3d;
-    transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), background 150ms cubic-bezier(0, 0, 0.58, 1);
+  }
+  &::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: $dark-grey;
+    border-radius: inherit;
+    box-shadow: 0 0 0 5px $grey-border, 0 0.625em 0 5px $grey-shadow;
+    transform: translate3d(0, 0.75em, -1em);
+    transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
+  }
+  &:hover {
+    background: $grey;
+    transform: translate(0, 0.25em);
     &::before {
-      position: absolute;
-      content: '';
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: $dark-grey;
-      border-radius: inherit;
-      box-shadow: 0 0 0 5px $grey-border, 0 0.625em 0 5px $grey-shadow;
-      transform: translate3d(0, 0.75em, -1em);
-      transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
+      box-shadow: 0 0 0 5px $grey-border, 0 0.5em 0 5px $grey-shadow;
+      transform: translate3d(0, 0.5em, -1em);
     }
-    &:hover {
-      background: $grey;
-      transform: translate(0, 0.25em);
-      &::before {
-        box-shadow: 0 0 0 5px $grey-border, 0 0.5em 0 5px $grey-shadow;
-        transform: translate3d(0, 0.5em, -1em);
-      }
+  }
+  //this fixes problem with hover on mobile devices, by apply hover style constantly
+  @media all and(max-width: 415px) {
+    background: $grey;
+    transform: translate(0, 0.25em);
+    &::before {
+      box-shadow: 0 0 0 5px $grey-border, 0 0.5em 0 5px $grey-shadow;
+      transform: translate3d(0, 0.5em, -1em);
     }
-    &:active {
-      background: $grey;
-      transform: translate(0em, 0.75em);
-      &::before {
-        box-shadow: 0 0 0 5px $grey-border, 0 0 $grey-shadow;
-        transform: translate3d(0, 0, -1em);
-      }
+  }
+  &:active {
+    background: $grey;
+    transform: translate(0em, 0.75em);
+    &::before {
+      box-shadow: 0 0 0 5px $grey-border, 0 0 $grey-shadow;
+      transform: translate3d(0, 0, -1em);
     }
   }
 }
@@ -219,6 +254,15 @@ button.generate-card{
       transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
     }
     &:hover {
+      background: $grey;
+      transform: translate(0, 0.25em);
+      &::before {
+        box-shadow: 0 0 0 5px $grey-border, 0 0.5em 0 5px $grey-shadow;
+        transform: translate3d(0, 0.5em, -1em);
+      }
+    }
+  //this fixes problem with hover on mobile devices, by apply hover style constantly
+    @media all and(max-width: 415px){
       background: $grey;
       transform: translate(0, 0.25em);
       &::before {
@@ -285,13 +329,7 @@ button.generate-card{
   position: relative;
 }
 
-.new-card {
-  .delete-card {
-    button {
-      font-size: 2rem;
-    }
-  }
-}
+
 .delete-card {
   text-align: right;
   button {
@@ -308,16 +346,24 @@ button.generate-card{
   circle{
     transition: transform 150ms cubic-bezier(0, 0, 0.58, 1);
   }
+  //floats and shrinks the paint color controls
+  @media all and (max-width: 600px) {
+    position: fixed;
+    top: 80vh;
+    right: 30vw;
+    svg {
+      transform: scale(.7);
+      opacity: .7;
+      padding-top: 1rem;
+      background: #fff;
+      border: 3px solid #fff;
+      border-radius: 10px;
+      z-index: 1;
+    }
+    .rainbow-square {
+      transform: scale(1);
+    }
+  }
 }
 
-@keyframes go-splatter {
-  from {
-    transform: translateX(0);
-      }
-}
 
-/* .new-card .card-splatters svg {
-  animation-name: go-splatter;
-  animation-duration: .25s;
-  animation-iteration-count: 1;
-} */
