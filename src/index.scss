@@ -88,6 +88,15 @@ $paint-splatter-idea-5: #F2784B;
       &-button {
         text-align: center;
       }
+      &-small-ones {
+        padding: 1rem 2rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        @media all and(min-width: 600px){
+          justify-content: space-between;
+        }
+      }
     }
   }
   &-right {
@@ -97,6 +106,7 @@ $paint-splatter-idea-5: #F2784B;
     }
   }
 }
+
 
 svg {
   position: absolute;
@@ -213,7 +223,7 @@ button.generate-card{
 .main-display-right-controls {
   text-align: center;
 }
-.main-display-right-controls button{
+.main-display-right-controls button, .help-button button{
   position: relative;
   display: inline-block;
   cursor: pointer;
@@ -225,7 +235,7 @@ button.generate-card{
   font-family: inherit;
   margin-bottom: 4rem;
   font-size: 1.5rem;
-  &.sort-cards {
+  &.sort-cards, &.help {
     font-weight: 900;
     color: $text;
     text-transform: uppercase;
@@ -341,8 +351,7 @@ button.generate-card{
 }
 
 .color-switch {
-  margin: 3rem 3rem;
-  padding-bottom: 8rem;
+  margin-top: 1rem;
   circle{
     transition: transform 150ms cubic-bezier(0, 0, 0.58, 1);
   }
@@ -368,7 +377,7 @@ button.generate-card{
 
 .welcome {
   display: block;
-  opacity: .9;
+  opacity: .95;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -381,7 +390,7 @@ button.generate-card{
   border-radius: 2em 0 2em 0;
   box-shadow: 0px 20px 0 $grey-shadow;
   z-index: 1;
-  padding: 1rem;
+  padding: 1rem 2rem;
   font-size: 1rem;
   h1 {
     margin-top: 0;

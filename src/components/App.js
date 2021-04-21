@@ -221,11 +221,20 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
                 options={options}
                 onUpdate={onFormUpdate}
               />
-              <div className="color-switch"
-                onClick={() => handleSwitchChange()}>
-                <ColorSwitch
-                  palette={colorPalette}
-                />
+              <div className="main-display-left-controls-small-ones">
+                <div className="color-switch"
+                  onClick={() => handleSwitchChange()}>
+                  <ColorSwitch
+                    palette={colorPalette}
+                  />
+                </div>
+                <div className="help-button">
+                  <button
+                    type="button"
+                    className="help"
+                    onClick={() => togglePopup()}
+                    >help</button>
+                </div>
               </div>
             </div>
           </div>
@@ -238,7 +247,8 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
               className="sort-cards"
               type="button"
               onClick={() => sortCards()}>
-                Sort Cards </button>
+                Sort Cards
+            </button>
           </div>
           <section className="card-inventory">
             {cardInventory[1] ? cardInventory.filter( card => card.tag !== 'firstCard').map( (item) =>
@@ -253,7 +263,6 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
               />
               ) : ''}
           </section>
-        <button type="button" onClick={() => togglePopup()}>help</button>
         </div>
       </div>
     </main>
