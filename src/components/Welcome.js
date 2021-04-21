@@ -24,7 +24,6 @@ function useOutsideAlerter(ref, togglePopup) {
 const Welcome = props => {
     const wrapperRef = useRef(null);
     var popupStyle = props.welcomeState ? {display: "block"} : {display: "none"}
-    var toots = props.welcomeState;
     useOutsideAlerter(wrapperRef, props.togglePopup);
 
     return (
@@ -35,11 +34,11 @@ const Welcome = props => {
             <h1>Need a gamertag?</h1>
             <p><strong>Gamertag Brain Tsunami</strong> will help you find the perfect one.</p>
             <h2>Get Started</h2>
-            <p>Press the <strong>CREATE</strong> button to make a new tag. Make as many as you like, we'll help you keep track of which works best.</p>
+            <p>Press the <strong>CREATE</strong> button to make a new tag. Make as many as you like.</p>
             <h2>Rate, Delete, & Sort</h2>
             <p>Click on <span className="stars"><RenderStars deadStars={true} /></span> to rate the tag.</p>
             <p>Change your mind? You can click on the <span className="stars"><RenderStars deadStars={true} /></span>'s in the inventory too. </p>
-            <p>Not vibing with a tag? Click the <strong>&#10005;</strong> in the top right corner of each card and delete it.</p>
+            <p>Don't <em>vibe</em> with a tag? Click the <strong>&#10005;</strong> in the top right corner of its card.</p>
             <p> Click <strong>SORT</strong> to list your tags from high to low.</p>
             <h2>Pick Yo Paint</h2>
             <p>Use the toggle switch to choose between black, red, and multi-colored paint splatters.</p>
