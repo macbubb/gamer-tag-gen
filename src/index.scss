@@ -356,13 +356,12 @@ button.generate-card{
     transition: transform 150ms cubic-bezier(0, 0, 0.58, 1);
   }
   //floats and shrinks the paint color controls
-  @media all and (max-width: 600px) {
     position: fixed;
-    top: 80vh;
-    right: 30vw;
+    bottom: 120px;
+    right: 170px;
     svg {
       transform: scale(.7);
-      opacity: .7;
+      opacity: .9;
       padding-top: 1rem;
       background: #fff;
       border: 3px solid #fff;
@@ -371,8 +370,14 @@ button.generate-card{
     }
     .rainbow-square {
       transform: scale(1);
-    }
   }
+}
+
+.help-button {
+  transform: scale(.5);
+  position: fixed;
+  bottom: -23px;
+  left: 0px;
 }
 
 .welcome {
@@ -381,8 +386,8 @@ button.generate-card{
   position: fixed;
   top: 50%;
   left: 50%;
-  margin-top: -40vh;
-  margin-left: -40vw;
+  margin-top: -45vh;
+  margin-left: -45vw;
   height: 80vh;
   width: 80vw;
   background: #fff;
@@ -413,6 +418,9 @@ button.generate-card{
     fill: #BF1120;
   }
   @media all and (min-width: 550px) {
+    margin-top: -45vh;
+    margin-left: -45vw;
+    height: 80vh;
     font-size: 1.5rem;
     h1 {
       margin-top: 0;
