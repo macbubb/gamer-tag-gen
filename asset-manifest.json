@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/gamer-tag-gen/static/css/main.669407f5.chunk.css",
+    "main.css": "/gamer-tag-gen/static/css/main.c631f493.chunk.css",
     "main.js": "/gamer-tag-gen/static/js/main.5cdeec2c.chunk.js",
     "main.js.map": "/gamer-tag-gen/static/js/main.5cdeec2c.chunk.js.map",
     "runtime-main.js": "/gamer-tag-gen/static/js/runtime-main.efb57e53.js",
@@ -10,13 +10,13 @@
     "static/js/3.d6bdcf6f.chunk.js": "/gamer-tag-gen/static/js/3.d6bdcf6f.chunk.js",
     "static/js/3.d6bdcf6f.chunk.js.map": "/gamer-tag-gen/static/js/3.d6bdcf6f.chunk.js.map",
     "index.html": "/gamer-tag-gen/index.html",
-    "static/css/main.669407f5.chunk.css.map": "/gamer-tag-gen/static/css/main.669407f5.chunk.css.map",
+    "static/css/main.c631f493.chunk.css.map": "/gamer-tag-gen/static/css/main.c631f493.chunk.css.map",
     "static/js/2.70effc53.chunk.js.LICENSE.txt": "/gamer-tag-gen/static/js/2.70effc53.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.efb57e53.js",
     "static/js/2.70effc53.chunk.js",
-    "static/css/main.669407f5.chunk.css",
+    "static/css/main.c631f493.chunk.css",
     "static/js/main.5cdeec2c.chunk.js"
   ]
 }
