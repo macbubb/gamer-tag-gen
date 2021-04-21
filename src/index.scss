@@ -395,7 +395,7 @@ button.generate-card{
   border-radius: 2em 0 2em 0;
   box-shadow: 0px 20px 0 $grey-shadow;
   z-index: 1;
-  padding: 1rem 2rem;
+  padding: 1rem 1rem;
   font-size: 1rem;
   h1 {
     margin-top: 0;
@@ -417,10 +417,16 @@ button.generate-card{
     margin-right: 0.05rem;
     fill: #BF1120;
   }
-  @media all and (min-width: 550px) {
-    margin-top: -45vh;
+  // doesn't fit well on landscape mobile screens
+/*   @media all and (orientation: landscape) and (max-height: 400px) {
+    margin-top: -200px;
     margin-left: -45vw;
-    height: 80vh;
+    h1 {font-size: 0.5rem;}
+    height: 400px;
+  } */
+  @media all and (min-width: 550px) {
+    padding: 1rem 2rem;
+
     font-size: 1.5rem;
     h1 {
       margin-top: 0;
@@ -447,6 +453,7 @@ button.generate-card{
   }
   .close {
     text-align: right;
+    margin-right: -1rem;
     button {
       border: 0;
       background-color: inherit;
