@@ -196,8 +196,15 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
       if (e.key === 'Enter') {
         makeCard();
       }
+      if (e.key === 'Escape') {
+        const newWelcomeState = { showPopup: false };
+        setWelcomeState(newWelcomeState);
+      }
     });
-  });
+    return () => {
+      window.removeEventListener();
+    };
+  }, []);
 
   const onFormUpdate = (values) => {
     const newOptions = {
