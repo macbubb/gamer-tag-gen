@@ -190,6 +190,15 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
     //makeCard();
   }, [options]);
 
+  useEffect(() => {
+    window.addEventListener('keydown', (e) => {
+      console.log(`key presseed ${e.key}`);
+      if (e.key === 'Enter') {
+        makeCard();
+      }
+    });
+  });
+
   const onFormUpdate = (values) => {
     const newOptions = {
       opts: values.opts,
