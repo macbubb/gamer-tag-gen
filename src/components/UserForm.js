@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Formik, Field, Form } from 'formik';
+import { Formik, Form } from 'formik';
 
 const UserForm = (props) => {
     useEffect(() => {
