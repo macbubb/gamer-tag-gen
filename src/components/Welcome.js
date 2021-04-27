@@ -1,35 +1,13 @@
 import React, { useRef, useEffect } from 'react';
 import RenderStars from './RenderStars';
 
-function useOutsideAlerter(ref, togglePopup) {
-  useEffect(() => {
-    /**
-     * Alert if clicked on outside of element
-     */
-    function handleClickOutside(event) {
-      if (ref.current && !ref.current.contains(event.target)) {
-        togglePopup(false);
-      }
-    }
-
-    // Bind the event listener
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      // Unbind the event listener on clean up
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [ref]);
-}
-
 const Welcome = (props) => {
-  const wrapperRef = useRef(null);
   var popupStyle = props.welcomeState
     ? { display: 'block' }
     : { display: 'none' };
-  useOutsideAlerter(wrapperRef, props.togglePopup);
 
   return (
-    <div style={popupStyle} ref={wrapperRef} className="welcome">
+    <div style={popupStyle} className="welcome">
       <div className="close">
         <button
           aria-label="Close Welcome Popup"
