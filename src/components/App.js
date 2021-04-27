@@ -153,20 +153,20 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
     const variability = 10; //how many px box corners can shift
     return [
       [
-        2 * (Math.random() - 0.5) * variability,
-        2 * (Math.random() - 0.5) * variability,
+        chopDecimal(2 * (Math.random() - 0.5) * variability, 2),
+        chopDecimal(2 * (Math.random() - 0.5) * variability, 2),
       ],
       [
-        2 * (Math.random() - 0.5) * variability,
-        2 * (Math.random() - 0.5) * variability,
+        chopDecimal(2 * (Math.random() - 0.5) * variability, 2),
+        chopDecimal(2 * (Math.random() - 0.5) * variability, 2),
       ],
       [
-        2 * (Math.random() - 0.5) * variability,
-        2 * (Math.random() - 0.5) * variability,
+        chopDecimal(2 * (Math.random() - 0.5) * variability, 2),
+        chopDecimal(2 * (Math.random() - 0.5) * variability, 2),
       ],
       [
-        2 * (Math.random() - 0.5) * variability,
-        2 * (Math.random() - 0.5) * variability,
+        chopDecimal(2 * (Math.random() - 0.5) * variability, 2),
+        chopDecimal(2 * (Math.random() - 0.5) * variability, 2),
       ],
     ];
   };
