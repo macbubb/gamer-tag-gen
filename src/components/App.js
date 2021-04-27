@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { HotKeys } from 'react-hotkeys';
 import { adjs, nouns, reviewConstants } from '../Constants';
 import '../App.css';
 import Card from './Card';
@@ -186,10 +187,6 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
     setCardInventory(newRatingInventory);
   }
 
-  useEffect(() => {
-    //makeCard();
-  }, [options]);
-
   const onFormUpdate = (values) => {
     const newOptions = {
       opts: values.opts,
@@ -239,102 +236,125 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
     setColorPalette(newPalette);
   };
 
-  const togglePopup = () => {
-    const newWelcomeState = { showPopup: !welcomeState.showPopup };
+  const togglePopup = (newPopupState) => {
+    const newWelcomeState = { showPopup: newPopupState };
     setWelcomeState(newWelcomeState);
   };
 
+  const keyMap = {
+    makeCard: 'enter',
+    rateOne: '1',
+    rateTwo: '2',
+    rateThree: '3',
+    rateFour: '4',
+    rateFive: '5',
+    help: 'h',
+    sort: 's',
+  };
+
+  const handlers = {
+    makeCard: (event) => makeCard(),
+    rateOne: () => changeStars(1, cardInventory[0].timeStamp),
+    rateTwo: () => changeStars(2, cardInventory[0].timeStamp),
+    rateThree: () => changeStars(3, cardInventory[0].timeStamp),
+    rateFour: () => changeStars(4, cardInventory[0].timeStamp),
+    rateFive: () => changeStars(5, cardInventory[0].timeStamp),
+    help: () => togglePopup(true),
+  };
+
   return (
-    <main>
-      <Welcome
-        welcomeState={welcomeState.showPopup}
-        togglePopup={togglePopup}
-      />
-      <div className="main-heading">
-        <h1>Gamertag Brain Tsunami</h1>
-      </div>
-      <div className="main-display">
-        <div className="main-display-left">
-          <div className="main-display-left-display">
-            {cardInventory[0].tag !== 'firstCard' ? (
-              <Card
-                cardScale={2}
-                palette={colorPalette}
-                cardDimensions={cardDimensions}
-                card={cardInventory[0]}
-                changeStars={changeStars}
-                newTag={true}
-                deleteCard={deleteCard}
-              />
-            ) : (
-              <div className="card new-card">
-                <div className="card-graphics">
-                  <div className="card-splatters"></div>
-                  <div className="card-frame"></div>
+    <HotKeys keyMap={keyMap} handlers={handlers}>
+      <main>
+        <Welcome
+          welcomeState={welcomeState.showPopup}
+          togglePopup={togglePopup}
+        />
+        <div className="main-heading">
+          <h1>Gamertag Brain Tsunami</h1>
+        </div>
+        <div className="main-display">
+          <div className="main-display-left">
+            <div className="main-display-left-display">
+              {cardInventory[0].tag !== 'firstCard' ? (
+                <Card
+                  cardScale={2}
+                  palette={colorPalette}
+                  cardDimensions={cardDimensions}
+                  card={cardInventory[0]}
+                  changeStars={changeStars}
+                  newTag={true}
+                  deleteCard={deleteCard}
+                />
+              ) : (
+                <div className="card new-card">
+                  <div className="card-graphics">
+                    <div className="card-splatters"></div>
+                    <div className="card-frame"></div>
+                  </div>
+                  <div className="card-info"></div>
                 </div>
-                <div className="card-info"></div>
-              </div>
-            )}
-            <div className="main-display-left-controls">
-              <div className="main-display-left-controls-button">
-                <button
-                  className="generate-card"
-                  aria-label="Generate New Gamertag"
-                  type="submit"
-                  onClick={() => makeCard()}
+              )}
+              <div className="main-display-left-controls">
+                <div className="main-display-left-controls-button">
+                  <button
+                    className="generate-card"
+                    aria-label="Generate New Gamertag"
+                    type="submit"
+                    onClick={() => makeCard()}
+                  >
+                    Create
+                  </button>
+                </div>
+                <div
+                  className="color-switch"
+                  onClick={() => handleSwitchChange()}
                 >
-                  Create
-                </button>
-              </div>
-              <div
-                className="color-switch"
-                onClick={() => handleSwitchChange()}
-              >
-                <ColorSwitch palette={colorPalette} />
-              </div>
-              <div className="help-button">
-                <button
-                  type="button"
-                  className="help"
-                  onClick={() => togglePopup()}
-                >
-                  help
-                </button>
+                  <ColorSwitch palette={colorPalette} />
+                </div>
+                <div className="help-button">
+                  <button
+                    type="button"
+                    className="help"
+                    onClick={() => togglePopup(true)}
+                  >
+                    help
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="main-display-right">
-          <h2>Inventory</h2>
-          <div className="main-display-right-controls">
-            <button
-              className="sort-cards"
-              type="button"
-              onClick={() => sortCards()}
-            >
-              Sort Cards
-            </button>
+          <div className="main-display-right">
+            <h2>Inventory</h2>
+            <div className="main-display-right-controls">
+              <button
+                className="sort-cards"
+                type="button"
+                onClick={() => sortCards()}
+              >
+                Sort Cards
+              </button>
+            </div>
+            <section className="card-inventory">
+              {cardInventory[1]
+                ? cardInventory
+                    .filter((card) => card.tag !== 'firstCard')
+                    .map((item) => (
+                      <Card
+                        cardScale={1}
+                        palette={colorPalette}
+                        cardDimensions={cardDimensions}
+                        key={item.timeStamp}
+                        card={item}
+                        changeStars={changeStars}
+                        deleteCard={deleteCard}
+                      />
+                    ))
+                : ''}
+            </section>
           </div>
-          <section className="card-inventory">
-            {cardInventory[1]
-              ? cardInventory
-                  .filter((card) => card.tag !== 'firstCard')
-                  .map((item) => (
-                    <Card
-                      cardScale={1}
-                      palette={colorPalette}
-                      cardDimensions={cardDimensions}
-                      key={item.timeStamp}
-                      card={item}
-                      changeStars={changeStars}
-                      deleteCard={deleteCard}
-                    />
-                  ))
-              : ''}
-          </section>
         </div>
-      </div>
-    </main>
+      </main>
+    </HotKeys>
   );
 }
 
