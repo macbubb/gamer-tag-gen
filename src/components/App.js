@@ -219,21 +219,8 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
     setCardInventory(sortedInventory);
   };
 
-  const handleSwitchChange = () => {
-    const newColor = (oldColor) => {
-      switch (oldColor) {
-        case 1:
-          return 2;
-        case 2:
-          return 3;
-        case 3:
-          return 1;
-        default:
-          console.log('Something has gone wrong in handleSwitchChange.');
-      }
-    };
-    const newPalette = newColor(colorPalette);
-    setColorPalette(newPalette);
+  const handleSwitchChange = (newColor) => {
+    setColorPalette(newColor);
   };
 
   const togglePopup = (newPopupState) => {
@@ -263,98 +250,97 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
   };
 
   return (
-    <HotKeys keyMap={keyMap} handlers={handlers}>
-      <main>
-        <Welcome
-          welcomeState={welcomeState.showPopup}
-          togglePopup={togglePopup}
-        />
-        <div className="main-heading">
-          <h1>Gamertag Brain Tsunami</h1>
-        </div>
-        <div className="main-display">
-          <div className="main-display-left">
-            <div className="main-display-left-display">
-              {cardInventory[0].tag !== 'firstCard' ? (
-                <Card
-                  cardScale={2}
-                  palette={colorPalette}
-                  cardDimensions={cardDimensions}
-                  card={cardInventory[0]}
-                  changeStars={changeStars}
-                  newTag={true}
-                  deleteCard={deleteCard}
-                />
-              ) : (
-                <div className="card new-card">
-                  <div className="card-graphics">
-                    <div className="card-splatters"></div>
-                    <div className="card-frame"></div>
-                  </div>
-                  <div className="card-info"></div>
+    <main>
+      <HotKeys keyMap={keyMap} handlers={handlers}></HotKeys>
+      <Welcome
+        welcomeState={welcomeState.showPopup}
+        togglePopup={togglePopup}
+      />
+      <div className="main-heading">
+        <h1>Gamertag Brain Tsunami</h1>
+      </div>
+      <div className="main-display">
+        <div className="main-display-left">
+          <div className="main-display-left-display">
+            {cardInventory[0].tag !== 'firstCard' ? (
+              <Card
+                cardScale={2}
+                palette={colorPalette}
+                cardDimensions={cardDimensions}
+                card={cardInventory[0]}
+                changeStars={changeStars}
+                newTag={true}
+                deleteCard={deleteCard}
+              />
+            ) : (
+              <div className="card new-card">
+                <div className="card-graphics">
+                  <div className="card-splatters"></div>
+                  <div className="card-frame"></div>
                 </div>
-              )}
-              <div className="main-display-left-controls">
-                <div className="main-display-left-controls-button">
-                  <button
-                    className="generate-card"
-                    aria-label="Generate New Gamertag"
-                    type="submit"
-                    onClick={() => makeCard()}
-                  >
-                    Create
-                  </button>
-                </div>
-                <div
-                  className="color-switch"
-                  onClick={() => handleSwitchChange()}
+                <div className="card-info"></div>
+              </div>
+            )}
+            <div className="main-display-left-controls">
+              <div className="main-display-left-controls-button">
+                <button
+                  className="generate-card"
+                  aria-label="Generate New Gamertag"
+                  type="submit"
+                  onClick={() => makeCard()}
                 >
-                  <ColorSwitch palette={colorPalette} />
-                </div>
-                <div className="help-button">
-                  <button
-                    type="button"
-                    className="help"
-                    onClick={() => togglePopup(true)}
-                  >
-                    help
-                  </button>
-                </div>
+                  Create
+                </button>
+              </div>
+              <div className="color-switch">
+                <ColorSwitch
+                  palette={colorPalette}
+                  handleSwitchChange={handleSwitchChange}
+                />
+              </div>
+              <div className="help-button">
+                <button
+                  type="button"
+                  className="help"
+                  onClick={() => togglePopup(true)}
+                >
+                  help
+                </button>
               </div>
             </div>
           </div>
-          <div className="main-display-right">
-            <h2>Inventory</h2>
-            <div className="main-display-right-controls">
-              <button
-                className="sort-cards"
-                type="button"
-                onClick={() => sortCards()}
-              >
-                Sort Cards
-              </button>
-            </div>
-            <section className="card-inventory">
-              {cardInventory[1]
-                ? cardInventory
-                    .filter((card) => card.tag !== 'firstCard')
-                    .map((item) => (
-                      <Card
-                        cardScale={1}
-                        palette={colorPalette}
-                        cardDimensions={cardDimensions}
-                        key={item.timeStamp}
-                        card={item}
-                        changeStars={changeStars}
-                        deleteCard={deleteCard}
-                      />
-                    ))
-                : ''}
-            </section>
-          </div>
         </div>
-      </main>
-    </HotKeys>
+        <div className="main-display-right">
+          <h2>Inventory</h2>
+          <div className="main-display-right-controls">
+            <button
+              className="sort-cards"
+              type="button"
+              onClick={() => sortCards()}
+            >
+              Sort Cards
+            </button>
+          </div>
+          <section className="card-inventory">
+            {cardInventory[1]
+              ? cardInventory
+                  .filter((card) => card.tag !== 'firstCard')
+                  .map((item) => (
+                    <Card
+                      cardScale={1}
+                      palette={colorPalette}
+                      cardDimensions={cardDimensions}
+                      key={item.timeStamp}
+                      card={item}
+                      changeStars={changeStars}
+                      deleteCard={deleteCard}
+                    />
+                  ))
+              : ''}
+          </section>
+        </div>
+      </div>
+    </main>
   );
 }
 
