@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { HotKeys } from 'react-hotkeys';
 import { adjs, nouns, reviewConstants } from '../Constants';
+import useKeyboardShortcut from './useKeyboardShortcut';
 import '../App.css';
 import Card from './Card';
 import {
@@ -228,7 +229,45 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
     setWelcomeState(newWelcomeState);
   };
 
-  const keyMap = {
+  useKeyboardShortcut(
+    ['Shift', 'H'],
+    () => console.log('Shift + H has been pressed.'),
+    { overrideSystem: false }
+  );
+
+  useKeyboardShortcut(['Enter'], () => makeCard(), { overrideSystem: false });
+
+  useKeyboardShortcut(['H'], () => togglePopup(!welcomeState.showPopup), {
+    overrideSystem: false,
+  });
+
+  useKeyboardShortcut(['S'], () => sortCards(), { overrideSystem: false });
+
+  useKeyboardShortcut(['1'], () => changeStars(1, cardInventory[0].timeStamp), {
+    overrideSystem: false,
+  });
+
+  useKeyboardShortcut(['2'], () => changeStars(2, cardInventory[0].timeStamp), {
+    overrideSystem: false,
+  });
+
+  useKeyboardShortcut(['3'], () => changeStars(3, cardInventory[0].timeStamp), {
+    overrideSystem: false,
+  });
+
+  useKeyboardShortcut(['4'], () => changeStars(4, cardInventory[0].timeStamp), {
+    overrideSystem: false,
+  });
+
+  useKeyboardShortcut(['5'], () => changeStars(5, cardInventory[0].timeStamp), {
+    overrideSystem: false,
+  });
+
+  useKeyboardShortcut(['Escape'], () => togglePopup(false), {
+    overrideSystem: false,
+  });
+
+  /*   const keyMap = {
     makeCard: 'enter',
     rateOne: '1',
     rateTwo: '2',
@@ -247,7 +286,7 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
     rateFour: () => changeStars(4, cardInventory[0].timeStamp),
     rateFive: () => changeStars(5, cardInventory[0].timeStamp),
     help: () => togglePopup(true),
-  };
+  }; */
 
   return (
     <main>
@@ -258,89 +297,91 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
       <div className="main-heading">
         <h1>Gamertag Brain Tsunami</h1>
       </div>
-      <HotKeys keyMap={keyMap} handlers={handlers}>
-        <div className="main-display">
-          <div className="main-display-left">
-            <div className="main-display-left-display">
-              {cardInventory[0].tag !== 'firstCard' ? (
-                <Card
-                  cardScale={2}
+      {/*       <HotKeys keyMap={keyMap} handlers={handlers}>
+       */}{' '}
+      <div className="main-display">
+        <div className="main-display-left">
+          <div className="main-display-left-display">
+            {cardInventory[0].tag !== 'firstCard' ? (
+              <Card
+                cardScale={2}
+                palette={colorPalette}
+                cardDimensions={cardDimensions}
+                card={cardInventory[0]}
+                changeStars={changeStars}
+                newTag={true}
+                deleteCard={deleteCard}
+              />
+            ) : (
+              <div className="card new-card">
+                <div className="card-graphics">
+                  <div className="card-splatters"></div>
+                  <div className="card-frame"></div>
+                </div>
+                <div className="card-info"></div>
+              </div>
+            )}
+            <div className="main-display-left-controls">
+              <div className="main-display-left-controls-button">
+                <button
+                  className="generate-card"
+                  aria-label="Generate New Gamertag"
+                  type="submit"
+                  onClick={() => makeCard()}
+                >
+                  Create
+                </button>
+              </div>
+              <div className="color-switch">
+                <ColorSwitch
                   palette={colorPalette}
-                  cardDimensions={cardDimensions}
-                  card={cardInventory[0]}
-                  changeStars={changeStars}
-                  newTag={true}
-                  deleteCard={deleteCard}
+                  handleSwitchChange={handleSwitchChange}
                 />
-              ) : (
-                <div className="card new-card">
-                  <div className="card-graphics">
-                    <div className="card-splatters"></div>
-                    <div className="card-frame"></div>
-                  </div>
-                  <div className="card-info"></div>
-                </div>
-              )}
-              <div className="main-display-left-controls">
-                <div className="main-display-left-controls-button">
-                  <button
-                    className="generate-card"
-                    aria-label="Generate New Gamertag"
-                    type="submit"
-                    onClick={() => makeCard()}
-                  >
-                    Create
-                  </button>
-                </div>
-                <div className="color-switch">
-                  <ColorSwitch
-                    palette={colorPalette}
-                    handleSwitchChange={handleSwitchChange}
-                  />
-                </div>
-                <div className="help-button">
-                  <button
-                    type="button"
-                    className="help"
-                    onClick={() => togglePopup(true)}
-                  >
-                    help
-                  </button>
-                </div>
+              </div>
+              <div className="help-button">
+                <button
+                  type="button"
+                  className="help"
+                  onClick={() => togglePopup(true)}
+                >
+                  help
+                </button>
               </div>
             </div>
           </div>
-          <div className="main-display-right">
-            <h2>Inventory</h2>
-            <div className="main-display-right-controls">
-              <button
-                className="sort-cards"
-                type="button"
-                onClick={() => sortCards()}
-              >
-                Sort Cards
-              </button>
-            </div>
-            <section className="card-inventory">
-              {cardInventory[1]
-                ? cardInventory
-                    .filter((card) => card.tag !== 'firstCard')
-                    .map((item) => (
-                      <Card
-                        cardScale={1}
-                        palette={colorPalette}
-                        cardDimensions={cardDimensions}
-                        key={item.timeStamp}
-                        card={item}
-                        changeStars={changeStars}
-                        deleteCard={deleteCard}
-                      />
-                    ))
-                : ''}
-            </section>
-          </div>
         </div>
-      </HotKeys>
+        <div className="main-display-right">
+          <h2>Inventory</h2>
+          <div className="main-display-right-controls">
+            <button
+              className="sort-cards"
+              type="button"
+              onClick={() => sortCards()}
+            >
+              Sort Cards
+            </button>
+          </div>
+          <section className="card-inventory">
+            {cardInventory[1]
+              ? cardInventory
+                  .filter((card) => card.tag !== 'firstCard')
+                  .map((item) => (
+                    <Card
+                      cardScale={1}
+                      palette={colorPalette}
+                      cardDimensions={cardDimensions}
+                      key={item.timeStamp}
+                      card={item}
+                      changeStars={changeStars}
+                      deleteCard={deleteCard}
+                    />
+                  ))
+              : ''}
+          </section>
+        </div>
+      </div>
+      {/*       </HotKeys>
+       */}{' '}
     </main>
   );
 }
