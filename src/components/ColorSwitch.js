@@ -111,6 +111,7 @@ function ColorSwitch(props) {
       <a
         onClick={() => handleSwitchChange(1)}
         cursor="pointer"
+        href="#root"
         pointer-events="all"
       >
         <path
@@ -128,6 +129,7 @@ function ColorSwitch(props) {
       <a
         onClick={() => handleSwitchChange(2)}
         cursor="pointer"
+        href="#root"
         pointer-events="all"
       >
         <path
@@ -146,6 +148,7 @@ function ColorSwitch(props) {
         onClick={() => handleSwitchChange(3)}
         cursor="pointer"
         pointer-events="all"
+        href="#root"
       >
         <path
           stroke="none"

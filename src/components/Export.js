@@ -53,7 +53,7 @@ const Export = (props) => {
           className="export-card-button-menu-download"
           cursor="pointer"
           pointer-events="all"
-          onClick={() => copyToClipboard()}
+          onClick={() => takeScreenShot()}
         >
           <AiOutlineDownload />
         </div>
@@ -61,7 +61,7 @@ const Export = (props) => {
           className="export-card-button-menu-clipboard"
           cursor="pointer"
           pointer-events="all"
-          onClick={() => takeScreenShot()}
+          onClick={() => copyToClipboard()}
         >
           <HiOutlineClipboardCopy />
         </div>

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { HotKeys } from 'react-hotkeys';
 import { adjs, nouns, reviewConstants } from '../Constants';
 import useKeyboardShortcut from './useKeyboardShortcut';
 import '../App.css';
@@ -188,7 +187,8 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
     setCardInventory(newRatingInventory);
   }
 
-  const onFormUpdate = (values) => {
+  //don't need until/if i implement form and options
+  /* const onFormUpdate = (values) => {
     const newOptions = {
       opts: values.opts,
       addNum: values.addNum,
@@ -197,7 +197,7 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
     };
     setOptions(newOptions);
   };
-
+ */
   useEffect(() => {
     reviewConstants();
   }, []); //passing empty array as dependency triggers effect on first load only, as it does not have a dependency

@@ -27,21 +27,21 @@ const useKeyboardShortcut = (shortcutKeys, callback, options) => {
 
   if (!shortcutKeys.length)
     throw new Error(
-      'The first parameter to `useKeyboardShortcut` must contain atleast one `KeyboardEvent.key` string.'
+      'The first parameter to `useKeyboardShortcut` must contain a tleast one `KeyboardEvent.key` string.'
     );
 
   if (!callback || typeof callback !== 'function')
     throw new Error(
-      'The second parameter to `useKeyboardShortcut` must be a function that will be envoked when the keys are pressed.'
+      'The second parameter to `useKeyboardShortcut` must be a function that will be invoked when the keys are pressed.'
     );
 
   const { overrideSystem } = options || {};
-  const initalKeyMapping = shortcutKeys.reduce((currentKeys, key) => {
+  const initialKeyMapping = shortcutKeys.reduce((currentKeys, key) => {
     currentKeys[key.toLowerCase()] = false;
     return currentKeys;
   }, {});
 
-  const [keys, setKeys] = useReducer(keysReducer, initalKeyMapping);
+  const [keys, setKeys] = useReducer(keysReducer, initialKeyMapping);
 
   const keydownListener = useCallback(
     (assignedKey) => (keydownEvent) => {
@@ -85,7 +85,7 @@ const useKeyboardShortcut = (shortcutKeys, callback, options) => {
   useEffect(() => {
     if (!Object.values(keys).filter((value) => !value).length) {
       callback(keys);
-      setKeys({ type: 'reset-keys', data: initalKeyMapping });
+      setKeys({ type: 'reset-keys', data: initialKeyMapping });
     } else {
       setKeys({ type: null });
     }
