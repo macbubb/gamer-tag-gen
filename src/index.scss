@@ -29,7 +29,7 @@ $paint-splatter-idea-5: #f2784b;
     text-align: left;
     font-style: italic;
     font-size: 13vw;
-    color: white;
+    color: $bg;
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: -0.3rem;
@@ -50,7 +50,7 @@ $paint-splatter-idea-5: #f2784b;
     font-style: italic;
     font-size: 2rem;
     background-color: black;
-    color: white;
+    color: $bg;
     padding: 1rem 1.5rem;
     text-transform: uppercase;
   }
@@ -149,11 +149,8 @@ svg {
   }
   .export-card {
     svg {
-      padding: 0.75rem 0rem 0rem 3rem;
+      //margin: 0.75rem 0rem 0rem 3rem;
       font-size: 2.25rem;
-      &:hover {
-        stroke: $grey-shadow;
-      }
     }
   }
 }
@@ -164,7 +161,7 @@ button.generate-card {
   cursor: pointer;
   outline: none;
   border: 0;
-  background: &light-grey;
+  background: $light-grey;
   vertical-align: middle;
   text-decoration: none;
   font-size: inherit;
@@ -347,16 +344,68 @@ button.generate-card {
         position: static;
       }
     }
+    &-buttons {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
   }
   .export-card {
     font-size: 1.25rem;
     transition: color 150ms cubic-bezier(0, 0, 0.58, 1);
+    button {
+      margin-left: 2.25rem;
+      margin-top: 1rem;
+    }
     svg {
+      z-index: 1;
+      position: relative;
       transition: color 150ms cubic-bezier(0, 0, 0.58, 1);
-      padding-left: 1.25rem;
-      padding-top: 0.25rem;
+      //padding-left: 1.25rem;
+      //padding-top: 0.25rem;
+      &:hover {
+        color: $black;
+      }
     }
   }
+}
+.export-card-button-menu {
+  color: $black;
+  font-size: 2.25rem;
+  opacity: 0.8;
+  top: -15px;
+  left: 20px;
+  position: absolute;
+  background-color: $bg;
+  padding: 0.25rem 0.5rem;
+  border: 5px solid #000;
+  border-radius: 1rem 0 1rem 0;
+  margin-bottom: 100px;
+  transition: color display 150ms linear;
+  animation: open-export-menu 0.5s 1;
+  svg {
+    z-index: 1;
+    padding: 0.15rem !important;
+    position: relative;
+  }
+}
+@keyframes open-export-menu {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.8;
+  }
+}
+.arrow-down {
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  bottom: -15px;
+  left: 29px;
+  border-top: 10px solid $black;
 }
 
 .card-info,
@@ -364,7 +413,8 @@ button.generate-card {
   position: relative;
 }
 
-.delete-card {
+.delete-card,
+.export-card {
   text-align: right;
   button {
     border: 0;
@@ -381,7 +431,7 @@ button.generate-card {
   }
   //floats and shrinks the paint color controls
   position: fixed;
-  bottom: 120px;
+  bottom: 110px;
   right: 170px;
   svg {
     transform: scale(0.7);
@@ -417,7 +467,7 @@ button.generate-card {
   background: #fff;
   border: 5px solid #000;
   border-radius: 2em 0 2em 0;
-  box-shadow: 0px 20px 0 $grey-shadow;
+  box-shadow: 0px 10px 0 $grey-shadow;
   z-index: 1;
   padding: 1rem 1rem;
   font-size: 1rem;
@@ -485,4 +535,13 @@ button.generate-card {
       font-weight: 900;
     }
   }
+}
+
+.arrow-up {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+
+  border-bottom: 5px solid black;
 }

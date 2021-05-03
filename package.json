@@ -19,7 +19,6 @@
     "react-hotkeys": "^2.0.0-pre9",
     "react-icons": "^4.2.0",
     "react-inline-transition-group": "^2.2.1",
-    "react-native-popup-menu": "^0.15.10",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.0.1"
   },

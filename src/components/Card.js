@@ -11,7 +11,9 @@ const Card = (props) => {
   const stars = props.card.stars;
   const changeStars = props.changeStars;
   const deleteCard = props.deleteCard;
-  const cardClass = props.newTag ? 'card new-card' : 'card';
+  const cardClass = props.newTag
+    ? 'card new-card ' + item.tag
+    : 'card ' + item.tag;
   const splatters = props.card.splatters;
   const cardScale = props.cardScale;
   const frameOffset = props.card.frameOffset;
@@ -45,13 +47,11 @@ const Card = (props) => {
   const [exportIconColor, setExportIconColor] = useState('#d9d9d9');
 
   const handleMouseEnter = () => {
-    console.log('hi');
-    const darkExportIconColor = '#8c8c8c';
+    const darkExportIconColor = '#666666';
     setExportIconColor(darkExportIconColor);
   };
 
   const handleMouseLeave = () => {
-    console.log('bye');
     setExportIconColor('#d9d9d9');
   };
 
@@ -110,9 +110,9 @@ const Card = (props) => {
       <div className="card-info">
         {' '}
         {/* look into CSS and making styles uniform and scalable with scale property */}
-        <div className="card-info-buttons">
+        <div data-html2canvas-ignore className="card-info-buttons">
           <div className="export-card">
-            <Export exportIconColor={exportIconColor} />
+            <Export exportIconColor={exportIconColor} tag={item.tag} />
           </div>
           <div className="delete-card">
             <button
