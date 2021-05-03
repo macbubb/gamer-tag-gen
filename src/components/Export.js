@@ -22,7 +22,7 @@ const Export = (props) => {
   };
 
   const takeScreenShot = () => {
-    html2canvas(document.querySelector(`.${tag}`), {}).then((canvas) => {
+    html2canvas(document.querySelector(`#root`), {}).then((canvas) => {
       canvas.toBlob((blob) => {
         var file = new File([blob], 'test.png', {
           type: 'application/octet-stream',

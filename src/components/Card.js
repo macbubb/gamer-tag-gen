@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import RenderSplatters from './RenderSplatters';
 import RenderStars from './RenderStars';
 import RenderCardFrame from './RenderCardFrame';
-import html2canvas from 'html2canvas';
 import Export from './Export';
 
 //will change to Card will render splattes with separate function and overlay tags and interface
