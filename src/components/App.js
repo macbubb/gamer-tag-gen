@@ -43,14 +43,6 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
     setCardInventory([card, ...cardInventory]);
   };
 
-  //maxLength is the maximum number of characters allowed in a tag
-  const [options, setOptions] = useState({
-    opts: 'bothCaps',
-    addNum: false,
-    numDigitCount: '',
-    maxLength: 15,
-  });
-
   const makeCard = () => {
     //create tag, splatters, frame corner offset for each card
     const cardTag = makeTag();
@@ -112,34 +104,23 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
   };
 
   const makeTag = () => {
-    const randomAdjIndex = Math.floor(Math.random() * adjs.length);
-    const randomNounIndex = Math.floor(Math.random() * nouns.length);
-    const newTagOpts = options.opts;
+    const maxTagLength = 15;
+    var randomAdjIndex = Math.floor(Math.random() * adjs.length);
+    var randomNounIndex = Math.floor(Math.random() * nouns.length);
     var timeStamp = Date.now();
     var roughDraftTag = 'abcdefghijklmnopqrstuvwxyzabcd';
     var newAdj = adjs[randomAdjIndex];
     var newNoun = nouns[randomNounIndex];
-    const numberPostFix = options.addNum
-      ? Math.floor(Math.random() * 10 ** options.numDigitCount)
-      : null;
-    // bothCaps leave noun and adj alone
-    // frontCap make noun lower case
-    // allCaps make noun and adj uppercase
-    while (roughDraftTag.length > options.maxLength) {
-      switch (newTagOpts) {
-        case 'frontCap':
-          roughDraftTag = newAdj + newNoun.toLowerCase();
-          break;
-        case 'allCaps':
-          roughDraftTag = newAdj.toUpperCase() + newNoun.toUpperCase();
-          break;
-        default:
-          roughDraftTag = newAdj + newNoun;
-      }
+
+    while (newAdj.length + newNoun.length > maxTagLength) {
+      randomAdjIndex = Math.floor(Math.random() * adjs.length);
+      randomNounIndex = Math.floor(Math.random() * nouns.length);
+      newAdj = adjs[randomAdjIndex];
+      newNoun = nouns[randomNounIndex];
     }
-    roughDraftTag = numberPostFix
-      ? roughDraftTag + numberPostFix
-      : roughDraftTag;
+
+    roughDraftTag = newAdj + newNoun;
+
     const finalNewTag = {
       timeStamp: timeStamp,
       tag: roughDraftTag,
@@ -187,17 +168,6 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
     setCardInventory(newRatingInventory);
   }
 
-  //don't need until/if i implement form and options
-  /* const onFormUpdate = (values) => {
-    const newOptions = {
-      opts: values.opts,
-      addNum: values.addNum,
-      numDigitCount: values.numDigitCount,
-      maxLength: 15,
-    };
-    setOptions(newOptions);
-  };
- */
   useEffect(() => {
     reviewConstants();
   }, []); //passing empty array as dependency triggers effect on first load only, as it does not have a dependency
