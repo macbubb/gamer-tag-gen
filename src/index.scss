@@ -108,7 +108,7 @@ $paint-splatter-idea-5: #f2784b;
 
 svg {
   position: absolute;
-  z-index: 99;
+  z-index: -1;
 }
 
 button.generate-card {
