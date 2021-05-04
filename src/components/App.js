@@ -108,9 +108,9 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
     var randomAdjIndex = Math.floor(Math.random() * adjs.length);
     var randomNounIndex = Math.floor(Math.random() * nouns.length);
     var timeStamp = Date.now();
-    var roughDraftTag = 'abcdefghijklmnopqrstuvwxyzabcd';
     var newAdj = adjs[randomAdjIndex];
     var newNoun = nouns[randomNounIndex];
+    var roughDraftTag = newAdj + newNoun;
 
     while (newAdj.length + newNoun.length > maxTagLength) {
       randomAdjIndex = Math.floor(Math.random() * adjs.length);
