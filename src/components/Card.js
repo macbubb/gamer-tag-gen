@@ -18,6 +18,7 @@ const Card = (props) => {
   const frameOffset = props.card.frameOffset;
   const { rectW, rectH, originOffset } = props.cardDimensions;
   const palette = props.palette;
+  const [showExportMenu, toggleExportMenu] = useState({ display: 'none' });
   const frameCorners = () => {
     const topLeft = [
       cardScale * (originOffset[0] + frameOffset[0][0]),
@@ -52,6 +53,7 @@ const Card = (props) => {
 
   const handleMouseLeave = () => {
     setExportIconColor('#d9d9d9');
+    toggleExportMenu({ display: 'none' });
   };
 
   let cardSplattersStyle =
@@ -111,7 +113,12 @@ const Card = (props) => {
         {/* look into CSS and making styles uniform and scalable with scale property */}
         <div data-html2canvas-ignore className="card-info-buttons">
           <div className="export-card">
-            <Export exportIconColor={exportIconColor} tag={item.tag} />
+            <Export
+              showExportMenu={showExportMenu}
+              toggleExportMenu={toggleExportMenu}
+              exportIconColor={exportIconColor}
+              tag={item.tag}
+            />
           </div>
           <div className="delete-card">
             <button

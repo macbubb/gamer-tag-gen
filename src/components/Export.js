@@ -10,8 +10,7 @@ const Export = (props) => {
   const exportIconColor = props.exportIconColor;
   const tag = props.tag;
   const exportIconStyle = { color: exportIconColor };
-  const [showExportMenu, toggleExportMenu] = useState({ display: 'none' });
-
+  const { showExportMenu, toggleExportMenu } = props;
   const handleExportMenuClick = () => {
     console.log('clicked menu');
     toggleExportMenu({ display: 'flex' });
