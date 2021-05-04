@@ -335,13 +335,13 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
             {cardInventory[1]
               ? cardInventory
                   .filter((card) => card.tag !== 'firstCard')
-                  .map((item) => (
+                  .map((card) => (
                     <Card
                       cardScale={1}
                       palette={colorPalette}
                       cardDimensions={cardDimensions}
-                      key={item.timeStamp}
-                      card={item}
+                      key={card.timeStamp}
+                      card={card}
                       changeStars={changeStars}
                       deleteCard={deleteCard}
                     />

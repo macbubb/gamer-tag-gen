@@ -6,13 +6,13 @@ import Export from './Export';
 
 //will change to Card will render splattes with separate function and overlay tags and interface
 const Card = (props) => {
-  const item = props.card;
+  const card = props.card;
   const stars = props.card.stars;
   const changeStars = props.changeStars;
   const deleteCard = props.deleteCard;
   const cardClass = props.newTag
-    ? 'card new-card ' + item.tag
-    : 'card ' + item.tag;
+    ? 'card new-card ' + card.tag
+    : 'card ' + card.tag;
   const splatters = props.card.splatters;
   const cardScale = props.cardScale;
   const frameOffset = props.card.frameOffset;
@@ -117,27 +117,27 @@ const Card = (props) => {
               showExportMenu={showExportMenu}
               toggleExportMenu={toggleExportMenu}
               exportIconColor={exportIconColor}
-              tag={item.tag}
+              tag={card.tag}
             />
           </div>
           <div className="delete-card">
             <button
               aria-label="Delete Card"
-              onClick={() => deleteCard(item.timeStamp)}
+              onClick={() => deleteCard(card.timeStamp)}
             >
               <span>&#10005;</span>
             </button>
           </div>
         </div>
         <div className="card-info-name">
-          <span>{item.tag}</span>
+          <span>{card.tag}</span>
         </div>
         <div className="stars">
           <RenderStars
             stars={stars}
             changeStars={changeStars}
             newTag={false}
-            item={item}
+            card={card}
             deadStars={false}
           />
         </div>
