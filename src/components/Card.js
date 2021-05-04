@@ -6,18 +6,12 @@ import Export from './Export';
 
 //will change to Card will render splattes with separate function and overlay tags and interface
 const Card = (props) => {
-  const card = props.card;
-  const stars = props.card.stars;
-  const changeStars = props.changeStars;
-  const deleteCard = props.deleteCard;
+  const { card, changeStars, deleteCard, cardScale, palette } = props;
+  const { stars, splatters, frameOffset } = props.card;
   const cardClass = props.newTag
     ? 'card new-card ' + card.tag
     : 'card ' + card.tag;
-  const splatters = props.card.splatters;
-  const cardScale = props.cardScale;
-  const frameOffset = props.card.frameOffset;
   const { rectW, rectH, originOffset } = props.cardDimensions;
-  const palette = props.palette;
   const [showExportMenu, toggleExportMenu] = useState({ display: 'none' });
   const frameCorners = () => {
     const topLeft = [
