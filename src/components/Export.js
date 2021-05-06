@@ -5,21 +5,33 @@ import {
   HiOutlineClipboardCopy,
   AiOutlineDownload,
   FaCheck,
-  ImCross,
 } from 'react-icons/all';
+import NewWindow from 'react-new-window';
+import Card from './Card';
 
 const Export = (props) => {
-  const { showExportMenu, toggleExportMenu, exportIconColor, tag } = props;
+  const {
+    showExportMenu,
+    toggleExportMenu,
+    exportIconColor,
+    card,
+    changeStars,
+    deleteCard,
+    cardScale,
+    cardDimensions,
+    palette,
+  } = props;
   const exportIconStyle = { color: exportIconColor };
   const handleExportMenuClick = () => {
     console.log('clicked menu');
     toggleExportMenu({ display: 'flex' });
   };
   const [copied, setCopied] = useState(false);
+  const [showWindowPortal, toggleWindowPortal] = useState(false);
 
   const copyToClipboard = () => {
     navigator.clipboard
-      .writeText(tag)
+      .writeText(card.tag)
       .then(() => {
         setCopied(true);
         console.log('copied');
@@ -62,7 +74,7 @@ const Export = (props) => {
           className="export-card-button-menu-download"
           cursor="pointer"
           pointer-events="all"
-          onClick={() => takeScreenShot()}
+          onClick={() => toggleWindowPortal(true)}
         >
           <AiOutlineDownload />
         </div>
@@ -75,6 +87,19 @@ const Export = (props) => {
           {!copied ? <HiOutlineClipboardCopy /> : <FaCheck />}
         </div>
       </div>
+      {showWindowPortal && (
+        <NewWindow onUnload={() => toggleWindowPortal(false)}>
+          <Card
+            cardScale={4}
+            palette={palette}
+            cardDimensions={cardDimensions}
+            card={card}
+            changeStars={changeStars}
+            newTag={true}
+            deleteCard={deleteCard}
+          />
+        </NewWindow>
+      )}
     </div>
   );
 };

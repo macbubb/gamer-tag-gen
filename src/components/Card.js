@@ -111,7 +111,13 @@ const Card = (props) => {
               showExportMenu={showExportMenu}
               toggleExportMenu={toggleExportMenu}
               exportIconColor={exportIconColor}
-              tag={card.tag}
+              card={card}
+              cardScale={2}
+              palette={palette}
+              cardDimensions={props.cardDimensions}
+              changeStars={changeStars}
+              newTag={true}
+              deleteCard={deleteCard}
             />
           </div>
           <div className="delete-card">
