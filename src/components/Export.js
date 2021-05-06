@@ -4,20 +4,29 @@ import {
   BiExport,
   HiOutlineClipboardCopy,
   AiOutlineDownload,
+  FaCheck,
+  ImCross,
 } from 'react-icons/all';
 
 const Export = (props) => {
-  const exportIconColor = props.exportIconColor;
-  const tag = props.tag;
+  const { showExportMenu, toggleExportMenu, exportIconColor, tag } = props;
   const exportIconStyle = { color: exportIconColor };
-  const { showExportMenu, toggleExportMenu } = props;
   const handleExportMenuClick = () => {
     console.log('clicked menu');
     toggleExportMenu({ display: 'flex' });
   };
+  const [copied, setCopied] = useState(false);
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(tag);
+    navigator.clipboard
+      .writeText(tag)
+      .then(() => {
+        setCopied(true);
+        console.log('copied');
+      })
+      .catch((err) => {
+        console.log('not copied', err);
+      });
   };
 
   const takeScreenShot = () => {
@@ -33,6 +42,7 @@ const Export = (props) => {
 
   const handleMouseLeave = () => {
     toggleExportMenu({ display: 'none' });
+    setCopied(false);
   };
 
   return (
@@ -60,9 +70,9 @@ const Export = (props) => {
           className="export-card-button-menu-clipboard"
           cursor="pointer"
           pointer-events="all"
-          onClick={() => copyToClipboard()}
+          onClick={copyToClipboard}
         >
-          <HiOutlineClipboardCopy />
+          {!copied ? <HiOutlineClipboardCopy /> : <FaCheck />}
         </div>
       </div>
     </div>
