@@ -276,6 +276,7 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
               <Card
                 cardScale={2}
                 palette={colorPalette}
+                cardType={'latest'}
                 cardDimensions={cardDimensions}
                 card={cardInventory[0]}
                 changeStars={changeStars}
@@ -338,6 +339,7 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
                   .map((card) => (
                     <Card
                       cardScale={1}
+                      cardType={'inventory'}
                       palette={colorPalette}
                       cardDimensions={cardDimensions}
                       key={card.timeStamp}

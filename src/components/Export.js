@@ -90,7 +90,8 @@ const Export = (props) => {
       {showWindowPortal && (
         <NewWindow onUnload={() => toggleWindowPortal(false)}>
           <Card
-            cardScale={4}
+            cardScale={3}
+            cardType={'export'}
             palette={palette}
             cardDimensions={cardDimensions}
             card={card}

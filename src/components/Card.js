@@ -6,7 +6,7 @@ import Export from './Export';
 
 //will change to Card will render splattes with separate function and overlay tags and interface
 const Card = (props) => {
-  const { card, changeStars, deleteCard, cardScale, palette } = props;
+  const { card, changeStars, deleteCard, cardScale, palette, cardType } = props;
   const { stars, splatters, frameOffset } = props.card;
   const cardClass = props.newTag
     ? 'card new-card ' + card.tag
