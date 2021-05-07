@@ -8,9 +8,8 @@ import Export from './Export';
 const Card = (props) => {
   const { card, changeStars, deleteCard, cardScale, palette, cardType } = props;
   const { stars, splatters, frameOffset } = props.card;
-  const cardClass = props.newTag
-    ? 'card new-card ' + card.tag
-    : 'card ' + card.tag;
+  var cardClass = 'card ' + cardType;
+
   const { rectW, rectH, originOffset } = props.cardDimensions;
   const [showExportMenu, toggleExportMenu] = useState({ display: 'none' });
   const frameCorners = () => {
@@ -105,30 +104,32 @@ const Card = (props) => {
       <div className="card-info">
         {' '}
         {/* look into CSS and making styles uniform and scalable with scale property */}
-        <div data-html2canvas-ignore className="card-info-buttons">
-          <div className="export-card">
-            <Export
-              showExportMenu={showExportMenu}
-              toggleExportMenu={toggleExportMenu}
-              exportIconColor={exportIconColor}
-              card={card}
-              cardScale={2}
-              palette={palette}
-              cardDimensions={props.cardDimensions}
-              changeStars={changeStars}
-              newTag={true}
-              deleteCard={deleteCard}
-            />
+        {cardType != 'export' ? (
+          <div data-html2canvas-ignore className="card-info-buttons">
+            <div className="export-card">
+              <Export
+                showExportMenu={showExportMenu}
+                toggleExportMenu={toggleExportMenu}
+                exportIconColor={exportIconColor}
+                card={card}
+                cardScale={2}
+                palette={palette}
+                cardDimensions={props.cardDimensions}
+                changeStars={changeStars}
+                newTag={true}
+                deleteCard={deleteCard}
+              />
+            </div>
+            <div className="delete-card">
+              <button
+                aria-label="Delete Card"
+                onClick={() => deleteCard(card.timeStamp)}
+              >
+                <span>&#10005;</span>
+              </button>
+            </div>
           </div>
-          <div className="delete-card">
-            <button
-              aria-label="Delete Card"
-              onClick={() => deleteCard(card.timeStamp)}
-            >
-              <span>&#10005;</span>
-            </button>
-          </div>
-        </div>
+        ) : null}
         <div className="card-info-name">
           <span>{card.tag}</span>
         </div>
