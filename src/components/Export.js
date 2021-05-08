@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import html2canvas from 'html2canvas';
 import {
   BiExport,
@@ -28,7 +28,13 @@ const Export = (props) => {
   };
   const [copied, setCopied] = useState(false);
   const [showWindowPortal, toggleWindowPortal] = useState(false);
-
+  const features = {
+    width: '1000px',
+    height: '700px',
+    resizable: 'no',
+    status: 'off',
+    location: 'off',
+  };
   const copyToClipboard = () => {
     navigator.clipboard
       .writeText(card.tag)
@@ -42,7 +48,9 @@ const Export = (props) => {
   };
 
   const takeScreenShot = () => {
-    html2canvas(document.querySelector(`#root`), {}).then((canvas) => {
+    let id = `#${card.tag}`;
+    console.log(id);
+    html2canvas(document.querySelector(id), {}).then((canvas) => {
       canvas.toBlob((blob) => {
         var file = new File([blob], 'test.png', {
           type: 'application/octet-stream',
@@ -88,17 +96,28 @@ const Export = (props) => {
         </div>
       </div>
       {showWindowPortal && (
-        <NewWindow onUnload={() => toggleWindowPortal(false)}>
-          <Card
-            cardScale={3}
-            cardType={'export'}
-            palette={palette}
-            cardDimensions={cardDimensions}
-            card={card}
-            changeStars={changeStars}
-            newTag={true}
-            deleteCard={deleteCard}
-          />
+        <NewWindow
+          onUnload={() => {
+            toggleWindowPortal(false);
+          }}
+          copyStyles="true"
+          center="parent"
+          onOpen={() => console.log('opened')}
+          features={features}
+        >
+          <div id={card.tag}>
+            <Card
+              cardScale={3}
+              cardType={'export'}
+              palette={palette}
+              cardDimensions={cardDimensions}
+              card={card}
+              changeStars={changeStars}
+              newTag={true}
+              deleteCard={deleteCard}
+            />
+          </div>
+          <button onClick={() => takeScreenShot()}>Screen</button>
         </NewWindow>
       )}
     </div>

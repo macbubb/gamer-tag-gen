@@ -49,16 +49,17 @@ const Card = (props) => {
     toggleExportMenu({ display: 'none' });
   };
 
-  let cardSplattersStyle =
-    cardScale !== 1
-      ? {
-          margin: '2rem 0 0 4.5rem',
-          position: 'absolute',
-        }
-      : {
-          margin: '-1rem 0 0 1rem',
-          position: 'absolute',
-        };
+  const cardSplatterWarpFixer = (cardType) => {
+    switch (cardType) {
+      case 'inventory':
+        return { margin: '-1rem 0 0 1rem', position: 'absolute' };
+      case 'latest':
+        return { margin: '2rem 0 0 4.5rem', position: 'absolute' };
+      case 'export':
+        return { margin: '8rem 0 0 13rem', position: 'absolute' };
+    }
+  };
+  let cardSplattersStyle = cardSplatterWarpFixer(cardType);
 
   //card element order, first rendered to last
   //1. splatters (small then big?)
@@ -104,7 +105,7 @@ const Card = (props) => {
       <div className="card-info">
         {' '}
         {/* look into CSS and making styles uniform and scalable with scale property */}
-        {cardType != 'export' ? (
+        {cardType !== 'export' ? (
           <div data-html2canvas-ignore className="card-info-buttons">
             <div className="export-card">
               <Export
@@ -133,15 +134,17 @@ const Card = (props) => {
         <div className="card-info-name">
           <span>{card.tag}</span>
         </div>
-        <div className="stars">
-          <RenderStars
-            stars={stars}
-            changeStars={changeStars}
-            newTag={false}
-            card={card}
-            deadStars={false}
-          />
-        </div>
+        {cardType !== 'export' ? (
+          <div className="stars">
+            <RenderStars
+              stars={stars}
+              changeStars={changeStars}
+              newTag={false}
+              card={card}
+              deadStars={false}
+            />
+          </div>
+        ) : null}
       </div>
     </div>
   );

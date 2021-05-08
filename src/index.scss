@@ -575,6 +575,16 @@ button.generate-card {
   }
 }
 
+.card.export {
+  margin: 10rem;
+  .card-info {
+    padding-top: 8.5rem;
+    &-name {
+      font-size: 5rem;
+    }
+  }
+}
+
 .arrow-up {
   width: 0;
   height: 0;
