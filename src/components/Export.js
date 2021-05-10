@@ -8,6 +8,7 @@ import {
 } from 'react-icons/all';
 import NewWindow from 'react-new-window';
 import Card from './Card';
+import ExportPopup from './ExportPopup';
 
 const Export = (props) => {
   const {
@@ -45,19 +46,6 @@ const Export = (props) => {
       .catch((err) => {
         console.log('not copied', err);
       });
-  };
-
-  const takeScreenShot = () => {
-    let id = `#${card.tag}`;
-    console.log(id);
-    html2canvas(document.querySelector(id), {}).then((canvas) => {
-      canvas.toBlob((blob) => {
-        var file = new File([blob], 'test.png', {
-          type: 'application/octet-stream',
-        });
-        document.location.href = URL.createObjectURL(file);
-      });
-    });
   };
 
   const handleMouseLeave = () => {
@@ -101,23 +89,17 @@ const Export = (props) => {
             toggleWindowPortal(false);
           }}
           copyStyles="true"
+          name="exportPopup"
           center="parent"
-          onOpen={() => console.log('opened')}
           features={features}
         >
-          <div id={card.tag}>
-            <Card
-              cardScale={3}
-              cardType={'export'}
-              palette={palette}
-              cardDimensions={cardDimensions}
-              card={card}
-              changeStars={changeStars}
-              newTag={true}
-              deleteCard={deleteCard}
-            />
-          </div>
-          <button onClick={() => takeScreenShot()}>Screen</button>
+          <ExportPopup
+            palette={palette}
+            cardDimensions={cardDimensions}
+            card={card}
+            changeStars={changeStars}
+            deleteCard={deleteCard}
+          />
         </NewWindow>
       )}
     </div>
