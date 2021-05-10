@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Card from './Card';
 import html2canvas from 'html2canvas';
 
 const ExportPopup = (props) => {
   const { card, changeStars, deleteCard, cardDimensions, palette } = props;
+  useEffect(() => takeScreenShot(), [Card]);
   var newWindow = window.open('', 'exportPopup');
   const takeScreenShot = () => {
     let id = `#${card.tag}`;
@@ -30,7 +31,6 @@ const ExportPopup = (props) => {
         newTag={true}
         deleteCard={deleteCard}
       />
-      <button onClick={() => takeScreenShot()}>asdf</button>
     </div>
   );
 };
