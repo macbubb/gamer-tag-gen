@@ -187,7 +187,8 @@ button.generate-card {
   text-align: center;
 }
 .main-display-right-controls button,
-.help-button button {
+.help-button button,
+.save-button button {
   position: relative;
   display: inline-block;
   cursor: pointer;
@@ -200,7 +201,8 @@ button.generate-card {
   margin-bottom: 4rem;
   font-size: 1.5rem;
   &.sort-cards,
-  &.help {
+  &.help,
+  &.save {
     font-weight: 900;
     color: $text;
     text-transform: uppercase;
@@ -425,6 +427,11 @@ button.generate-card {
     bottom: -15px;
     left: 29px;
   }
+}
+
+.save-button {
+  text-align: right;
+  transform: translateY(-4rem);
 }
 
 @keyframes open-export-menu {
