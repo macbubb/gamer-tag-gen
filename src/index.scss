@@ -306,6 +306,7 @@ button.generate-card {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+      margin-top: 0.5rem;
     }
   }
   .export-card {
@@ -314,6 +315,9 @@ button.generate-card {
     button {
       margin-left: 0.75rem;
       margin-top: 0rem;
+      @media all and (max-device-width: 640px) {
+        //transform: translateX(-1rem);
+      }
     }
     svg {
       z-index: 0;
@@ -387,7 +391,7 @@ button.generate-card {
   .delete-card {
     button {
       font-size: 2rem;
-      padding: 1rem 3rem 0 0;
+      padding-right: 3rem;
       @media all and (min-width: 500px) {
         padding: 0;
       }
@@ -395,12 +399,18 @@ button.generate-card {
   }
   .export-card {
     button {
-      margin-left: 2.25rem;
-      margin-top: 1rem;
+      margin-left: 3.25rem;
+      @media all and (min-width: 500px) {
+        margin-left: 2.25rem;
+      }
     }
     svg {
       //margin: 0.75rem 0rem 0rem 3rem;
       font-size: 2.25rem;
+      @media all and (min-width: 500px) {
+        padding-top: 0.5rem;
+        font-size: 2.75rem;
+      }
     }
   }
   .export-card-button-menu {
@@ -426,6 +436,24 @@ button.generate-card {
   .arrow-down {
     bottom: -15px;
     left: 29px;
+  }
+}
+.card.inventory {
+  .card-info {
+    padding-top: 0.5rem;
+  }
+  .card-info-name {
+    margin-top: -0.25rem;
+    font-size: 1.5rem;
+  }
+  // fixes spacing on iphone 12, that isnt an issue on responsive sizing through comptuer browser
+  @media all and (max-device-width: 640px) {
+    .export-card {
+      margin-left: -1rem;
+    }
+    .delete-card {
+      margin-right: -1rem;
+    }
   }
 }
 
