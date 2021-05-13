@@ -8,7 +8,6 @@ To learn react.js and avoid tutorial purgatory I've developed this rad gamer tag
 
 ## Features
 ![paint splatter](https://github.com/macbubb/gamer-tag-gen/blob/main/src/img/splat1quartersized.png) 
-
 **Unique Cards**
 
 each gamer tag has a unique card with custom frame geometry decorated by 9 random splatters
