@@ -284,7 +284,7 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
                 deleteCard={deleteCard}
               />
             ) : (
-              <div className="card new-card">
+              <div className="card latest">
                 <div className="card-graphics">
                   <div className="card-splatters"></div>
                   <div className="card-frame"></div>
