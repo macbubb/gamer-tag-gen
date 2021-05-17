@@ -305,6 +305,7 @@ export const nouns = [
   'Druid',
   'Liar',
   'Arbiter',
+  'Arbiter',
   'Referee',
   'Dude',
   'Golem',

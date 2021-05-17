@@ -5,6 +5,7 @@ import {
   HiOutlineClipboardCopy,
   AiOutlineDownload,
   FaCheck,
+  FiTwitter,
 } from 'react-icons/all';
 import NewWindow from 'react-new-window';
 import Card from './Card';
@@ -53,6 +54,8 @@ const Export = (props) => {
     setCopied(false);
   };
 
+  const tweetMessage = `https://twitter.com/intent/tweet?url=https%3A%2F%2Fmacbubb.github.io%2Fgamer-tag-gen%2F&text=The%20gamer%20that%20rallies%20the%20squad%20and%20scatters%20the%20opps%20is%20now%20called%3A%20${card.tag}.%20&via=macbubb`;
+
   return (
     <div className="export-card-button">
       <button onClick={() => handleExportMenuClick()}>
@@ -81,6 +84,11 @@ const Export = (props) => {
           onClick={copyToClipboard}
         >
           {!copied ? <HiOutlineClipboardCopy /> : <FaCheck />}
+        </div>
+        <div className="export-card-button-menu-tweet">
+          <a href={tweetMessage} target="_blank">
+            <FiTwitter />
+          </a>
         </div>
       </div>
       {showWindowPortal && (

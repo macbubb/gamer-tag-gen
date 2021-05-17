@@ -340,6 +340,9 @@ button.generate-card {
     margin-bottom: 100px;
     transition: color display 150ms linear;
     animation: open-export-menu 0.5s 1;
+    a {
+      color: $black;
+    }
     svg {
       z-index: 1;
       padding: 0.15rem !important;
