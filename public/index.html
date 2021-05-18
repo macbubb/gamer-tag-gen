@@ -25,7 +25,7 @@
     />
     <meta property="og:image:width" content="1080" />
     <meta property="og:image:height" content="900" />
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@macbubb" />
     <meta name="twitter:title" content="Gamertag Brainstorm Tsunami" />
     <meta
@@ -55,6 +55,22 @@
     <title>Gamertag Brain Tsunami</title>
   </head>
   <body>
+    <script>
+      window.fbAsyncInit = function () {
+        FB.init({
+          appId: 'your-app-id',
+          autoLogAppEvents: true,
+          xfbml: true,
+          version: 'v10.0',
+        });
+      };
+    </script>
+    <script
+      async
+      defer
+      crossorigin="anonymous"
+      src="https://connect.facebook.net/en_US/sdk.js"
+    ></script>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--

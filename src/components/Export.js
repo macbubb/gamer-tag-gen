@@ -6,10 +6,12 @@ import {
   AiOutlineDownload,
   FaCheck,
   FiTwitter,
+  FiFacebook,
 } from 'react-icons/all';
 import NewWindow from 'react-new-window';
 import Card from './Card';
 import ExportPopup from './ExportPopup';
+import { FacebookShareButton } from 'react-share';
 
 const Export = (props) => {
   const {
@@ -23,6 +25,7 @@ const Export = (props) => {
     cardDimensions,
     palette,
   } = props;
+  const tag = card.tag;
   const exportIconStyle = { color: exportIconColor };
   const handleExportMenuClick = () => {
     console.log('clicked menu');
@@ -39,7 +42,7 @@ const Export = (props) => {
   };
   const copyToClipboard = () => {
     navigator.clipboard
-      .writeText(card.tag)
+      .writeText(tag)
       .then(() => {
         setCopied(true);
         console.log('copied');
@@ -48,13 +51,22 @@ const Export = (props) => {
         console.log('not copied', err);
       });
   };
-
   const handleMouseLeave = () => {
     toggleExportMenu({ display: 'none' });
     setCopied(false);
   };
 
-  const tweetMessage = `https://twitter.com/intent/tweet?url=https%3A%2F%2Fmacbubb.github.io%2Fgamer-tag-gen%2F&text=The%20gamer%20that%20rallies%20the%20squad%20and%20scatters%20the%20opps%20is%20now%20called%3A%20${card.tag}.%20&via=macbubb`;
+  const shareMessage = `The gamer that rallies the squad and scatters the opps is now called: ${tag}.`;
+  const domain = 'https://macbubb.github.io/gamer-tag-gen/';
+  const twitterUser = 'macbubb';
+  const tweetMessage =
+    'https://twitter.com/intent/tweet?url=' +
+    encodeURIComponent(`${domain}`) +
+    '&text=' +
+    encodeURIComponent(`${shareMessage}`) +
+    '&via' +
+    twitterUser;
+  //const tweetMessage = `https://twitter.com/intent/tweet?url=https%3A%2F%2Fmacbubb.github.io%2Fgamer-tag-gen%2F&text=The%20gamer%20that%20rallies%20the%20squad%20and%20scatters%20the%20opps%20is%20now%20called%3A%20${tag}.%20&via=macbubb`;
 
   return (
     <div className="export-card-button">
@@ -69,14 +81,7 @@ const Export = (props) => {
         style={showExportMenu}
       >
         <div className="arrow-down"></div>
-        <div
-          className="export-card-button-menu-download"
-          cursor="pointer"
-          pointer-events="all"
-          onClick={() => toggleWindowPortal(true)}
-        >
-          <AiOutlineDownload />
-        </div>
+
         <div
           className="export-card-button-menu-clipboard"
           cursor="pointer"
@@ -89,6 +94,11 @@ const Export = (props) => {
           <a href={tweetMessage} target="_blank">
             <FiTwitter />
           </a>
+        </div>
+        <div className="export-card-button-menu-facebook">
+          <FacebookShareButton url={domain} quote={shareMessage} className="">
+            <FiFacebook />
+          </FacebookShareButton>
         </div>
       </div>
       {showWindowPortal && (
