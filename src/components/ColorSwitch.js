@@ -121,9 +121,9 @@ function ColorSwitch(props) {
           d="
           M19,0
           h53
-          v45
+          v90
           h-53
-          v-45"
+          v-90"
         />
       </a>
       <a
@@ -139,9 +139,9 @@ function ColorSwitch(props) {
           d="
           M75,0
           h45
-          v45
+          v90
           h-45
-          v-45"
+          v-90"
         />
       </a>
       <a
@@ -157,9 +157,9 @@ function ColorSwitch(props) {
           d="
           M122,0
           h40
-          v45
+          v90
           h-40
-          v-45"
+          v-90"
         />
       </a>
     </svg>
