@@ -27,7 +27,7 @@ function ColorSwitch(props) {
 
         <path
           stroke="black"
-          stroke-width="5"
+          strokeWidth="5"
           fill="#BFBFBF"
           d="
                   M42.5,2.5
@@ -44,7 +44,7 @@ function ColorSwitch(props) {
         <circle
           style={switchPosition}
           stroke="black"
-          stroke-width="5"
+          strokeWidth="5"
           fill="#8C8C8C"
           cx="45"
           cy="22.5"
@@ -54,7 +54,7 @@ function ColorSwitch(props) {
         <path
           stroke="black"
           fill="black"
-          stroke-width="5"
+          strokeWidth="5"
           d="
                   M32.5,60
                   h22.5
@@ -66,7 +66,7 @@ function ColorSwitch(props) {
         <path
           stroke="#BF1120"
           fill="#BF1120"
-          stroke-width="5"
+          strokeWidth="5"
           d="
                   M85,60
                   h22.5
@@ -78,31 +78,31 @@ function ColorSwitch(props) {
         <svg className="rainbow-square">
           <path
             stroke="#BF3064"
-            stroke-width="4.5"
+            strokeWidth="4.5"
             d="M135,57.5
                         v27.5"
           />
           <path
             stroke="#A545BF"
-            stroke-width="4.5"
+            strokeWidth="4.5"
             d="M139.5,57.5
                         v27.5"
           />
           <path
             stroke="#025373"
-            stroke-width="4.5"
+            strokeWidth="4.5"
             d="M144,57.5
                         v27.5"
           />
           <path
             stroke="#F29D35"
-            stroke-width="4.5"
+            strokeWidth="4.5"
             d="M148.5,57.5
                         v27.5"
           />
           <path
             stroke="#F2784B"
-            stroke-width="4.5"
+            strokeWidth="4.5"
             d="M153,57.5
                         v27.5"
           />
@@ -112,11 +112,11 @@ function ColorSwitch(props) {
         onClick={() => handleSwitchChange(1)}
         cursor="pointer"
         href="#root"
-        pointer-events="all"
+        pointerEvents="all"
       >
         <path
           stroke="none"
-          stroke-width="2"
+          strokeWidth="2"
           fill="none"
           d="
           M19,0
@@ -130,11 +130,11 @@ function ColorSwitch(props) {
         onClick={() => handleSwitchChange(2)}
         cursor="pointer"
         href="#root"
-        pointer-events="all"
+        pointerEvents="all"
       >
         <path
           stroke="none"
-          stroke-width="2"
+          strokeWidth="2"
           fill="none"
           d="
           M75,0
@@ -147,12 +147,12 @@ function ColorSwitch(props) {
       <a
         onClick={() => handleSwitchChange(3)}
         cursor="pointer"
-        pointer-events="all"
+        pointerEvents="all"
         href="#root"
       >
         <path
           stroke="none"
-          stroke-width="2"
+          strokeWidth="2"
           fill="none"
           d="
           M122,0

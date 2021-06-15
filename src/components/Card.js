@@ -57,6 +57,8 @@ const Card = (props) => {
         return { margin: '2rem 0 0 4.5rem', position: 'absolute' };
       case 'export':
         return { margin: '8rem 0 0 13rem', position: 'absolute' };
+      default:
+        return { margin: '8rem 0 0 13rem', position: 'absolute' };
     }
   };
   let cardSplattersStyle = cardSplatterWarpFixer(cardType);
@@ -113,7 +115,6 @@ const Card = (props) => {
                 toggleExportMenu={toggleExportMenu}
                 exportIconColor={exportIconColor}
                 card={card}
-                cardScale={2}
                 palette={palette}
                 cardDimensions={props.cardDimensions}
                 changeStars={changeStars}

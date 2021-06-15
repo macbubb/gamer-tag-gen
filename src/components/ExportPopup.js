@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Card from './Card';
 import html2canvas from 'html2canvas';
 

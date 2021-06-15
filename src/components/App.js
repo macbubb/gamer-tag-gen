@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { adjs, nouns, reviewConstants } from '../Constants';
+import { reviewConstants } from '../Constants';
 import useKeyboardShortcut from './useKeyboardShortcut';
 import '../App.css';
 import Card from './Card';
-import {
-  getRandomFloat,
-  getRandomIntInclusive,
-  getRandomSign,
-  chopDecimal,
-} from './Helpers.js';
 import ColorSwitch from './ColorSwitch';
 import Welcome from './Welcome';
+import makeCard from './makeCard';
+import sortCards from './sortCards';
 
 function App() {
   /*
@@ -40,145 +36,6 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
     originOffset: [10, 10],
   };
 
-  const handleAdd = (card) => {
-    setCardInventory([card, ...cardInventory]);
-  };
-
-  const makeCard = () => {
-    //create tag, splatters, frame corner offset for each card
-    const cardTag = makeTag();
-    const cardSplatters = makeSplatters();
-    const cardFrameOffset = makeFrameOffset();
-    //spread operator for cardTag as it is not an object within the card, splatters and frameOffset are stored as nested objects in a property
-    const newCard = {
-      ...cardTag,
-      splatters: cardSplatters,
-      frameOffset: cardFrameOffset,
-    };
-    //add card to state
-    handleAdd(newCard);
-  };
-
-  const makeSplatters = () => {
-    const newSplatters = [{}, {}, {}, {}, {}, {}, {}, {}];
-    const rainbowColors = [
-      '#BF3064',
-      '#A545BF',
-      '#025373',
-      '#F29D35',
-      '#F2784B',
-    ];
-    const { rectH, rectW } = cardDimensions;
-    //small splats
-    for (let i = 0; i < 5; i++) {
-      newSplatters[i].rainbowColorChoice =
-        rainbowColors[Math.floor(Math.random() * rainbowColors.length)];
-      newSplatters[i].splatterNum = getRandomIntInclusive(1, 7);
-      newSplatters[i].skewX = getRandomIntInclusive(-20, 20);
-      newSplatters[i].scale = getRandomFloat(1.2, 1.5);
-      newSplatters[i].skewY = getRandomIntInclusive(-20, 20);
-      newSplatters[i].rotation = getRandomIntInclusive(0, 360);
-      newSplatters[i].xTrans = chopDecimal((rectW / 3) * getRandomSign(), 2);
-      newSplatters[i].yTrans = chopDecimal((rectH / 3) * getRandomSign(), 2);
-      newSplatters[i].key = i; //safe to use index as key as each list are static, have no ids, and will never be reordered
-    }
-    //big splats
-    for (let i = 5; i < 8; i++) {
-      newSplatters[i].rainbowColorChoice =
-        rainbowColors[Math.floor(Math.random() * rainbowColors.length)];
-      newSplatters[i].splatterNum = getRandomIntInclusive(8, 12);
-      newSplatters[i].skewX = getRandomIntInclusive(-50, 50);
-      newSplatters[i].scale = chopDecimal(getRandomFloat(1, 1.5), 2);
-      newSplatters[i].skewY = getRandomIntInclusive(-20, 20);
-      newSplatters[i].rotation = getRandomIntInclusive(0, 360);
-      newSplatters[i].xTrans = chopDecimal(
-        0.3 * (Math.random() - 1) * rectW,
-        2
-      );
-      newSplatters[i].yTrans = chopDecimal(
-        0.2 * (Math.random() - 1) * rectH,
-        2
-      );
-      newSplatters[i].key = i;
-    }
-    return newSplatters;
-  };
-
-  const makeTag = () => {
-    const maxTagLength = 15;
-    var timeStamp = Date.now();
-    const emptyInventory = cardInventory.length == 1 ? true : false;
-    //pick adj and noun
-    //check if adj or noun is used in any tagID
-    //if not used, return adj and noun index
-    //if yes, half the time return a new adj, half the time return the repeated part
-    const pickTagID = () => {
-      var returnID = [
-        Math.floor(Math.random() * adjs.length),
-        Math.floor(Math.random() * nouns.length),
-      ];
-      emptyInventory == true
-        ? cardInventory.map((card) => {
-            if (card.tagID[0] == returnID[0]) {
-              if (Math.random() > 0.5) {
-                randomAdjIndex = Math.floor(Math.random() * adjs.length);
-              }
-            }
-            if (card.tagID[1] == returnID[1]) {
-              if (Math.random() > 0.5) {
-                randomNounIndex = Math.floor(Math.random() * nouns.length);
-              }
-            }
-          })
-        : console.log('new inventory');
-      return returnID;
-    };
-
-    var [randomAdjIndex, randomNounIndex] = pickTagID();
-
-    var newAdj = adjs[randomAdjIndex];
-    var newNoun = nouns[randomNounIndex];
-
-    while (newAdj.length + newNoun.length > maxTagLength) {
-      [randomAdjIndex, randomNounIndex] = pickTagID();
-      newAdj = adjs[randomAdjIndex];
-      newNoun = nouns[randomNounIndex];
-    }
-
-    const roughDraftTag = newAdj + newNoun;
-
-    const finalNewTag = {
-      timeStamp: timeStamp,
-      tag: roughDraftTag,
-      stars: 0,
-      tagID: [randomAdjIndex, randomNounIndex],
-    };
-    //just return the finalNewTag
-    return finalNewTag;
-  };
-
-  const makeFrameOffset = () => {
-    const variability = 10; //how many px box corners can shift
-    return [
-      [
-        chopDecimal(2 * (Math.random() - 0.5) * variability, 2),
-        chopDecimal(2 * (Math.random() - 0.5) * variability, 2),
-      ],
-      [
-        chopDecimal(2 * (Math.random() - 0.5) * variability, 2),
-        chopDecimal(2 * (Math.random() - 0.5) * variability, 2),
-      ],
-      [
-        chopDecimal(2 * (Math.random() - 0.5) * variability, 2),
-        chopDecimal(2 * (Math.random() - 0.5) * variability, 2),
-      ],
-      [
-        chopDecimal(2 * (Math.random() - 0.5) * variability, 2),
-        chopDecimal(2 * (Math.random() - 0.5) * variability, 2),
-      ],
-    ];
-  };
-
   function changeStars(stars, key) {
     const newRatingInventory = cardInventory.map((obj) =>
       obj.timeStamp === key ? { ...obj, stars } : obj
@@ -199,24 +56,6 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
     reviewConstants();
   }, []); //passing empty array as dependency triggers effect on first load only, as it does not have a dependency
 
-  const sortCards = () => {
-    let sortedInventory = [];
-    for (let i = 5; i >= 0; i--) {
-      sortedInventory =
-        cardInventory.filter((card) => card.stars === i).length !== 0
-          ? [
-              ...sortedInventory,
-              ...cardInventory.filter((card) => card.stars === i),
-            ]
-          : [...sortedInventory];
-    }
-    sortedInventory = [
-      ...sortedInventory.filter((card) => card.tag === 'firstCard'),
-      ...sortedInventory.filter((card) => card.tag !== 'firstCard'),
-    ]; //move empty card to front
-    setCardInventory(sortedInventory);
-  };
-
   const handleSwitchChange = (newColor) => {
     setColorPalette(newColor);
   };
@@ -232,13 +71,19 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
     { overrideSystem: false }
   );
 
-  useKeyboardShortcut(['Enter'], () => makeCard(), { overrideSystem: false });
+  useKeyboardShortcut(
+    ['Enter'],
+    () => makeCard(cardInventory, setCardInventory, cardDimensions),
+    { overrideSystem: false }
+  );
 
   useKeyboardShortcut(['H'], () => togglePopup(!welcomeState.showPopup), {
     overrideSystem: false,
   });
 
-  useKeyboardShortcut(['S'], () => sortCards(), { overrideSystem: false });
+  useKeyboardShortcut(['S'], () => sortCards(cardInventory, setCardInventory), {
+    overrideSystem: false,
+  });
 
   useKeyboardShortcut(['1'], () => changeStars(1, cardInventory[0].timeStamp), {
     overrideSystem: false,
@@ -271,7 +116,7 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
         togglePopup={togglePopup}
       />
       <div className="main-heading">
-        <h1>Gamertag Tsunami</h1>
+        <h1>Gamertag Brain Tsunami</h1>
       </div>
       {/*       <HotKeys keyMap={keyMap} handlers={handlers}>
        */}{' '}
@@ -304,7 +149,9 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
                   className="generate-card"
                   aria-label="Generate New Gamertag"
                   type="submit"
-                  onClick={() => makeCard()}
+                  onClick={() =>
+                    makeCard(cardInventory, setCardInventory, cardDimensions)
+                  }
                 >
                   Create
                 </button>
@@ -333,7 +180,7 @@ frameOffset contains how each corner is transformed (X,Y) which is used to calcu
             <button
               className="sort-cards"
               type="button"
-              onClick={() => sortCards()}
+              onClick={() => sortCards(cardInventory, setCardInventory)}
             >
               Sort Cards
             </button>

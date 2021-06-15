@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import RenderStars from './RenderStars';
+import { BiExport } from 'react-icons/all';
 
 const Welcome = (props) => {
   var popupStyle = props.welcomeState
@@ -87,6 +88,12 @@ const Welcome = (props) => {
           <p>
             Use the toggle switch to choose between black, red, and
             multi-colored paint splatters.
+          </p>
+          <h2>Share</h2>
+          <p>
+            Each tag has a share button (
+            <BiExport className="welcome-page-icon" />) where you can copy to
+            your clipboard, tweet, or post to facebook.
           </p>
         </div>
         <div className="welcome-button">

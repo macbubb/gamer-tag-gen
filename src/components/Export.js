@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
   BiExport,
   HiOutlineClipboardCopy,
@@ -7,7 +7,6 @@ import {
   FiFacebook,
 } from 'react-icons/all';
 import NewWindow from 'react-new-window';
-import Card from './Card';
 import ExportPopup from './ExportPopup';
 import { FacebookShareButton } from 'react-share';
 
@@ -19,7 +18,6 @@ const Export = (props) => {
     card,
     changeStars,
     deleteCard,
-    cardScale,
     cardDimensions,
     palette,
   } = props;
@@ -64,7 +62,6 @@ const Export = (props) => {
     encodeURIComponent(`${shareMessage}`) +
     '&via' +
     twitterUser;
-
   return (
     <div className="export-card-button">
       <button onClick={() => handleExportMenuClick()}>
@@ -87,10 +84,11 @@ const Export = (props) => {
         >
           {!copied ? <HiOutlineClipboardCopy /> : <FaCheck />}
         </div>
-        <div className="export-card-button-menu-tweet">
-          <a href={tweetMessage} target="_blank">
-            <FiTwitter />
-          </a>
+        <div
+          className="export-card-button-menu-tweet"
+          onClick={() => window.open(tweetMessage, '_blank')}
+        >
+          <FiTwitter />
         </div>
         <div className="export-card-button-menu-facebook">
           <FacebookShareButton url={domain} quote={shareMessage} className="">
