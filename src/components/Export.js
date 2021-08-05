@@ -53,7 +53,7 @@ const Export = (props) => {
   };
 
   const shareMessage = `The gamer that rallies the squad and scatters the opps is now called: ${tag}.`;
-  const domain = 'https://macbubb.github.io/gamer-tag-gen/';
+  const domain = 'https://gamertagbraintsunami.com/';
   const twitterUser = 'macbubb';
   const tweetMessage =
     'https://twitter.com/intent/tweet?url=' +
